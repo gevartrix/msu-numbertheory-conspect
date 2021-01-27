@@ -1,0 +1,209 @@
+\begin{nlemma}
+\label{lm:I-14}
+    Если $\abs{s} = R$, то
+    \[
+        \frac{s}{R^2} + \frac{1}{s} = \frac{2\Re{s}}{R^2} = \frac{2\sigma}{R^2}.
+    \]
+\end{nlemma}
+\begin{proof}
+    \begin{align*}
+        \frac{s}{R^2} + \frac{1}{s} 
+        &= \frac{1}{R} \left( \frac{s}{R} + \frac{R}{s} \right) \\
+        &= \frac{1}{R} \cdot 2\Re{\frac{s}{R}} \\
+        &= \frac{2\Re{s}}{R^2}.
+    \end{align*}
+\end{proof}
+
+\begin{nlemma}
+\label{lm:I-15}
+    При $T > 1$ и $x \in \RR$ выполнено 
+    \[
+        xT^{-x} \le \frac{1}{e\ln{T}}.
+    \]
+\end{nlemma}
+\begin{proof}
+    Вычислим производную:
+    \[
+       (xT^{-x})' = (1 - x\ln{T})T^{-x}.
+    \]
+    Она обращается в ноль в точке $x_{0} = \frac{1}{\ln{T}}$. Ну и несложно заметить, что функция при $x < x_0$ возрастает, а при $x > x_0$ убывает, следовательно максимум значения функции равен 
+    \[
+        \frac{1}{\ln{T}} T^{-\frac{1}{\ln{T}}} = \frac{1}{e\ln{T}}.
+    \]
+\end{proof}
+
+Положим
+\begin{align*}
+    \Gamma_1 &= \Gamma \cap \{ s \in \CC \mid \Re{s} \ge 0 \}, \\
+    \Gamma_2 &= \Gamma \cap \{ s \in \CC \mid \Re{s} \le 0 \}.
+\end{align*}
+
+Тогда 
+\[
+    I(T) = I_1(T) + I_2(T) 
+         = \frac{1}{2\pi i} \int_{\Gamma_1} \dots + 
+           \frac{1}{2\pi i} \int_{\Gamma_2} \dots .
+\]
+
+Оценим интеграл $I_1(T)$: по Лемме~\ref{lm:I-13}, а также используя Лемму~\ref{lm:I-14}, получаем
+\[
+    \abs{I_1(t)} \le \frac{1}{2\pi} \int_{\Gamma_1} A\frac{T^{-\sigma}}{\sigma} T^{\sigma} \frac{2\sigma}{R^2}ds = \frac{1}{2\pi} \frac{2A}{R^2} \pi R = \frac{A}{R} = A\epsilon.
+\]
+
+Оценим теперь второй интеграл:
+\begin{align*}
+    I_2(T) &= I_3(T) - I_4(T) \\
+    &= \frac{1}{2\pi i} \int_{\Gamma_2} F(1+s)T^{\sigma} \left( \frac{s}{R^2} + \frac{1}{s} \right)ds 
+    - \frac{1}{2\pi i} \int_{\Gamma_2} F_T(1+s)T^{\sigma} \left( \frac{s}{R^2} + \frac{1}{s} \right)ds.
+\end{align*}
+
+\begin{figure}[h]
+    \centering
+    \input{././img/figures/5-1.tikz}
+    \caption{Контуры $\Gamma_1$, $\Gamma_2$ и $\Gamma_3$}
+    \label{fg:I-3}
+\end{figure}
+
+По Лемме~\ref{lm:I-13}, $I_4(T)$ оценивается точно так же, как и $I_1(T)$, только надо заменить контур $\Gamma_1$ на $\Gamma_3$ (см. Рис.~\ref{fg:I-3}). Это можно сделать, так как у подынтегральной функции нет полюсов вне контура $\Gamma_3 \cup \Gamma_2$ (полюс только $0$).
+
+Таким образом, мы оценили $I_4(T)$:
+\[
+    \abs{I_4(T)} \le A\epsilon.
+\]
+
+Следовательно, для оценки второго интеграла нам осталось оценить только $I_3(T)$:
+\[
+    I_3(T) = \int_{\Gamma_2} F(1+s)T^s \left( \frac{s}{R^2} + \frac{1}{s} \right).
+\]
+
+Заметим, что
+\begin{enumerate}
+    \item 
+        на малых дугах справедливо 
+        \[
+            \abs{T^s\left( \frac{s}{R^2} + \frac{1}{s} \right)} 
+            = \frac{2\sigma}{R^2}T^{\sigma} 
+            \underset{\text{Лемма~\ref{lm:I-14}}}{=} 
+            \frac{2\sigma T^{-\abs{\sigma}}}{R^2} 
+            \underset{\text{Лемма~\ref{lm:I-15}}}{\le} 
+            \frac{2}{R^2} \frac{1}{e\ln{T}};
+        \]
+    \item 
+        на вертикальном отрезке выполняется $T^s = T^{-h}$;
+    \item
+        на дуге $\Gamma_2$ выполнено 
+        \[
+            \abs{F(1+s) \left( \frac{s}{R^2} + \frac{1}{s} \right)} \le C = C(\epsilon),
+        \]
+        т.е. эта оценка никак не зависит от $T$.
+\end{enumerate}
+
+Следовательно, $I_3(T) \to 0$ при $T \to +\infty$. То есть, 
+\[
+    \exists T_0(\epsilon)\colon \forall T > T_0 \ \abs{I_3(T)} < \epsilon.
+\]
+
+Таким образом, мы получаем следующую оценку исходного интеграла:
+\begin{align*}
+    \abs{I(T)} &\le \abs{I_1(T)} &&+ \abs{I_3(T)} &&+ \abs{I_4(T)} && \\ 
+    &\le A\epsilon &&+ \epsilon &&+ A\epsilon &&= (2A + 1)\epsilon.
+\end{align*}
+
+Тем самым мы доказали основную Теорему этого раздела --- Асимптотический Закон Распределения Простых Чисел. Нам достаточно лишь пойти по ``цепочке'':
+\begin{center}
+    Теорема~\ref{thm:I-7} 
+    $\Rightarrow$ Лемма~\ref{lm:I-12}, \quad
+    Леммы~\ref{lm:I-1} и~\ref{lm:I-12} 
+   $\Rightarrow$ АЗРПЧ.
+\end{center}
+
+
+
+\section{Теорема Дирихле о простых числах в арифметических прогрессиях}
+\label{sec:II_Dirichlet-theorem}
+
+
+\begin{ntheorem}[Дирихле]
+\label{thm:II-1}
+    Пусть $l,m \in \ZZ$, $\gcd{l, m} = 1$ и $m \ge 2$. Тогда существует бесконечно много простых $p$ таких, что 
+    \[
+        \congr{p}{l}{m}.
+    \]
+\end{ntheorem}
+
+\begin{remark}
+    При $\gcd{l, m} \ne 1$ это, очевидно, не выполняется.
+\end{remark}
+
+\begin{remark}
+    При фиксированном $m$ таких прогрессий ровно $\phi(m)$ штук. Количество простых чисел, не превышающих $x$, в этой прогрессии на самом деле равно $\frac{1}{\phi(m)}~\cdot~\frac{x}{\ln{x}}$, то есть эти простые распределены по прогрессии равномерно. Но доказывать мы это, конечно же, не будем.
+\end{remark}
+
+
+\subsection{Свойства характеров}
+\label{subsec:1_character-properties}
+
+\begin{ndefinition}
+\label{def:II_Dirichlet-character}
+    Пусть $m \in \NN$, $m \ge 2$. Функция $\chi\colon \ZZ \to \CC$ называется \emph{числовым характером (Дирихле) по модулю $m$}, если
+    \begin{enumerate}
+        \item 
+            $\forall a \in \ZZ\colon \chi(a+m) = \chi(a)$;
+        \item 
+            $\chi(a) = 0 \ \Leftrightarrow \ \gcd{a, m} \ne 1$;
+        \item 
+            $\chi(ab) = \chi(a)\chi(b)$.
+    \end{enumerate}
+\end{ndefinition}
+
+\begin{remark}
+    Несложно провести биекцию:
+    \[
+        \chi\colon \ZZ \to \CC 
+        \ \leftrightarrow \ 
+        \bar{\chi}\colon \ZZ_{m}^{\ast} \to \CC^{\ast}.
+    \]
+\end{remark}
+
+\begin{remark}
+    \[
+        \abs{\chi(a)} = 
+        \begin{cases}
+            0, & \gcd{a, m} \ne 1, \\
+            1, & \gcd{a, m} = 1.
+        \end{cases}
+    \]
+    Действительно, для начала заметим, что $\chi(1) = \chi(1 \cdot 1) = \chi(1)^2$ , и поскольку $\chi(1) \ne 0$, то $\chi(1) = 1$. Вспомним, что если $\gcd{a, m} = 1$, то по Малой теореме Ферма получаем $\congr{a^{\phi(m)}}{1}{m}$. Тогда
+    \[
+        \chi(a)^{\phi(m)} = \chi(a^{\phi(m)}) = \chi(1) = 1.
+    \]
+    Таким образом, мы получили, что $\chi(a) \in \sqrt[\phi(m)]{1}$.
+\end{remark}
+
+Вспомним теорему с первого курса: $\ZZ_{m}^{\ast}$ циклическая тогда и только тогда, когда $m = 1,\, 2,\, 4,\, p^k,\, 2p^k$ для некоторого простого $p$.\footnote{Это эквивалентно наличию первообразного корня по искомому модулю.}
+
+\begin{nproposition}
+\label{pr:II-1}
+    $\ZZ_{m}^{\ast}$ разлагается в прямое произведение циклических групп.
+\end{nproposition}
+
+\begin{remark}
+    Иными словами, существует такой набор $g_1, g_2, \dots, g_r \in \ZZ$, что
+    \[
+        \ZZ_{m}^{\ast} = \langle \bar{g_1} \rangle_{d_1} \times \langle \bar{g_2} \rangle_{d_2} \times \dots \times \langle \bar{g_r} \rangle_{d_r},
+    \]
+    где $\langle \bar{g_i} \rangle_{d_i}$ --- группа порядка $d_i$, порождённая $g_i$. То есть,
+    \[
+        \forall a \in \ZZ_{m}^{\ast} \ 
+        \exists! \left(\alpha_1, \alpha_2, \dots, \alpha_r \right)\colon
+        \bar{a} = \bar{g_1}^{\alpha_1}\bar{g_2}^{\alpha_2}\dots\bar{g_r}^{\alpha_r},
+    \]
+    где $0 \le \alpha_i \le d_1 - 1$, $i = 1, 2, \dots r$. Таким образом, если нам известно значение характера на $\bar{g_i}$, то мы можем найти его значение на всех $\bar{a}$.
+\end{remark}
+
+\begin{remark}
+    \[
+        \chi\left(g_i\right)^{d_i} = \chi\left(g_i^{d_i}\right) = 1.
+    \]
+    Следовательно, $\chi\left(g_i\right)$ является корнем из единицы степени $d_i$.
+\end{remark}

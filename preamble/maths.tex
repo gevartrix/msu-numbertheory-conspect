@@ -1,0 +1,157 @@
+%%% PREAMBLE :: Mathematical packages
+%
+% Loads a set of packages developed for the American Mathematical Society
+% Sets up theorem environments and additional commands/operators
+% Essential for compiling any mathematical research paper
+
+
+%% Imports required packages
+% Provides enhancements for properly outputing mathematical formulas
+\usepackage{amsmath}
+
+% Internally loads the `amsfonts` package, provides an extended symbol collection
+\usepackage{amssymb}
+
+% Provides support of various environments (Theorem, Lemma, proof, etc.)
+\usepackage{amsthm}
+
+% Enables support of commutative diagrams
+% \usepackage{amscd}
+
+% Enables support of blackboard bold letters, Fraktur letters and miscellaneous symbols
+% \usepackage{amsfonts}
+
+
+%% Defines various maths environments (Theorem, Lemma, proof, etc.). Both numbered and unnumbered
+% [amsthm] Defines the Theorem-style environments
+\theoremstyle{plain}
+\newtheorem{ntheorem}{Теорема}[section]
+\newtheorem{nlemma}{Лемма}[section]
+\newtheorem{nproposition}{Предложение}[section]
+\newtheorem{ncorollary}{Следствие}[section]
+\newtheorem*{theorem}{Теорема}
+\newtheorem*{lemma}{Лемма}
+\newtheorem*{proposition}{Предложение}
+\newtheorem*{corollary}{Следствие}
+\newtheorem*{hypothesis}{Гипотеза}
+\newtheorem*{test}{Признак}
+
+% [amsthm] Defines the Definition-style environments
+\theoremstyle{definition}
+\newtheorem{ndefinition}{Определение}[section]
+\newtheorem{nstatement}{Утверждение}[section]
+\newtheorem{nexample}{Пример}[section]
+\newtheorem*{definition}{Определение}
+\newtheorem*{statement}{Утверждение}
+\newtheorem*{example}{Пример}
+
+% [amsthm] Defines the Remark-style environments
+\theoremstyle{remark}
+\newtheorem{nproblem}{Задача}[section]
+\newtheorem{nremark}{Замечание}[section]
+\newtheorem*{problem}{Задача}
+\newtheorem*{remark}{Замечание}
+
+% [amsthm, amssymb] Redefines the proof's QED symbol
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+% [amsthm, amssymb] Defines the `Solution` environment
+\newenvironment{solution}
+    {%
+        \renewcommand{\qedsymbol}{$\square$}%
+        \begin{proof}[Решение]%
+    }
+    {\end{proof}}
+
+
+%% Defines and redefines common mathematical operators
+% [amsfonts] Defines commonly used sets (fields)
+\newcommand{\field}[1]{\ensuremath{\mathbb{#1}}}
+\newcommand{\CC}{\field{C}}    % Complex numbers
+\renewcommand{\AA}{\field{A}}  % Algebraic numbers
+\newcommand{\RR}{\field{R}}    % Real numbers
+\newcommand{\QQ}{\field{Q}}    % Rational numbers
+\newcommand{\ZZ}{\field{Z}}    % Integer numbers
+\newcommand{\NN}{\field{N}}    % Natural numbers
+
+% [amsmath] Changes `\Re` and `\Im` from Fraktur to Roman and puts its argument in parentheses
+\renewcommand{\Re}[1]{\operatorname{Re}\left( #1 \right)}
+\renewcommand{\Im}[1]{\operatorname{Im}\left( #1 \right)}
+
+% [amsmath] Redefines the predefined operators of AMSMATH to Russian notation and puts its argument in parentheses (e.g. sin x => sin(x), tan x => tg(x), etc.)
+% If any default operators are needed, the corresponding lines can be commented out
+% Trigonometric functions
+\renewcommand{\sin}[1]{\operatorname{sin}\left( #1 \right)}
+\renewcommand{\cos}[1]{\operatorname{cos}\left( #1 \right)}
+\renewcommand{\tan}[1]{\operatorname{tg}\left( #1 \right)}
+\renewcommand{\cot}[1]{\operatorname{ctg}\left( #1 \right)}
+\renewcommand{\arcsin}[1]{\operatorname{arcsin}\left( #1 \right)}
+\renewcommand{\arccos}[1]{\operatorname{arccos}\left( #1 \right)}
+\renewcommand{\arctan}[1]{\operatorname{arctg}\left( #1 \right)}
+\renewcommand{\sec}[1]{\operatorname{sec}\left( #1 \right)}
+\renewcommand{\csc}[1]{\operatorname{cosec}\left( #1 \right)}
+\renewcommand{\sinh}[1]{\operatorname{sh}\left( #1 \right)}
+\renewcommand{\cosh}[1]{\operatorname{ch}\left( #1 \right)}
+\renewcommand{\tanh}[1]{\operatorname{th}\left( #1 \right)}
+\renewcommand{\coth}[1]{\operatorname{cth}\left( #1 \right)}
+% Logarithms
+\renewcommand{\log}[1]{\operatorname{log}\left( #1 \right)}
+\renewcommand{\ln}[1]{\operatorname{ln}\left( #1 \right)}
+\renewcommand{\lg}[1]{\operatorname{lg}\left( #1 \right)}
+% Limits
+\renewcommand*{\limsup}{\varlimsup}
+\renewcommand*{\liminf}{\varliminf}
+% Defines a limit operator with both upper and lower bars
+\DeclareMathOperator*{\limsi}{\overline{\underline{lim}}}
+\newcommand*{\limsupinf}[1]{\limsi\left( #1 \right)}
+% Miscellaneous
+\renewcommand{\deg}[1]{\operatorname{deg}\left( #1 \right)}
+\renewcommand{\det}[1]{\operatorname{det}\left( #1 \right)}
+\renewcommand{\dim}[1]{\operatorname{dim}\left( #1 \right)}
+\renewcommand{\exp}[1]{\operatorname{exp}\left( #1 \right)}
+\renewcommand{\gcd}[1]{\textrm{НОД}\left( #1 \right)}
+\renewcommand{\hom}[1]{\operatorname{Hom}\left( #1 \right)}
+\renewcommand{\ker}[1]{\operatorname{Ker}\left( #1 \right)}
+
+% [amssymb] Redefines the `greater than` and `less than` signs
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+
+% Redefines the look of some Greek letters commonly used as variables or functions
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+
+
+%% Defines additional commands for document-specific notations
+% Defines the `divisible by` symbol (three vertical dots with the right spacing)
+\DeclareRobustCommand{\divisibleby}{%
+    \mathrel{%
+        \text{%
+            \vbox{%
+                \baselineskip.65ex%
+                \lineskiplimit0pt%
+                \hbox{.}\hbox{.}\hbox{.}%
+            }%
+        }%
+    }%
+}
+% Provides flexible vertical bars for `\abs`
+% It measures how much larger the content is allowed to get before the delimiters start growing, but by setting it to a negative value delimiters always grow
+\delimitershortfall-1sp
+\newcommand{\abs}[1]{\ensuremath{\left| #1 \right|}}
+\newcommand{\lcd}[1]{\textrm{НОК}\left( #1 \right)}
+\newcommand{\congr}[3]{\ensuremath{#1 \equiv #2 \pmod #3}}
+\newcommand{\notcongr}[3]{\ensuremath{#1 \not\equiv #2 \pmod{#3}}}
+\newcommand{\sfrac}[2]{\ensuremath{#1 / #2}}
+\newcommand{\divides}{\mid}
+\newcommand{\notdivides}{\nmid}
+\newcommand{\divby}{\divisibleby}
+\newcommand{\notdivby}{\not\divby}
+\newcommand{\1}{\textbf{1}}
+\DeclareMathOperator*{\Res}{Res}
+\newcommand{\bigO}[1]{\ensuremath{\mathcal{O}\left( #1 \right)}}
+
+
+%% Toggles the display style to be equation-like everywhere
+% It's generally not recommended, as it increases the spacing between the lines and tears the standard baseline. But in our case it improves the document's readability
+\everymath{\displaystyle}

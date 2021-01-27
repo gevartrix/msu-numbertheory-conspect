@@ -1,0 +1,273 @@
+\subsection{Дзета--функция Римана. Свойства}
+\label{subsec:3_Zeta-function-properties}
+
+\begin{theorem}[Вейерштрасса]
+	Пусть в области $\Omega$ функции $f_n(s)$ аналитичны и ряд $\sum_{n=1}^\infty f_n(s)$ сходится равномерно (по $\Omega$). Тогда он сходится к функции $f(x)$, аналитической в $\Omega$, причём
+	\[
+	    f'(s) = \sum_{n=1}^\infty f_n'(s)
+	\]
+	также сходится равномерно.
+\end{theorem}
+
+\begin{test}[Вейерштрасса]
+	Если в области $\Omega$ справедливо $\abs{f_n(s)} < c_n$, и ряд $\sum_{n=1}^\infty c_n$ сходится, то ряд
+	\[
+	    \sum_{n=1}^\infty f_n(s)
+	\]
+	равномерно сходится в $\Omega$.
+\end{test}
+
+\begin{ndefinition}
+\label{def:I_arithmetic-function}
+	Любое отображение $f\colon \NN \to \CC$ называется \emph{арифметической функцией}.
+\end{ndefinition}
+
+\begin{ndefinition}
+\label{def:I_multiplicative-function}
+	Арифметическая функция $f \not\equiv 0\colon \NN \to \CC$ называется \emph{мультипликативной}, если $\forall~a, b \in \NN$ таких, что $\gcd{a, b} = 1$, справедливо
+	\[
+		f(ab) = f(a)f(b).
+	\]
+\end{ndefinition}
+
+\begin{ndefinition}
+\label{def:I_completely-multiplicative-function}
+	Арифметическая функция $f \not\equiv 0\colon \NN \to \CC$ называется \emph{вполне мультипликативной}, если $\forall~a, b \in \NN$ справедливо
+	\[
+		f(ab) = f(a)f(b).
+	\]
+\end{ndefinition}
+
+\begin{ndefinition}
+\label{def:I_Mobius-function}
+	\emph{Функцией Мёбиуса} называется мультипликативная арифметическая функция
+	\[
+	    \mu(n) := 
+	    \begin{cases}
+	    	0, & \exists p\colon p^2 \divides n, \\
+	    	(-1)^r, & n = p_1p_2 \dots p_r, \\
+	    	1, & n = 1.
+	    \end{cases}
+	\]
+\end{ndefinition}
+
+\begin{ndefinition}
+\label{def:I_Mangoldt-function}
+	\emph{Функцией Мангольдта} называется арифметическая функция
+	\[
+	    \Lambda(n) := 
+	    \begin{cases}
+	    	\ln{p}, & \exists k\colon n = p^k, \\
+	    	0, & \text{иначе}.
+	    \end{cases}
+	\]
+\end{ndefinition}
+
+\begin{ndefinition}
+\label{def:I_Dirichlet-convolution}
+	\emph{Свёрткой Дирихле} двух арифметических функций $f$ и $g$ называется арифметическая функция
+	\[
+		(f \ast g)(n) 
+		:= \sum_{k \divides n} f(k)g\left( \frac{n}{k} \right) 
+		= \sum_{ab = n} f(a)g(b).
+	\]
+\end{ndefinition}
+
+\begin{remark}
+\label{rmk:I-Dirichlet-convolution-properties}
+	Заметим, что мультипликативные функции образуют абелеву группу относительно свёртки Дирихле с нейтральным элементом 
+	$e(n) := 
+	\begin{cases}
+		1, & n = 1, \\
+		0, & \text{иначе}
+	\end{cases}$. 
+	Кроме того, у свёртки Дирихле следующие свойства:
+	\begin{enumerate}
+		\item
+		    ассоциативность:
+		    \[
+		        (f \ast g) \ast h = f \ast (g \ast h),
+		    \]
+		\item
+		    коммутативность:
+		    \[
+		        (f \ast g)(n) = (g \ast f)(n).
+		    \]
+	\end{enumerate}
+\end{remark}
+
+\begin{ndefinition}
+\label{def:I_Dirichlet-series}
+	\emph{Рядом Дирихле} называется ряд вида
+	\[
+		\sum_{n=1}^{\infty} \frac{a_n}{n^s},\, \{a_n\} \in \CC,\, s \in \CC.
+	\]
+\end{ndefinition}
+
+\begin{remark}
+	Пусть $f(k)$, $g(l)$ --- арифметические функции, и $n = kl$. Тогда
+	\[
+	    \sum_{k=1}^\infty \frac{f(k)}{k^s} \cdot \sum_{l=1}^\infty \frac{g(l)}{l^s} 
+	    = \dots 
+	    = \sum_{n=1}^\infty \frac{\sum_{l \divides n} f\left(\frac{n}{l}\right)g(l)}{n^s} 
+	    = \sum_{n=1}^\infty \frac{(f \ast g)(n)}{n^s}.
+	\]
+\end{remark}
+
+\begin{ntheorem}
+\label{thm:I-2}
+	Пусть $\1$ --- единичная функция (то есть, $\forall n\colon \1(n) = 1$). Тогда для $n \in \NN$ справедливо
+	\[
+		\ln{n} = (\Lambda \ast \1)(n).
+	\]
+\end{ntheorem}
+\begin{proof}
+	По основной теореме арифметики (ОТА) каждое натуральное число $n > 1$ единственным образом (с точностью до перестановки множителей) раскладывается в произведение степеней простых множителей:
+	\[
+	    n = \prod_{i=1}^{r} p_i^{\alpha_i}.
+	\]
+	Прологарифмировав это равенство, получим
+	\[
+		\ln{n} 
+		= \sum_{p}\left( \sum_{k\colon p^k \divides n} 1 \right) \cdot \ln{p} 
+		= \sum_{p,k\colon p^k \divides n} 1 \cdot \ln{p}.
+	\]
+	Осталось заметить, что по Определению~\ref{def:I_Mangoldt-function} функции Мангольдта и Определению~\ref{def:I_Dirichlet-convolution} свёртки Дирихле последняя сумма принимает следующий вид:
+	\[
+		\sum_{p,k\colon p^k \divides n} 1 \cdot \ln{p} 
+		= \sum_{d \divides n} \Lambda(d) = (\Lambda \ast \1)(n).
+	\]
+	Таким образом, мы переформулировали ОТА в виде ``аддитивной'' формулы и выразили её в терминах свёртки Дирихле.
+\end{proof}
+
+\begin{ncorollary}
+\label{crl:I-5}
+	Для $n \in \NN$ справедливо $\sum_{d \divides n} \Lambda(d) = \ln{n}$.
+\end{ncorollary}
+
+\begin{ntheorem}
+\label{thm:I-3}
+	Пусть $\Re{s} > 1$. Тогда:
+	\begin{enumerate}
+		\item
+		\label{thm:I-3-1}
+			ряд $\sum_{n=1}^\infty \frac{1}{n^s}$ сходится абсолютно и задаёт аналитическую функцию $\zeta(s)$;
+		\item
+		\label{thm:I-3-2}
+			$\zeta'(s) = -\sum_{n=1}^\infty \frac{\ln{n}}{n^s}$;
+		\item
+		\label{thm:I-3-3}
+		    $\zeta(s) \ne 0$ и $\frac{\zeta'(s)}{\zeta(s)} = -\sum_{n=1}^\infty \frac{\Lambda(n)}{n^s}$.
+	\end{enumerate}
+\end{ntheorem}
+\begin{proof}
+	\hfill
+	\begin{statesp}
+		\item
+		    Заметим, что $\abs{\frac{1}{n^s}} = \frac{1}{n^\sigma}$ при $\sigma > 1$. Таким образом получаем абсолютную сходимость ряда.~\newline
+		    При этом в области $\Omega_\delta := \{ s \in \CC,\, \delta > 0 \mid \Re{s} > 1 + \delta \}$, сходимость будет равномерной, ибо
+		    \[
+		        \abs{\frac{1}{n^s}} = \frac{1}{n^\sigma} < \frac{1}{n^{1+\delta}},
+		    \]
+		    а ряд $\sum_{n=1}^\infty \frac{1}{n^{1+\delta}}$ сходится. Но тогда по Признаку Вейерштрасса ряд $\sum_{n=1}^\infty \frac{1}{n^s}$ равномерно сходится в области $\Omega_\delta$. 
+		    По Теореме Вейерштрасса сумма ряда является аналитичной в $\Omega_\delta$, так как каждая $\frac{1}{n^s}$ является целой функцией $s$ (как экспонента). И это справедливо для всех $\delta > 0$.
+		\item 
+		    По Теореме Вейерштрасса в каждой $\Omega_\delta$ справедливо
+		    \[
+		        \left(\frac{1}{n^s} \right)' 
+		        = \left( \exp{-s\ln{n}} \right)' 
+		        = -n^{-s}\ln{n} = -\frac{\ln{n}}{n^s}.
+		    \]
+		    Дальнейшие рассуждения тривиальны.
+		\item
+		    Заметим, что в области $\Omega_\delta$ выполняется
+		    \[
+		    	\abs{\frac{\Lambda(n)}{n^s}} = \frac{\Lambda(n)}{n^\sigma} 
+		    	\le \frac{\ln{n}}{n^\sigma} < \frac{\ln{n}}{n^{1+\delta}},
+		    \]
+		    а мы знаем, что ряд $\sum_{n=1}^\infty \frac{\ln{n}}{n^{1+\delta}}$ сходится. Тогда по Признаку Вейерштрасса получаем, что $\sum\limits_{n=1}^\infty \frac{\Lambda(n)}{n^s}$ сходится в области $\Omega_\delta$ равномерно. Кроме того, так как функция $\frac{\Lambda(n)}{n^s}$ аналитична в области, то по Теореме Вейерштрасса ряд сходится к аналитической функции, причём абсолютно.\newline
+		    Перемножим два абсолютно сходящихся ряда $\sum_{n=1}^{\infty} \frac{1}{n^s}$ и $\sum_{n=1}^{\infty} \frac{\Lambda(n)}{n^s}$, заданных на полуплоскости $\Re{s} > 1$:
+		    \[
+			    \left( \sum_{k=1}^\infty \frac{1}{k^s} \right)\left( \sum_{l=1}^\infty \frac{\Lambda(l)}{l^s} \right) 
+			    = \sum_{(k,l)} \frac{\Lambda(l)}{(kl)^s} 
+			    = \sum_{n=1}^\infty \frac{\sum_{l \divides n} \Lambda(l)}{n^s}.
+			\]
+			Учитывая Следствие~\ref{crl:I-5} и уже доказанный пункт~\ref{thm:I-3-2}, получаем
+			\[
+				\sum_{n=1}^\infty \frac{\sum_{l \divides n} \Lambda(l)}{n^s} 
+				= \sum_{n=1}^{\infty} \frac{\ln{n}}{n^s} 
+				= -\zeta'(s).
+			\]
+			Таким образом при $\Re{s} > 1$ справедливо
+			\[
+				-\zeta'(s) = \zeta(s) \cdot \sum_{n=1}^\infty \frac{\Lambda(n)}{n^s}.
+			\]
+			Из аналитичности всех функций: пусть $s_0$ --- ноль $\zeta(s)$ кратности $k>0$, тогда $s_0$ --- ноль $\zeta'(s)$ кратности $k-1$. Так как мы перемножаем две функции, то их кратности должны складываться. Но тогда у нас выходит, что ${k - 1 = k + \textit{(нечто неотрицательное)}}$. Получаем противоречие.\newline
+			Наконец, заметим, что кратность обязательно конечна, т.к. в противном случае, $\zeta(s) \equiv 0$ при $\Re{s} > 1$, но это противоречит исходному условию.
+	\end{statesp}
+\end{proof}
+
+\begin{nlemma}
+\label{lm:I-4}
+	Пусть $f$ --- вполне мультипликативная функция, ряд $S := \sum_{n=1}^\infty f(n)$ абсолютно сходится. Тогда
+	\[
+	    S = \prod_p \left( 1 - f(p) \right)^{-1}.
+	\]
+\end{nlemma}
+\begin{proof}
+	Введём
+	\[
+	    S(x) = \prod_{p \le x} \left( 1-f(p) \right)^{-1}
+	\]
+	и покажем, что $S(x) \xrightarrow{x\to\infty} S$. Заметим, что из мультипликативности $f$ следует $f(1) = 1$ и что $\abs{f(n)} < 1$ при $n \ge 2$.\footnote{
+	    Так как иначе $f\left(n^k\right) = f(n)^k \not\to 0$, а члены ряда обязаны стремиться к нулю в силу его абсолютной сходимости.
+	}\newline
+	Далее, при простом $p$ верно
+	\[
+	    \frac{1}{1-f(p)} = \sum_{k=0}^\infty f(p)^k = \sum_{k=0}^\infty f\left( p^k \right).
+	\]
+	А следовательно, 
+	\[
+	    S(x) = \prod_{p \le x} \left( 1-f(p) \right)^{-1} 
+	    = \prod_{p \le x}\sum_{k=0}^\infty f\left(p^k\right) 
+	    = \sum_{\substack{n \in \NN\colon \\ \forall p \divides n\, p \le x}} f(n).\footnote{
+	        Такие $n$ называются \emph{``$x$--гладкими''}.
+	    }
+	\]
+	Стало быть,
+	\[
+	    \abs{S - S(x)} 
+	    = \abs{\sum_{\substack{n \in \NN\colon \\ \exists p \divides n\, p > x}} f(n)} 
+	    \le \sum_{\substack{n \in \NN\colon \\ \exists p \divides n\, p > x}} \abs{f(n)} 
+	    \le \sum_{n>x} \abs{f(n)} \xrightarrow{x\to\infty} 0,
+	\]
+	так как ряд $\sum_{n>x} \abs{f(n)}$ --- ``хвост'' сходящегося ряда.
+\end{proof}
+
+\begin{ntheorem}[формула Эйлера]
+\label{thm:I_Euler-formula}
+	Пусть $\Re{s} > 1$. Тогда
+	\[
+	    \zeta(s) = \prod_p \left( 1-\frac{1}{p^s} \right)^{-1}.
+	\]
+\end{ntheorem}
+\begin{proof}
+	Возьмём (и положим) $f(n) := \frac{1}{n^s}$ и применим Лемму~\ref{lm:I-4}:
+	\[
+	    \zeta(s) 
+	    = \sum_{n=1}^\infty \frac{1}{n^s} 
+	    = \prod_p \left( 1-\frac{1}{p^s} \right)^{-1}.
+	\]
+\end{proof}
+
+\begin{nlemma}
+\label{lm:I-5}
+	\[
+	    \psi(x) = \sum_{n \le x} \Lambda(n).\footnote{
+	        То есть, $\psi(n) - \psi(n-1) = \Lambda(n)$.
+	    }
+	\]
+\end{nlemma}
+\begin{proof}
+	Непосредственно следует из определения функций $\psi(x)$ и $\Lambda(n)$.
+\end{proof}

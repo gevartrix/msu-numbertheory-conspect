@@ -1,0 +1,192 @@
+\begin{proof}[Доказательство Теоремы~\ref{thm:I-6}]
+    Предположим противное: пусть $\zeta\left(1 + it_0 \right) = 0$. Тогда при $\sigma \to 1^+$
+    \begin{align*}
+        \zeta^3(\sigma) \zeta^4\left(\sigma + it_0 \right) \zeta\left(\sigma + 2it_0 \right) 
+        &= \bigO{\frac{1}{(\sigma - 1)^3} \cdot (\sigma - 1)^4 \cdot 1} \\
+        &= \bigO{\sigma - 1}, \quad \sigma \to 1^+.
+    \end{align*}
+    Поясним:
+    \begin{itemize}[label=$\circ$]
+        \item
+            Первый множитель взялся из того, что $\zeta(\sigma) \to +\infty$ при $\sigma \to 1+$, а точнее, $\zeta(\sigma) = \bigO{\frac{1}{\sigma-1}}$, т.к. у функции $\zeta(\sigma)$ полюс порядка $1$;
+        \item
+            второй множитель получается по аналитическому продолжению: 
+            \[
+                \zeta\left( 1 + it_0 \right) = 0 \ 
+                \Rightarrow \ 
+                \zeta\left( \sigma + it_0 \right) = \bigO{\sigma - 1};
+            \]
+        \item
+            наконец, последний множитель равен $1$, т.к. $\zeta\left( 1 + 2it_0 \right)$ --- какая-то константа, и полюса там нет из аналитичности функции в полуплоскости $\Re{s} > 0$ везде, кроме $1$.
+    \end{itemize}
+    Итак, мы получили, что 
+    \[
+        \zeta^3(\sigma) \zeta^4\left(\sigma + it_0\right) \zeta\left(\sigma + 2it_0\right) = \bigO{\sigma - 1}, \quad \sigma \to 1^+,
+    \]
+    но согласно Лемме~\ref{lm:I-9}, модуль левой части выражения выше $\ge 1$ при любом $\sigma > 1$. Получили противоречие.
+\end{proof}
+
+\begin{remark}
+    Из Леммы~\ref{lm:I-9} также можно ещё одним способом получить, что в полуплоскости $\Re{s} > 1$ у $\zeta$--функции нет корней: если бы существовал корень $s = \sigma + it$, то 
+    \[
+        \abs{\zeta^3(\sigma) \zeta^4(s) \zeta(\sigma + 2it)} \ge 1,
+    \]
+    где множитель $\zeta^4(s) = 0$. Снова получаем противоречие с Леммой~\ref{lm:I-9}.
+\end{remark}
+
+\begin{nlemma}
+\label{lm:I-10}
+    При $\Re{s} \ge 1$ следующая функция аналитична:
+    \[
+        \frac{\zeta'(s)}{\zeta(s)} + \frac{1}{s-1}.
+    \]
+\end{nlemma}
+\begin{proof}
+    Нам уже известно, что при $\Re{s} > 1$ $\frac{\zeta'(s)}{\zeta(s)}$ и $\frac{1}{s-1}$ --- аналитические функции. Мы также доказали, что $\zeta(s) = \frac{f(s)}{s-1}$, где $f(s)$ точно аналитична при $\Re{s} > 0$ и $f(s) \ne 0$ при $\Re{s} \ge 1$.~\newline
+    Отсюда следует, что 
+    \[
+        \frac{\zeta'(s)}{\zeta(s)} = \frac{f'(s)}{f(s)} - \frac{1}{s-1},
+    \]
+    где $f$ аналитична при $\Re{s} > 0$. А значит, что и $f'$ тоже является аналитичной. Осталось заметить, что в полуплоскости $\Re{s} \ge 1$ у знаменателя нет нулей, поэтому Лемма доказана.
+\end{proof}
+
+
+\subsection{Доказательство АЗРПЧ}
+\label{subsec:5_Prime-number-theorem-proof}
+
+\begin{ndefinition}
+\label{def:I_F-function}
+    Определим следующую функцию:
+    \[
+        F(s) := -\frac{1}{s}\frac{\zeta'(s)}{\zeta(s)} - \frac{1}{s-1}.
+    \]
+\end{ndefinition}
+
+\begin{nlemma}
+\label{lm:I-11}
+    Для выше определённой функции справедливы следующие утверждения
+    \begin{enumerate}
+        \item $F(s)$ аналитична в $\Re{s} \ge 1$.
+        \item $F(s) = \int_{1}^{+\infty} \frac{\psi(x) - x}{x^{1+s}}dx$ при $\Re{s} > 1$.
+    \end{enumerate}
+\end{nlemma}
+\begin{proof}
+    \hfill
+    \begin{statesp}
+        \item
+            \begin{align*}
+                F(s) &= -\frac{1}{s}\left( \frac{\zeta'(s)}{\zeta(s)} + \frac{s}{s-1} \right) \\
+                &= -\frac{1}{s}\left( \frac{\zeta'(s)}{\zeta(s)} + \frac{1}{s-1} + 1 \right),
+            \end{align*}
+            где $-\frac{1}{s}$ аналитична, а второй множитель аналитичен по Лемме~\ref{lm:I-10}.
+        \item
+            При $\Re{s} > 1$ имеем
+            \[
+                \frac{\zeta'(s)}{\zeta(s)} = 
+                -s\int_{1}^{+\infty} \frac{\psi(x)dx}{x^{1+s}},
+                \qquad
+                \frac{1}{s-1} = \int_{1}^{+\infty}\frac{dx}{x^s}.
+            \]
+            Оба интеграла сходятся абсолютно, поэтому мы можем их складывать:
+            \[
+                F(s) = \int_{1}^{+\infty}\frac{\psi(x)dx}{x^{1+s}} - \int_{1}^{+\infty} \frac{dx}{x^s} = \int_{1}^{+\infty} \frac{\psi(x)-x}{x^{1+s}}dx.
+            \]
+    \end{statesp}
+\end{proof}
+
+\begin{ntheorem}
+\label{thm:I-7}
+    В интегральном представлении $F(s)$ в полуплоскости $\Re{s} > 1$ можно перейти к пределу:
+    \[
+        F(1) = \int_{1}^{+\infty} \frac{\psi(x) - x}{x^2}dx.
+    \]
+\end{ntheorem}
+
+Допустим, что Теорема~\ref{thm:I-7} верна. Тогда можно доказать следующую примечательную Лемму, которая в совокупности с Леммой~\ref{lm:I-1} мгновенно докажет Асимптотический Закон Распределения Простых Чисел:
+\begin{nlemma}
+\label{lm:I-12}
+    Если интеграл $\int_{1}^{+\infty} \frac{\psi(x) - x}{x^2}dx$ сходится (а это будет следовать из Теоремы~\ref{thm:I-7}), то
+    \[
+        \psi(x) \sim x.
+    \]
+\end{nlemma}
+\begin{proof}
+    Возьмём $\epsilon >0$:
+    \[
+        \int_x^{(1+\epsilon)x} \frac{\psi(u) - u}{u^2}du 
+        \ge \epsilon x \frac{\psi(x) - (1 + \epsilon)x}{(1 + \epsilon)^2x^2} 
+        = \frac{\epsilon}{\left(1 + \epsilon\right)^2x^2}\left(\frac{\psi(x)}{x} - (1 + \epsilon) \right).
+    \]
+    Из сходимости интеграла слева при фиксированном $\epsilon$ следует, что
+    \[
+        \int_x^{(1+\epsilon)x} \frac{\psi(u) - u}{u^2}du \xrightarrow{x \to \infty} 0.
+    \]
+    Следовательно, $\limsup_{x\to\infty}\left(\frac{\epsilon}{(1 + \epsilon)^2}\left( \frac{\psi(x)}{x} - (1 + \epsilon) \right)\right) \le 0$ при фиксированном значении $\epsilon$. Отсюда $\limsup_{x\to\infty} \left(\frac{\psi(x)}{x}\right) \le 1 + \epsilon$, а т.к. это верно для любого $x$, то 
+    \[
+        \limsup_{x\to\infty} \left(\frac{\psi(x)}{x}\right) \le 1.
+    \]
+    И наоборот --- меняя знак неравенства, получаем $\limsup_{x\to\infty} \left(\frac{\psi(x)}{x}\right) \ge 1 - \epsilon$, а т.к. это выполняется для любого $\epsilon$, то 
+    \[
+        \limsup_{x\to\infty} \left(\frac{\psi(x)}{x}\right) \ge 1.
+    \]
+\end{proof}
+
+\begin{proof}[Доказательство Теоремы~\ref{thm:I-7}]
+    Положим функцию
+    \[
+        F_T(s) := \int_{1}^{T} \frac{\psi(x) - x}{x^{1+s}}dx, \, T > 1.
+    \]
+    Поскольку $\int_{n}^{n+1} \frac{dx}{x^s}$ --- целая функция, так как на отрезке $[n, n+1]$ функция $\psi(x)$ является постоянной, то $\int_{1}^{T} \frac{\psi(x) - x}{x^{1+s}}dx$ является суммой целых функций вида $\int_{n}^{n+1}\frac{dx}{x^s}$. Следовательно, функция $F_T(s)$ --- также целая.~\newline
+    Нужно показать, что $F_T(1) \to F(1)$ при $T \to \infty$. По определению предела, возьмём $\epsilon > 0$ и рассмотрим следующий интеграл
+    \[
+        I(T) = \frac{1}{2\pi i}\int_{\Gamma} \left( F(1+s) - F_T(1+s) \right) T^s \left(\frac{s}{R^2} + \frac{1}{s}\right)ds, \ \text{ где } R = \frac{1}{\epsilon}.
+    \]
+    Нам известно, что $F(s)$ аналитична в $\Re{s} \ge 1$, а значит $F(1+s)$ аналитична в $\Re{s} \ge 0$. То есть, она аналитична на отрезке $[-iR, iR]$ (см. Рис. \ref{fg:I-1}).
+    \begin{figure}[h]
+        \centering
+        \input{././img/figures/4-1.tikz}
+        \caption{Контур $\Gamma$}
+        \label{fg:I-1}
+    \end{figure}
+
+    \noindent Далее, если $F(s)$ аналитична в точке, то она аналитична в некоторой окрестности этой точки. Применяя это к каждой точке нашего отрезка, получаем его покрытие открытыми кругами и выделяем конечное подпокрытие по компактности $[-iR, iR]$.~\newline
+    Теперь выбираем такое $h$ так, чтобы прямоугольник, длина которого есть $[-iR, iR]$, а ширина есть $h$, лежал внутри объединения полученных кругов. Очевидно, что $h = h(\epsilon)$ (см. Рис.~\ref{fg:I-2}). То есть мы подобрали такое $h$, чтобы $F(1+s)$ стала аналитична на нарисованном контуре.
+    \begin{figure}[ht]
+        \centering
+        \input{././img/figures/4-2.tikz}
+        \caption{Выбор значения $h$}
+        \label{fg:I-2}
+    \end{figure}
+
+    Таким образом, возвращаясь к интегралу $I(T)$:
+    \[
+        I(T) = \frac{1}{2\pi i}\int_{\Gamma} \left( F(1+s) - F_T(1+s) \right) T^s \left(\frac{s}{R^2} + \frac{1}{s}\right)ds,
+    \]
+    функция $F(1+s)$ является аналитичной в области (по построению), следовательно $F_T(1+s)$ --- везде целая, $T^s$ --- целая (экспонента), $\frac{s}{R^2}$ --- целая, а $\frac{1}{s}$ --- полюс порядка $1$ в нуле. Следовательно, по теореме Коши о вычетах\footnote{Эту теорему из курса ТФКП нужно знать!}
+    получаем искомый результат:
+    \[
+        I(T) = \left(F(1) - F_T(1)\right)T^0 = F(1) - F_T(1).
+    \]
+\end{proof}
+
+\begin{nlemma}
+\label{lm:I-13}
+    В зависимости от $\sigma = \Re{s}$ справедливы следующие утверждения:
+    \begin{align*}
+        \sigma > 0\colon & \abs{F(1+s) - F_T(1+s)} \le A\frac{T^{-\sigma}}{\sigma}, \\
+        \sigma < 0\colon & \abs{F_T(1+s)} \le A\frac{T^{-\sigma}}{-\sigma},
+    \end{align*}
+    где $A$ такое, что $\abs{\frac{\psi(x)}{x} - 1} \le A$ при $x \ge 1$.
+\end{nlemma}
+\begin{proof}
+    \begin{align*}
+        \sigma > 0\colon& \abs{F(1+s) - F_T(1+s)} 
+          = \abs{\int_T^{+\infty}\frac{\psi(x)-x}{x^{2+s}}dx} 
+          \le A\int_{T}^{+\infty}\frac{dx}{x^{1+\sigma}} 
+          = A\frac{T^{-\sigma}}{\sigma};\\
+        \sigma < 0\colon& \abs{F_T(1+s)} 
+          = \abs{\int_1^T\frac{\psi(x)-x}{x^{2+s}}dx} 
+          \le A\int_1^T\frac{dx}{x^{1+\sigma}} 
+          = A\frac{T^{-\sigma}}{-\sigma}.
+    \end{align*}
+\end{proof}

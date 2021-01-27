@@ -1,0 +1,227 @@
+\begin{nlemma}
+\label{lm:II-1}
+    Пусть $\eta_1, \eta_2, \dots, \eta_r$ --- произвольный набор корней из $1$ степеней $d_1, d_2, \dots, d_r$ соответственно (то есть $\eta_i^{d_i} = 1$). Тогда 
+    \[
+        \exists! \chi\colon \chi\left(g_i\right) = \eta_i.
+    \]
+\end{nlemma}
+\begin{proof}
+    \vfill
+    Если $\gcd{a, m} = 1$, полагаем 
+    \[
+        \chi(a) = \eta_1^{\alpha_1} \eta_21^{\alpha_2} \dots \eta_r^{\alpha_r}, \ \bar{a} = \bar{g}_1^{\alpha_1} \dots \bar{g}_r^{\alpha_r}.
+    \]
+    Если же $\gcd{a, m} \ne 1$, то полагаем $\chi(a) = 0$.~\newline Достаточно проверить, что если $\gcd{a, m} = 1$, $\gcd{b, m} = 1$, то тогда справедливо $\chi(ab) = \chi(a)\chi(b)$.~\newline
+    Пусть 
+    \begin{align*}
+        \bar{a} &= \bar{g_1}^{\alpha_1} \bar{g_2}^{\alpha_2} \dots \bar{g_r}^{\alpha_r}, \\
+        \bar{b} &= \bar{g_1}^{\beta_1} \bar{g_2}^{\beta_2} \dots \bar{g}_r^{\beta_r}, \\
+        \bar{c} &= \bar{g_1}^{\gamma_1} \bar{g_2}^{\gamma_2} \dots \bar{g}_r^{\gamma_r},
+    \end{align*}
+    где $0 \le \alpha_i, \beta_i, \gamma_i \le d_1 - 1$, $i = 1, 2, \dots r$.
+    Тогда $\congr{\gamma_i}{\alpha_i + \beta_i}{{d_i}}$. Следовательно, так как $\eta_i$ --- корень из единицы степени $d_i$, получаем
+    \begin{align*}
+        \chi(a)\chi(b) &= \eta_1^{\alpha_1} \eta_2^{\alpha_2} \dots \eta_r^{\alpha_r} \cdot \eta_1^{\beta_1} \eta_2^{\beta_2} \dots \eta_r^{\beta_r} \\
+        &= \eta_1^{\alpha_1 + \beta_1} \eta_2^{\alpha_2 + \beta_2} \dots \eta_r^{\alpha_r + \beta_r} \\
+        &= \eta_1^{\gamma_1} \eta_2^{\gamma_2} \dots \eta_r^{\gamma_r} \\
+        &= \chi(ab).
+    \end{align*}
+\end{proof}
+
+\begin{nlemma}
+\label{lm:II-2}
+    Если $\notcongr{a}{1}{m}$, то 
+    \[
+        \exists \chi\colon \chi(a) \ne 1.
+    \]
+\end{nlemma}
+\begin{proof}
+    Очевидно из Леммы~\ref{lm:II-1}.
+    \begin{itemize}[label={}]
+        \item
+            Если $\gcd{a, m} \ne 1$, то подходят все характеры.
+        \item
+            Если $\gcd{a, m} = 1$, то
+            \[
+                \bar{a} = \bar{g_1}^{\alpha_1} \bar{g_2}^{\alpha_2} \dots \bar{g}_r^{\alpha_r} \pmod{m}, 
+                \qquad 0 \le \alpha_i \le d_i-1.
+            \] 
+            Т.к. $\notcongr{a}{1}{m}$, то существует ненулевое $\alpha_i$. Можно положить, что это $\alpha_1 > 0$. Положим также 
+            \begin{align*}
+                \chi\left( g_1 \right) &= \eta_1 = e^{\frac{2\pi i}{d_1}}, \\
+                \chi\left( g_j \right) &= \eta_j = 1, \ \forall j = 2, \dots, r.
+            \end{align*}
+            Тогда, т.к. по Лемме~\ref{lm:II-1} характер существует, то 
+            \[
+                \chi(a) = e^{\frac{2\pi i}{d_1}\alpha_1} \ne 1.
+            \]
+    \end{itemize}
+\end{proof}
+
+\begin{ndefinition}
+\label{II_main-character}
+    Характер $\chi_0$, где 
+    \[
+        \chi_0(a) = 
+            \begin{cases}
+                1, & \gcd{a, m} = 1, \\
+                0, & \gcd{a, m} \ne 1
+            \end{cases}
+    \]
+    называется \emph{главным характером}.
+\end{ndefinition}
+
+\begin{remark}
+    Ясно, что $\chi \cdot \chi_0 = \chi$, где операция $\cdot$ --- поточечное перемножение функций. Для любого $\chi$ существует обратное $\chi^{-1}$:
+    \[
+        \chi^{-1}(a) = 
+            \begin{cases}
+                \chi(a)^{-1}, & \chi(a) \ne 0, \\
+                0, & \chi(a) = 0.
+            \end{cases}
+    \]
+    В общем, ясно, что характеры образуют группу.
+\end{remark}
+
+\begin{remark}
+    Характеров по модулю $m$ ровно $\phi(m)$ штук, Это следует из Леммы~\ref{lm:II-1}: 
+    \[
+        d_1 d_2 \dots d_r = \abs{\ZZ_{m}^{\ast}} = \phi(m).
+    \]
+\end{remark}
+
+\begin{problem}
+    Доказать, что группа характеров изоморфна $\ZZ_{m}^{\ast}$.
+\end{problem}
+
+\begin{nlemma}
+\label{lm:II-3}
+    Справедливы следующие равенства:
+    \begin{enumerate}
+        \item
+            $\sum_{a=1}^m \chi(a) =
+                \begin{cases}
+                    \phi(m), & \chi = \chi_0, \\
+                    0, & \chi \ne \chi_0.
+                \end{cases}$
+        \item
+            $\sum_\chi \chi(a) =
+                \begin{cases}
+                    \phi(m), & \congr{a}{1}{m}, \\
+                    0, & \notcongr{a}{1}{m}.
+                \end{cases}$
+    \end{enumerate}
+\end{nlemma}
+\begin{proof}
+\hfill
+    \begin{statesp}
+        \item
+        \hfill
+            \begin{itemize}[label={}]
+                \item 
+                    Если $\chi = \chi_0$, то всё понятно.
+                \item
+                    Если $\chi \ne \chi_0$, то $\exists b \in \ZZ\colon \chi(b) \not\in \{ 0, 1 \}$. Положим $s = \sum_{a=1}^m \chi(a)$, тогда 
+                    \[
+                        s \cdot \chi(b) 
+                        = \sum_{a=1}^m \chi(ab) 
+                        = \sum_{a=1}^m \chi(a) 
+                        = s \ \Rightarrow \ s = 0.
+                    \]
+            \end{itemize}
+        \item
+        \hfill
+            \begin{itemize}[label={}]
+                \item
+                    Если $\congr{a}{1}{m}$, то всё понятно.
+                \item
+                    Если $\gcd{a, m} \ne 1$, то сумма из нулей равна нулю (действительно).
+                \item
+                    Если $\gcd{a, m} = 1$ и $\notcongr{a}{1}{m}$, то по Лемме~\ref{lm:II-2} можно взять характер $\chi_1\colon \chi_1(a) \not\in \{ 0, 1 \}$. Положим $s = \sum_\chi \chi(a)$, тогда 
+                    \[
+                        s \cdot \chi_1(a) 
+                        = \sum_\chi \chi(a)\chi_1(a) 
+                        = \sum_\chi \chi(a) 
+                        = s \ \Rightarrow \ s = 0.
+                    \]
+            \end{itemize}
+    \end{statesp}
+\end{proof}
+
+\begin{ncorollary}
+\label{crl:II-1}
+    Если $\chi \ne \chi_0$, то 
+    \[
+        \abs{\sum_{n=1}^m \chi(n)} \le \phi(m).
+    \]
+\end{ncorollary}
+
+
+% Since this subsection's name contains TeX's math notation, we set its bookmark string manually with the `\texorpdfstring` command
+\subsection{\texorpdfstring{$L$--функции Дирихле}{L--функции Дирихле}}
+\label{subsec:1_Dirichlet-L-function}
+
+Пусть $m \ge 2$, $\chi$ --- характер по модулю $m$.
+
+\begin{ndefinition}
+\label{II_L-function}
+    Функция
+    \[
+        L(s, \chi) = \sum_{n=1}^\infty \frac{\chi(n)}{n^s}
+    \]
+    называется \emph{$L$--функцией Дирихле}.
+\end{ndefinition}
+
+\begin{nlemma}
+\label{lm:II-4}
+    Пусть $\Re{s} > 1$. Тогда:
+    \begin{enumerate}
+        \item
+        \label{lm:II-4-1}
+            ряд $\sum_{n=1}^\infty \frac{\chi(n)}{n^s}$ сходится абсолютно и задаёт аналитическую функцию $L(s, \chi)$;
+        \item
+        \label{lm:II-4-2}
+            $L'(s, \chi) = -\sum_{n=1}^\infty \frac{\chi(n)\ln{n}}{n^s}$;
+        \item
+        \label{lm:II-4-3}
+            $L(s, \chi) \ne 0$ и $\frac{L'(s, \chi)}{L(s, \chi)} = -\sum_{n=1}^\infty \frac{\chi(n)\Lambda(n)}{n^s}$.
+    \end{enumerate}
+\end{nlemma}
+\begin{proof}
+    Доказательство этой Леммы очень схоже с доказательством Теоремы~\ref{thm:I-3}. Напомним, что $s = \sigma + it$.
+    \begin{statesp}
+        \item
+            Заметим, что $\abs{\frac{\chi(n)}{n^s}} \le \frac{1}{n^\sigma}$, потому ряд сходится абсолютно при $\sigma > 1$. Но для аналитичности предела нам необходима равномерная сходимость.~\newline
+            В области $\Omega_\delta := \{ \Re{s} > 1 + \delta \}$ справедливо
+            \[
+                \abs{\frac{\chi(n)}{n^s}} \le \frac{1}{n^\sigma} \le \frac{1}{n^{1+\delta}} \text{ --- общий член сходящегося ряда}.
+            \]
+            Значит, по признаку Вейерштрасса в $\Omega_\delta$ наша последовательность равномерна, а следовательно, по Теореме Вейерштрасса ряд сходится к аналитической функции.
+        \item
+            При доказательстве пункта~\ref{lm:II-4-1} мы использовали Теорему Вейерштрасса, которая, в частности, гласит, что наш ряд можно почленно дифференцировать.
+        \item
+            \begin{align*}
+                L(s, \chi) \cdot \sum_{n=1}^\infty \frac{\chi(n)\Lambda(n)}{n^s} 
+                &= \sum_{k=1}^\infty \frac{\chi(k)}{k^s} \sum_{n=1}^\infty \frac{\chi(n)\Lambda(n)}{n^s} 
+                = \sum_{k,n \in \NN} \frac{\chi(k)\chi(n)\Lambda(n)}{(kn)^s} \\
+                &= \sum_{k,n \in \NN} \frac{\chi(kn)\Lambda(n)}{(kn)^s} = \sum_{\substack{n \in \NN \\ d \divides n}} \frac{\chi(n)\Lambda(d)}{n^s} \\
+                &= \sum_{n \in \NN} \frac{\chi(n) \ln{n}}{n^s} = -L'(s,\chi).
+            \end{align*}
+            Итак, мы получили 
+            \[
+                L(s, \chi) \cdot \sum_{n=1}^\infty \frac{\chi(n)\Lambda(n)}{n^s} = -L'(s, \chi).
+            \]
+            Если $s_0$ --- ноль $L$--функции порядка $k \in \NN$, то порядок нуля левой части будет $\ge 0$, т.к. мы умножаем на некую аналитическую функцию. Но порядок нуля правой части равен $k - 1$. Получили противоречие.~\newline
+            Осталось показать, почему $L(s, \chi) \not\equiv 0$:
+            \[
+                \abs{ \sum_{n=2}^\infty \frac{\chi(n)}{n^s} } 
+                \le \sum_{n=2}^\infty \frac{1}{n^\sigma} 
+                = \frac{1}{\alpha^\sigma}\sum_{n=2}^\infty \frac{1}{\left(\sfrac{n}{2}\right)^\sigma}.
+            \]
+            Заметим, что первый множитель стремится к нулю, а второй множитель ограничен сверху некой константой $C$. Следовательно,
+            \[
+                \sum_{n=1}^\infty \frac{\chi(n)}{n^s} = 1 + \sum_{n=2}^\infty \frac{\chi(n)}{n^s}.
+            \]
+            Второе слагаемое по модулю стремится к $0$ при $\sigma \to \infty$. Значит $L(s, \chi) \ne 0$ для некоторого $s$. Тем самым, пункт~\ref{lm:II-4-3} полностью доказан.
+    \end{statesp}
+\end{proof}

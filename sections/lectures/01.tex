@@ -1,0 +1,228 @@
+\section{Асимптотический закон распределения простых чисел}
+\label{sec:I_prime-number-theorem}
+
+\begin{remark}
+    Впредь, если мы будем писать сумму вида $\sum_{\dots p \dots} \dots$, то будет подразумеваться, что $p$ --- простое число.
+\end{remark}
+
+
+\subsection{Оценки Чебышёва}
+\label{subsec:1_Chebyshev-estimates}
+
+Изучение распределения простых чисел непосредственно связано с изучением следующих функций:
+\begin{itemize}
+    \item
+        $\pi(x) = \sum_{p \le x} 1$ --- количество простых чисел, не превосходящих $x$;
+    \item
+        $\theta(x) = \sum_{p \le x} \ln{p} = \ln{\prod_{p \le x} p}$ --- $\theta$--функция Чебышёва;
+    \item
+        $\psi(x) = \sum_{p^\alpha \le x} \ln{p} 
+        = \sum_{p \le x} \left[ \dfrac{\ln{x}}{\ln{p}} \right] \ln{p} 
+        = \ln{\lcd{1, 2, \dots, \left[ x \right]}}$ --- $\psi$--функция Чебышёва.
+\end{itemize}
+
+Как эти функции связаны? Оказывается, что следующим соотношением:
+\begin{nlemma}
+\label{lm:I-1}
+    \[
+        \limsupinf{\frac{\theta(x)}{x}}
+        = \limsupinf{\frac{\psi(x)}{x}}
+        = \limsupinf{\frac{\pi(x)}{\sfrac{x}{\ln{x}}}},
+        \qquad x \to \infty.
+    \]
+\end{nlemma}
+\begin{proof}
+    Заметим, что
+    \[
+        \theta(x) \le \psi(x)
+        \le \sum_{p \le x} \left[ \frac{\ln{x}}{\ln{p}} \right] \ln{p} 
+        = \ln{x} \sum_{p \le x} 1 = \pi(x)\ln{x}.
+    \]
+    Следовательно, получаем соотношение
+    \[
+        \limsupinf{\frac{\theta(x)}{x}}
+        \le \limsupinf{\frac{\psi(x)}{x}}
+        \le \limsupinf{\frac{\pi(x)}{\sfrac{x}{\ln{x}}}}.
+    \]
+    Для доказательства нам теперь нужны неравенства ``в другую сторону''. Рассмотрим простые числа на отрезке $\left[ x^\alpha,\, x \right]$ для некоторого фиксированного $0 < \alpha < 1$. 
+    Тогда
+    \begin{align*}
+        \theta(x) = \sum_{p \le x} \ln{p} \ge \sum_{x^\alpha < p \le x} \ln{p} &> \ln{x^\alpha} \sum_{x^\alpha < p \le x} 1 \\
+        &= \alpha \ln{x}\left( \pi(x) - \pi\left(x^{\alpha}\right) \right).
+    \end{align*}
+    Разделив полученное выражение на $x$, получаем
+    \[
+        \frac{\theta(x)}{x} 
+        > \alpha\left( \frac{\pi(x)}{\sfrac{x}{\ln{x}}} - \frac{\ln{x}}{x^{1 - \alpha}} \right),
+        \qquad \forall\ 0 < \alpha < 1.
+    \]
+    Так как $\frac{\ln{x}}{x^{1-\alpha}} \to 0$ при $x \to \infty$, то
+    \begin{align*}
+        \limsup\left( \frac{\theta(x)}{x} \right) &
+        \ge \limsup\left( \alpha\frac{\pi(x)}{\sfrac{x}{\ln{x}}} \right) 
+        = \alpha \limsup\left( \frac{\pi(x)}{\sfrac{x}{\ln{x}}} \right), \\
+        \liminf\left( \frac{\theta(x)}{x} \right) &
+        \ge \liminf\left( \alpha\frac{\pi(x)}{\sfrac{x}{\ln{x}}} \right) 
+        = \alpha \liminf\left( \frac{\pi(x)}{\sfrac{x}{\ln{x}}} \right).
+    \end{align*}
+    Эти неравенства выполняются для любых $\alpha \in (0,\, 1)$, поэтому получаем неравенство ``в другую сторону'':
+    \[
+        \limsupinf{\frac{\theta(x)}{x}}
+        \ge \limsupinf{\frac{\pi(x)}{\sfrac{x}{\ln{x}}}}.
+    \]
+    Таким образом мы получили утверждение Леммы:
+    \[
+        \limsupinf{\frac{\theta(x)}{x}}
+        = \limsupinf{\frac{\psi(x)}{x}}
+        = \limsupinf{\frac{\pi(x)}{\sfrac{x}{\ln{x}}}},
+        \qquad x \to \infty.
+    \]
+\end{proof}
+
+\begin{ntheorem}[Оценки Чебышёва]
+\label{thm:I-1}
+    Существуют $a,b > 0$ такие, что
+    \[
+        a \frac{x}{\ln{x}} \le \pi(x) \le b \frac{x}{\ln{x}}.
+    \]
+\end{ntheorem}
+
+Перед доказательством этой теоремы сформулируем и докажем несколько вспомогательных лемм.
+\begin{nlemma}
+\label{lm:I-2}
+    \[
+        \prod_{p \le n} p \le 4^n.
+    \]
+\end{nlemma}
+\begin{proof}
+    Будем доказывать методом математической индукции по $n$.~\newline
+    \textbf{База.} При $n = 2,3$ утверждение верно.~\newline
+    \textbf{Переход.} Если $n = 2k$ --- чётно, то видно, что
+    \[
+        \prod_{p \le 2k} p = \prod_{p \le 2k - 1} p \le 4^{2k - 1} \le 4^{2k}.
+    \]
+    Если $n = 2k - 1$ --- нечётно, то по предложению индукции получаем
+    \[
+        \prod_{p \le n} p 
+        = \left( \prod_{p \le k} p \right)\left( \prod_{k < p \le 2k-1} p \right) 
+        \le 4^k 4^{k-1} = 4^{2k-1} = 4^n.
+    \]
+    Заметим, что 
+    \[
+        \prod_{k < p \le 2k - 1} p  < C_{2k - 1}^k = \frac{(2k-1)!}{k!(k-1)!},
+    \]
+    т.к. каждое такое простое число входит в числитель, но не входит в знаменатель. Поэтому
+    \[
+        \prod_{k < p \le 2k-1} p \le C_{2k - 1}^{k} \le \frac{1}{2} \cdot 2^{2k - 1} = 4^{k - 1}.
+    \]
+\end{proof}
+
+\begin{ncorollary}
+\label{crl:I-1}
+    $\theta(n) < n \ln{4}$.
+\end{ncorollary}
+
+\begin{ncorollary}
+\label{crl:I-2}
+    $\theta(x) < x \cdot 3\ln{2}$.
+\end{ncorollary}
+\begin{proof}
+    Пусть $n - 1 < x \le n$. Тогда 
+    \[
+        \theta(x) \le \theta(n) < n \ln{4} < (x + 1) \ln{4} \le x \cdot 3\ln{2}.
+    \]
+\end{proof}
+
+\begin{nlemma}
+\label{lm:I-3}
+    \[
+        K := \lcd{1, 2, \dots, 2n + 1} > 4^n.
+    \]
+\end{nlemma}
+\begin{proof}
+    Рассмотрим
+    \[
+        I = \int_{0}^{1} x^n(1 - x)^n dx.
+    \]
+    Поскольку на отрезке $[0, 1]$ величина $x(1 - x)$ не превосходит $\frac{1}{4}$, то $I < \frac{1}{4^n}$.~\newline
+    Заметим, что $x^n(1 - x)^n = a_nx^n + \dots + a_{2n} x^{2n}$ --- многочлен с целыми коэффициентами. Тогда 
+    \[
+        I = \frac{a_n}{n + 1} + \dots + \frac{a_{2n}}{2n + 1},
+    \]
+    а $K \cdot I \in \ZZ$. Причём $K$ и $I$ оба больше нуля, т.е. $K \cdot I \ge 1$.
+    Следовательно,
+    \[
+        K \ge \frac{1}{I} > 4^n.
+    \]
+\end{proof}
+
+\begin{ncorollary}
+\label{crl:I-3}
+    $\psi(2n + 1) > n\ln{4}$.
+\end{ncorollary}
+
+\begin{ncorollary}
+\label{crl:I-4}
+    $\psi(x) > x \frac{\ln{2}}{2}$ при $x \ge 6$.
+\end{ncorollary}
+\begin{proof}
+    Пусть $2n + 1 \le x < 2n + 3$. Тогда, учитывая предыдущее Следствие~\ref{crl:I-3}, получаем
+    \begin{align*}
+        \psi(x) \ge \psi(2n+1) > n \ln{4} &> \frac{x - 3}{2} \ln{4} = \\
+        & = (x-3) \ln{2} \ge x \frac{\ln{2}}{2}.
+    \end{align*}
+    Последнее неравенство справедливо, потому что $x \ge 6$.
+\end{proof}
+
+\begin{proof}[Доказательство Теоремы \ref{thm:I-1}.]
+    Применим Следствия~\ref{crl:I-2} и \ref{crl:I-4}: при $x \ge 6$ выполнено
+    \begin{align*}
+        \frac{\theta(x)}{x} < 3\ln{2} &\Rightarrow \limsup{\frac{\theta(x)}{x}} < 3\ln{2}, \\
+        \frac{\psi(x)}{x} > \frac{1}{2}\ln{2} &\Rightarrow \liminf{\frac{\psi(x)}{x}} > \frac{1}{2}\ln{2}. 
+    \end{align*}
+    Учитывая теперь Лемму~\ref{lm:I-1}, получаем:
+    \[
+        \limsup{\frac{\pi(x)}{\sfrac{x}{\ln{x}}}} \le 3\ln{2},
+        \qquad
+        \liminf{\frac{\pi(x)}{\sfrac{x}{\ln{x}}}} \ge \frac{1}{2}\ln{3}.
+    \]
+\end{proof}
+
+\begin{theorem}[Асимптотический Закон Распределения Простых Чисел (АЗРПЧ)]
+    \[
+        \pi(x) \sim \frac{x}{\ln{x}}.
+    \]
+\end{theorem}
+
+
+\subsection{Дзета--функция Римана. Определение}
+\label{subsec:2_Riemann-zeta-function-definition}
+
+\begin{ndefinition}
+\label{I_Riemann-zeta-function}
+    Положим при $\Re{s} > 1$
+    \[
+        \zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s}.
+    \]
+    Будем писать $s = \sigma + it$. Мы докажем, что $\zeta(s)$ --- аналитическая функция на ${\Re{s} > 1}$, и аналитически продолжим её на $\Re{s} > 0$ (её можно продолжить и на всю область \CC~--- будет единственный полюс в точке $1$).
+\end{ndefinition}
+
+\begin{hypothesis}[Римана]
+    Нетривиальные нули $\zeta$--функции лежат на прямой
+    \[
+        \Re{s} = \frac{1}{2}.
+    \]
+\end{hypothesis}
+
+\begin{remark}
+    Предположим, что $p_1, p_2, \dots, p_r$ --- все простые. Тогда
+    \[
+       \sum_{k=0}^\infty \frac{1}{p_j^k} = \frac{1}{1-\frac{1}{p_j}}.
+    \]
+    Следовательно,
+    \[
+        \sum_{(k_1,\dots,k_r)} \frac{1}{p_1^{k_1} \dots p_r^{k_r}} = 
+        \prod_{j=1}^r \frac{1}{1-\frac{1}{p_j}} \text{ --- сходится}.
+    \]
+    Но слева --- сумма гармонического ряда. Противоречие.
+\end{remark}

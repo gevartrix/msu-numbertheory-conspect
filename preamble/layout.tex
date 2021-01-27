@@ -1,0 +1,231 @@
+%%% PREAMBLE :: Layout
+%
+% Sets the general layout of the document (margins, spacing, title format, section format, headers, footers, referencing style, etc.)
+
+
+%% Imports required packages
+% Provides more granular control over the layout of `enumerate', `itemize' and `description'
+\usepackage[shortlabels]{enumitem}
+
+% Sets the pages' headers and footers for the main part of the document
+\usepackage{fancyhdr}
+
+% Sets the pages' layout
+\usepackage[%
+    a4paper,%         Same as the size of the article
+    hmargin=3.175cm,% Equivalent to `left=3.175cm, right=3.175cm`
+    vmargin=2.54cm%   Equivalent to `top=2.54cm, bottom=2.54cm`
+]{geometry}
+
+% Provides extensive handling and customization of cross-referencing and creating hypertext links
+\usepackage[%
+    pdfusetitle%  Catches the document's @title and @author arguments for \hypersetup 
+]{hyperref}
+
+% Indents first paragraph after (sub)section headers
+\usepackage{indentfirst}
+
+% Allows reference to the document's last page's number (required for the fancyhdr footer) 
+\usepackage{lastpage}
+
+% Sets up easily configurable ragged text environment (required for the `lecture` environment to display the headers and footers properly)
+\usepackage{ragged2e}
+
+% Edits the layout of sections, subsections, etc.
+\usepackage[%
+    compact,% Reduces the spacing above and below the titles
+    sc,%      Sets the default font shape to `scientific`
+    center%   Aligns to the center of a page
+]{titlesec}
+
+% Provides an underline command which breaks over line ends. Imported for underling URLs (see the `\myurl` command)
+\usepackage[%
+    normalem% Disables redefining of `\em` and `\emph`
+]{ulem}
+
+
+% Sets up general indentation
+\setlength{\parindent}{2.3em}%         Paragraph indentation
+%\setlength{\parskip}{0.2cm}%           Spacing between paragraphs
+%\renewcommand{\baselinestretch}{1.4}%  Line spacing
+
+
+%% Handles with overfulls and page breaks
+% Changes the setting of paragraphs that would have produced over-full boxes, tries an extra pass with pretending that every line has an additional bit of space. Prevents the overall badness exceeding 1000
+\setlength{\emergencystretch}{1.5em}
+\clubpenalty=10000   % Prohibits page-breakings after just one paragraph line
+\widowpenalty=10000  % Prohibits page-breakings after last paragraph lines
+
+
+%% Sets up the lists
+% [enumitem] Defines the `statesp` and `casesp` lists 
+\newlist{statesp}{enumerate}{1}
+\newlist{casesp}{enumerate}{2}
+
+% [enumitem] Makes the `enumerate` list more compact
+\setenumerate{%
+    nosep,%            Removes vertical spacing
+    nolistsep,%        Removes spacing between the list itself and the neighbouring paragraphs
+    noitemsep,%        Removes spacing between items and paragraphs
+    topsep=0pt,%       Removes spacing between first item and preceding paragraph
+    parsep=0pt,%       Removes spacing between paragraphs within an item
+    partopsep=0pt,%    Removes extra spacing added to `\topsep`
+    label=(\arabic*)%  Sets the default label
+}
+
+% [enumitem] Makes the `itemize` list more compact
+% Sets the default label for the first level
+\renewcommand{\labelitemi}{$\Diamond$}
+\setlist[itemize]{%
+    nosep,%                 Removes vertical spacing
+    nolistsep,%             Removes spacing between the list itself and the neighbouring paragraphs
+    noitemsep,%             Removes spacing between items and paragraphs
+    topsep=0pt,%            Removes spacing between first item and preceding paragraph
+    parsep=0pt,%            Removes spacing between paragraphs within an item
+    partopsep=0pt,%         Removes extra spacing added to `\topsep`
+}
+
+% [enumitem] Sets the `statesp` list
+\setlist[statesp]{%
+    align=left,%                Aligns the labels properly
+    nosep,%                     Removes vertical spacing
+    nolistsep,%                 Removes spacing between the list itself and the neighbouring paragraphs
+    noitemsep,%                 Removes spacing between items and paragraphs
+    topsep=0pt,%                Removes spacing between first item and preceding paragraph
+    parsep=0pt,%                Removes spacing between paragraphs within an item
+    partopsep=0pt,%             Removes extra spacing added to `\topsep`
+    font=\normalfont\bfseries%  Boldens the labels
+}
+\setlist[statesp,1]{%
+  label=Пункт~(\arabic*):,%     Sets label format for the top level
+  ref=\arabic*%                 Sets cross-ereferencing format for the top level
+}
+
+% [enumitem] Sets the `casesp` list
+\setlist[casesp]{%
+    align=left,%
+    nosep,%
+    noitemsep,%
+    parsep=0pt,%
+    partopsep=0pt,%
+    font=\normalfont\bfseries%
+}
+\setlist[casesp,1]{%
+    label=Случай~\arabic*:,%
+    ref=\arabic*%
+}
+\setlist[casesp,2]{%
+    label=Случай~\thecasespi.\roman*:,%
+    ref=\thecasespi.\roman*%
+}
+
+
+%% [fancyhdr,lastpage] Sets up the header and footer parts of pages' layout
+% Clears header and footer completely
+\fancyhf{}
+% Puts the current subsection number and name on the left side of the header
+% The `\leftmark` command outputs the number and name of the current section in the `article` document class
+\lhead{
+    \sc\rightmark
+}
+% Puts the current lecture number on the right side of the header
+\rhead{
+    \it{Лекция~\textnumero\themylecture}
+}
+% Puts the pae counter on the right side of the footer
+\rfoot{
+    Стр. \thepage~/ \pageref*{LastPage}
+}
+% Tweaks the width of the top rule
+\renewcommand{\headrulewidth}{0.1pt}
+% Adjusts the topmargin for fancyhdr
+\setlength{\headheight}{14pt}
+
+
+%% Sets up the linking style and the PDF-specific options
+% [hyperref] Overrides the `\and` command while creating the document's metadata (in case of several authors)
+\pdfstringdefDisableCommands{\def\and{и}}
+% [hyperref] Sets up links' style and metadata information
+\makeatletter%  Changes the `@` symbol's category from `other` (catcode: 12) to `letter` (catcode: 11), so it's treated as a normal letter
+\DeclareUrlCommand\myurl@@{%
+    \def\UrlFont{\color{blue}}%
+    \def\UrlLeft{\uline\bgroup}%
+    \def\UrlRight{\egroup}
+}
+\def\myurl@#1#2{\hyper@linkurl{\myurl@@{#2}}{#1}}
+\DeclareRobustCommand*\myurl{\myurl@}
+\hypersetup{%
+    linktocpage=true,%        Makes the page numbers from the Table Of Contents interactive
+    colorlinks=true,%         Colours the (cross-referencing) links
+    urlcolor=blue,%           Sets the colour of URLs
+    bookmarksopen=true,%      Makes the bookmark bar open by default in a PDF reader
+    pdfpagemode=FullScreen,%  Makes a PDF reader open the document in full screen
+    pdfauthor={\@author},%    Sets the document's author(s) based upon the `\author`
+    pdftitle={\@title}%       Sets the document's title based upon the `\title`
+}
+\makeatother%  Changes the `@` symbol's category from `letter` (catcode: 11) to `other` (catcode: 12), so it could be safely used in macros
+
+
+%% [titlesec] Sets up the format of sections and subsections
+% Converts the sections' labels to the Roman numerals
+\renewcommand{\thesection}{\Roman{section}}
+\titleformat%
+    {\section}%                           Redefines the sectioning command (`\section`)
+    [block]%                              Sets paragraph's shape so a section's label and title are on the same line
+    {\centering\Large\scshape\bfseries}%  Sets label's and title's format
+    {\thesection.}%                       Sets label
+    {0.3cm}%                              Sets the spacing between label and title body
+    {}%                                   Sets the after-code
+\titleformat%
+    {\subsection}%
+    [block]%
+    {\centering\large\scshape}%
+    {\S\thesubsection.}%
+    {0.3cm}%
+    {}
+% Adjusts the vertical spacing for the sections' titles
+\titlespacing*%
+    {\section}%   Sets spacing around the sections' titles
+    {0cm}%        Sets the left margin
+    {1cm}%        Sets the vertical space before the title
+    {0.5cm}%      Sets the vertical space after the title
+\titlespacing*%
+    {\subsection}%
+    {0cm}%
+    {0.4cm}%
+    {0.2cm}
+
+
+%% [hyperref, ragged2e] Defines an environment that sets up the lectures' header and footer. Takes one mandatory argument -- the lecture's date -- and one optional argument -- the lecture's number. If the optional argument is passed, it updates a counter
+% Initializes a counter for lecture numbers
+\newcounter{mylecture}
+\newenvironment{lecture}[2][\themylecture]%
+    {%
+        % If the optional argument isn't passed, increment the default counter
+        \refstepcounter{mylecture}
+        \vspace{0.15cm}
+        % Since arguments passed to an environment are only available for the start-code, a hack with storing these arguments is used
+        % Defines the lecture's number as the optional argument if it's been passed, or as the default counter's value otherwise. `\def` is used to overwrite the commands each time
+        \def\lecnum{#1}
+        \def\lecdate{#2}
+
+        \raggedleft{
+            \scriptsize
+            \textit{Лекция \textnumero\lecnum~от \lecdate}
+            \label{lec:no#1}
+        }
+        \hrule
+        \vspace{0.3cm}
+        \justify
+    }%
+    {%
+        % Updates the counter, so the next lecture's number agrees.
+        \setcounter{mylecture}{\lecnum}
+        \vspace{0.3cm}
+        \hrule
+        \raggedright{
+            \scriptsize
+            \textit{\hyperref[lec:no\lecnum]{Вернуться} к началу Лекции \textnumero\lecnum.}
+        }
+        \justify
+    }

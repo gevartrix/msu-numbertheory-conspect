@@ -1,0 +1,151 @@
+\subsection{Результаты из Преобразования Абеля}
+\label{subsec:4_Zeta-function-Abel}
+
+\begin{nlemma}[Преобразование Абеля]
+\label{lm:I-6}
+    Пусть $\{ a_n \}_{n \in \NN}$ --- последовательность комплексных чисел. 
+    Пусть $g(x)$ --- $\CC$--значная функция и $g(x) \in C^1\left( \left[ 1, +\infty \right), \mathbb{C} \right)$. 
+    Пусть $A(x) = \sum_{n \le x} a_n$.
+    Тогда для любого $N \in \RR$ справедливо
+    \[
+        \sum_{n \le N} a_n g(n) = A(N)g(N) - \int_{1}^{N} A(x)g'(x)dx.
+    \]
+\end{nlemma}
+\begin{proof}
+    \begin{align*}
+        A(N)g(N) - \sum_{n \le N} a_n g(n) &= \sum_{n \le N} a_n(g(N) - g(n)) \\
+        &= \sum_{n \le N} a_n\int_{n}^{N} g'(x)dx.
+    \end{align*}
+    Введём теперь функцию $\phi_n(x) := 
+    \begin{cases}
+        a_n, & x \ge n, \\ 
+        0, & x < n 
+    \end{cases}$. Тогда
+    \begin{align*}
+        \sum_{n \le N} a_n\int_{n}^{N} g'(x)dx &= \sum_{n \le N} \int_{1}^{N}\phi_n(x)g'(x)dx \\
+        &= \int_{1}^{N} \left( \sum_{n \le N} \phi_n(x) \right) g'(x)dx \\
+        &= \int_{1}^{N} A(x)g'(x)dx.
+    \end{align*}
+    Последнее равенство верно, так как 
+    \[
+        \sum_{n \le N} \phi_n(x) =
+        \sum_{n \le x} \phi_n(x) =
+        \sum_{n \le x} a_n = A(x).
+    \]
+\end{proof}
+
+\begin{ntheorem}
+\label{thm:I-5}
+    \[
+        \zeta(s) = 1 + \frac{1}{s - 1} - s \int_{1}^{+\infty} \frac{\{x\}}{x^{1+s}}dx,
+    \]
+    причём интеграл в правой части сходится в полуплоскости $\Re{s} > 0$ и задаёт аналитическую функцию.
+\end{ntheorem}
+\begin{proof}
+    При $\Re{s} > 1$ выполнено $\zeta(s) = \sum_{n = 1}^{\infty} \frac{1}{n^s}$. Используя Лемму~\ref{lm:I-6} с параметрами $a_n = 1$ и $g(x) = \frac{1}{x^s}$, получаем
+    \begin{align*}
+        \sum_{n = 1}^{N} \frac{1}{n^s} 
+        &= N \frac{1}{N^s} + s \int_{1}^{N}\frac{\left[ x \right]}{x^{1 + s}} \\
+        &= \frac{1}{N^{s - 1}} + s \left( \int_{1}^{N}\frac{1}{x^s} - \int_{1}^{N}\frac{\{x\}}{x^{1 + s}}\right) \\
+        &= \frac{1}{N^{s - 1}} + s \left( \frac{1}{s - 1} - \frac{1}{(s - 1)N^{s - 1}} - \int_{1}^{N}\frac{\{x\}}{x^{1 + s}}\right) \\
+        &= 1 + \frac{1}{s - 1} - \frac{1}{(s - 1)N^{s - 1}} - s \int_{1}^{N}\frac{\{x\}}{x^{1 + s}}.
+    \end{align*}
+    Поскольку $s = \sigma + it$, где $\sigma > 1$, и $\abs{N^{s-1}} = N^{\sigma-1}$, то при $N \to \infty$ третье слагаемое стремится к нулю, а последнее --- к несобственному интегралу из условия Теоремы.~\newline
+    Итак, мы получили, что при $\Re{s} > 1$ выполняется равенство
+    \[
+        \zeta(s) = 1 + \frac{1}{s-1} - s\int_{1}^{\infty} \frac{\{x\}}{x^{1+s}}dx.
+    \]
+    Как только мы докажем, что этот интеграл задаёт аналитическую функцию в $\Re{s} > 0$, мы получим две функции, которые аналитичны в $\Re{s} > 0$ и совпадают в $\Re{s} > 1$. По теореме единственности из этого следует, что эти две функции~совпадают~везде.~\newline
+    Итак, положим
+    \begin{align*}
+        f_n(s) &=
+        \int_{n}^{n+1} \frac{\{x\}}{x^{s+1}}dx = \int_{n}^{n+1} \frac{x-n}{x^{s+1}}dx \\
+        &= \int_{n}^{n+1} \frac{1}{x^{s}}dx - n\int_{n}^{n+1} \frac{1}{x^{s+1}}dx.
+    \end{align*}
+    Первый интеграл аналитичен в $\CC$, второй отличается от первого просто сдвигом на единицу.~\newline
+    Таким образом, $f_n(s)$ аналитична в $\CC$. Далее, при $\Re{s} = \sigma > \delta > 0$ получаем, что
+    \[
+        \abs{f_n(s)} 
+        \le \int_{n}^{n + 1} \frac{dx}{x^{1+\sigma}} 
+        \le \frac{1}{n^{1+\sigma}} 
+        < \frac{1}{n^{1+\delta}}.
+    \]
+    Поскольку ряд $\sum_{n = 1}^{\infty} \frac{1}{n^{1 + \delta}}$ сходится, то по Признаку Вейерштрасса ряд $\sum_{n = 1}^{\infty} f_n(s)$ сходится равномерно, и потому задаёт аналитическую функцию.
+\end{proof}
+
+\begin{nproblem}
+\label{prb:I-1}
+    При доказательстве Теоремы~\ref{thm:I-5} мы воспользовались аналитичностью интеграла
+    \[
+        \int_{n}^{n+1} \frac{1}{x^{s}}dx.
+    \]
+    При $s \ne 1$ это просто разность степеней, и аналитичность очевидна. Докажите, что в точке $s = 1$ также есть аналитичность.
+\end{nproblem}
+
+\begin{ncorollary}
+\label{crl:I-6}
+    У функции $\zeta(s)$ имеется полюс первого порядка с вычетом $1$, поскольку $\Res_{1}\left(\frac{1}{s-1}\right) = 1$.
+\end{ncorollary}
+
+\begin{nlemma}
+\label{lm:I-7}
+    При $\Re{s} > 1$ выполнено
+    \[
+        \frac{\zeta'(s)}{\zeta(s)} = -s \int_{1}^{\infty} \frac{\psi(x)}{x^{1 + s}}dx.
+    \]
+\end{nlemma}
+\begin{proof}
+    Согласно пункту~\ref{thm:I-3-3} Теоремы~\ref{thm:I-3}, при $\Re{s} > 1$
+    \[
+        \frac{\zeta'(s)}{\zeta(s)} = -\sum_{n=1}^{\infty} \frac{\Lambda(n)}{n^s}.
+    \]
+    Снова используя преобразование Абеля (Лемму~\ref{lm:I-6}) с параметрами $a_n = \Lambda(n)$, $g(x) = \frac{1}{x^s}$ и тот факт, что $\sum_{n \le x} \Lambda(n) = \psi(x)$ (Лемма~\ref{lm:I-5}), получаем
+    \[
+        \sum_{n=1}^{N} \frac{\Lambda(n)}{n^s} 
+        = \frac{\psi(N)}{N^s} + s\int_{1}^{N}\frac{\psi(x)}{x^{1+s}}dx.
+    \]
+    Поскольку мы знаем, что у отношения $\frac{\psi(x)}{x}$ верхний и нижний пределы ограничены, то при $\Re{s} > 1$ 
+    \[
+        \frac{\psi(N)}{N^{1 + s}} \to 0, \qquad N \to \infty.
+    \]
+    Таким образом, при $N \to \infty$ пределы выражений $\sum_{n=1}^{N} \frac{\Lambda(n)}{n^s}$ и $s\int_{1}^{N} \frac{\psi(x)}{x^{1+s}}dx$ существуют и равны, откуда и следует утверждение Леммы.
+\end{proof}
+
+\begin{nlemma}
+\label{lm:I-8}
+    Пусть $0 < r < 1$, $\phi \in \RR$. Тогда
+    \[
+        \abs{(1 - r)^3 (1 - re^{i\phi})^4 (1 - re^{2i\phi})} \le 1.
+    \]
+\end{nlemma}
+\begin{proof}
+    Положим $M = \abs{(1 - r)^3 (1 - re^{i\phi})^4 (1 - re^{2i\phi})}$. Тогда
+    \begin{align*}
+        \ln{M} &= 3\ln{\abs{1 - r}} + 4\ln{\abs{1 - re^{i\phi}}} + \ln{\abs{1 - re^{2i\phi}}} \\
+        &= \Re{3\ln{1 - r} + 4\ln{1 - re^{i\phi}} + \ln{1 - re^{2i\phi}}} \\
+        &= -\sum_{n=1}^{\infty} \frac{r^n}{n}\Re{3 + 4e^{in\phi} + e^{2in\phi}} \\
+        &= -\sum_{n=1}^{\infty} \frac{r^n}{n} \left(\cos{2n\phi} + 4\cos{n\phi} + 3\right) \\
+        &= -\sum_{n=1}^{\infty} \frac{r^n}{n} 2\left(\cos{n\phi} + 1\right)^2 \le 0.
+    \end{align*}
+    Следовательно, так как $\ln{M} \le 0$, то $M = \abs{(1 - r)^3 (1 - re^{i\phi})^4 (1 - re^{2i\phi})} \le 1$.
+\end{proof}
+
+\begin{nlemma}
+\label{lm:I-9}
+    При $\Re{s} > 1$, $s = \sigma + it$ справедливо неравенство
+    \[
+        \abs{\zeta^3(\sigma)\zeta^4(\sigma+it)\zeta(\sigma+2it)} \ge 1.
+    \]
+\end{nlemma}
+\begin{proof}
+    Положим $r = \frac{1}{p^{\sigma}}$, $e^{i\phi} = p^{-it}$. Тогда достаточно применить Лемму~\ref{lm:I-8} и формулу Эйлера (Теорему~\ref{thm:I_Euler-formula}).
+\end{proof}
+
+\begin{ntheorem}
+\label{thm:I-6}
+    Для всех $t \in \RR \setminus \{0\}$ выполнено
+    \[
+        \zeta(1 + it) \ne 0.
+    \]
+    В точке $t = 0$ у дзета--функции нет значения.
+\end{ntheorem}

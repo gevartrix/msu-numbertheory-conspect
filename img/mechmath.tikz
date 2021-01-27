@@ -1,0 +1,51 @@
+% Renders the vector-graphic logo of Mechmath MSU
+% I decided to make it using the standard TikZ tools only rather than using Bezier curves, because the logo is quite precise
+% (also because I'm a badass)
+% See the titlepage
+%
+% One may alter the logo's scale and color using the TikZ options below
+\tikz[rounded corners,color=black!92,scale=0.8]{
+    % Draws the background 8x8 grid
+    \draw[step=1cm] 
+        (0, 0) grid (8, 8);
+
+    % Constructs the right strip of the Moebius band
+    \filldraw[ultra thick,fill=white]
+        (5.04, 7) 
+        .. controls(6.5, 5.7) .. (7.12, 4.88)
+        .. controls(7.18, 4) and (6.91, 3.3) .. (6.3, 3)
+        .. controls(4.6, 6.2) and (4.1, 6.1) .. (3.5, 5.82)
+        .. controls(4.1, 6.75) .. (5.04, 7);
+
+    % Constructs the left strip of the Moebius band
+    \filldraw[ultra thick,fill=white]
+        (5.04, 7) 
+        .. controls(4, 6.88) .. (3.1, 6.6)
+        .. controls(1.37, 5.25) and (1.08, 4) .. (1.025, 3.05)
+        .. controls(1.2, 2.5) .. (2, 2)
+        .. controls(3, 4.75) .. (5.04, 7);
+
+    % Constructs the integral shape
+    \filldraw[ultra thick]
+        (4, 7.89)
+        .. controls(4.91, 7.1) and (5.45, 8.43) .. (4.45, 8.52)
+        .. controls(3.42, 8.24) and (3.4, 7.41) .. (3.35, 7)
+        .. controls(3.4, 6) .. (3.54, 4)
+        .. controls(3.81, 2) .. (4.06, 1)
+        .. controls(4.2, 0.21) and (4.05, 0.158) .. (4, 0.11)
+        .. controls(3.09, 0.7) and (2.65, -0.43) .. (3.64, -0.52)
+        .. controls(3.83, -0.48) and (4.32, -0.29) .. (4.5, 0)
+        .. controls(4.6, 0.24) and (4.64, 0.7) .. (4.63, 1)
+        .. controls(4.47, 2) .. (4.34, 4)
+        .. controls(4.1, 5.7) .. (3.84, 7.54)
+        .. controls(3.87, 7.82) .. (4, 7.89);
+
+    % Constructs the front strip of the Moebius band
+    \filldraw[ultra thick,fill=white]
+        (1.025, 3.05)
+        .. controls(1.24, 2.6) .. (3.3, 2.42)
+        .. controls(4.5, 2.32) and (7, 3.4) .. (7.1, 4.15)
+        .. controls(6.72, 2.6) and (7, 1.9) .. (6.1, 1.55)
+        .. controls(4.12, 1.05) .. (2.3, 1.02)
+        .. controls(1.52, 1.86) and (1.06, 2.7) .. (1.05, 3.05);
+}

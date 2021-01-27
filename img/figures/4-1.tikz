@@ -1,0 +1,41 @@
+% Plot for the Gamma-contour used in the proof of Theorem I.7
+% See Lecture 4
+\tikz[scale=0.7]{
+    % Sets the background grid
+    \draw[gray,ultra thin,step=1cm] 
+        (-3.9, -3.9) grid (3.9, 3.9);
+    % Sets the axes
+    \draw[thick,->] 
+        (-3.9, 0) -- (3.9, 0) 
+        node[anchor=south east]{$\mathrm{Re}$};
+    \draw[thick,->] 
+        (0, -3.9) -- (0, 3.9) 
+        node[anchor=north west]{$\mathrm{Im}$};
+    % Draws the origin point
+    \filldraw 
+        (0, 0) circle (2.5pt) 
+        node[anchor=south east]{$O$};
+
+    % Constructs the contour itself
+    \draw[ultra thick,domain=-105:105] 
+        plot ({3*cos(\x)}, {3*sin(\x)}) 
+        node[anchor=north east]{$\Gamma$};
+    \draw 
+        (0, 0) -- (60:3) 
+        node[midway, above]{$R$};
+    \draw[ultra thick,red] 
+        ({3*cos(105)}, {-3*sin(105)}) -- ({3*cos(105)}, {3*sin(105)});
+    % Marks all the points on the contour
+    \filldraw 
+        (0, -3) circle (2.5pt) 
+        node[anchor=north east]{$-iR$};
+    \filldraw 
+        (0, 3) circle (2.5pt) 
+        node[anchor=south east]{$iR$};
+    \filldraw 
+        ({3*cos(60)}, {3*sin(60)}) 
+        circle (2.5pt);
+    \filldraw[red] 
+        ({3*cos(105)}, 0) circle (2.5pt) 
+        node[anchor=south east]{$-h$};
+}

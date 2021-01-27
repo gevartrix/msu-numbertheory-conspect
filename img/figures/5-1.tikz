@@ -1,0 +1,42 @@
+% Plots of three contours used in the summary of Section I
+% See Lecture 5
+\tikz[scale=0.8]{
+    % Sets the background grid
+    \draw[gray,ultra thin,step=1cm] 
+        (-3.9, -3.9) grid (3.9, 3.9);
+    % Sets the axes
+    \draw[thick,->] 
+        (-3.9, 0) -- (3.9, 0) 
+        node[anchor=south east]{$\mathrm{Re}$};
+    \draw[thick,->] 
+        (0, -3.9) -- (0, 3.9) 
+        node[anchor=north west]{$\mathrm{Im}$};
+    % Draws the origin point
+    \filldraw
+        (0, 0) circle (2.5pt) 
+        node[anchor=south west]{$O$};
+
+    \begin{scope}[ultra thick,decoration={
+        markings,
+        mark=at position 0.7 with {\arrow{>}}
+    }]
+        % Constructs the first contour (Gamma_1)
+        \draw[red,postaction={decorate}] 
+            ({3*cos(-90)}, {3*sin(-90)}) arc (-90:90:3cm) 
+            node[anchor=north west]{$\Gamma_1$};
+        % Constructs the second contour (Gamma_2)
+        \draw[green!50!black,postaction={decorate}] 
+            plot[smooth, tension=0.4]
+            coordinates {
+                ({3*cos(90)}, {3*sin(90)}) 
+                ({2.5*cos(105)}, {2.5*sin(105)}) 
+                ({2.5*cos(-105)}, {2.5*sin(-105)}) 
+                ({3*cos(-90)}, {3*sin(-90)})
+            }
+            node[anchor=south west]{$\Gamma_2$};
+        % Constructs the third contour (Gamma_3)
+        \draw[blue!50!black,postaction={decorate}] 
+            ({3*cos(90)}, {3*sin(90)}) arc (90:270:3cm) 
+            node[anchor=north west]{$\Gamma_3$};
+    \end{scope}
+}

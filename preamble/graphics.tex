@@ -1,0 +1,27 @@
+%%% PREAMBLE :: Graphics
+%
+% Sets up everything for creating, importing and working with various graphics in the document
+
+
+%% Imports required packages
+% Allows to import, create and manipulate graphics
+% \usepackage{graphics}
+
+% Extends the `graphics` package. Allows optional arguments according to the "key=value" scheme. Highly recommended over the `graphics` package
+\usepackage{graphicx}
+
+% Provides the tools necessary to create graphic elements (plots, graphs, diagrams) in LaTeX itself
+\usepackage{tikz}
+
+
+%% Sets up paths to the assets
+% [graphicx] Points to the folders to search images in.
+\graphicspath{%
+    {././img/}%  Assuming this file is in the root's "preamble/" folder, it points to the root's "img/" folder
+}
+
+%% Sets up required TikZ libraries
+% [tikz] Allows for more precise coordinate calculations
+\usetikzlibrary{calc}
+% [tikz] Enables varios markings at any place of a line
+\usetikzlibrary{decorations.markings}

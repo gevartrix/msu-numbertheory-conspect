@@ -1,0 +1,220 @@
+\begin{nlemma}[Тождество Эйлера]
+\label{lm:II-5}
+    При $\Re{s} > 1$ выполнено
+    \[
+        L(s, \chi) = \prod_{p} \left(1 - \frac{\chi(p)}{p^s} \right)^{-1}.
+    \]
+\end{nlemma}
+\begin{proof}
+    Поскольку функция $\frac{\chi(p)}{p^s}$ вполне мультипликативна, то по Лемме~\ref{lm:I-4} получим искомое утверждение:
+    \[
+        s = \sum_{n} f(n) \ \Rightarrow \ s = \prod_{p} \left(1 - f(p) \right)^{-1}.
+    \]
+\end{proof}
+
+\begin{ncorollary}
+\label{crl:II-2}
+    Из только что доказанного тождества следует, что
+    \[
+        L\left(s, \chi_0\right) = \zeta(s) \prod_{p \divides m} \left( 1 - \frac{1}{p^s} \right).
+    \]
+\end{ncorollary}
+\begin{proof}  
+    Подставим $\chi = \chi_0$. Тогда $\chi$ --- характер по модулю $m$, следовательно, $\chi(p) = 0$, а это означает, что $p$ делит $m$. Далее вспомним, что
+    \[
+        \zeta(s) = \prod_p  \left( 1 - \frac{1}{p^s} \right)^{-1},
+    \]
+    однако это представление верно только при $\Re{s} > 1$. 
+    Равенство везде следует из аналитичности $L$--функции, $\zeta$--функции и $\left( 1 - \frac{1}{p^s} \right)$.
+\end{proof}
+
+\begin{remark}
+    Обобщенная гипотеза Римана звучит, что с некоторой оговоркой все нули $L$--функции Дирихле лежат на прямой $\Re{s} = \frac{1}{2}$.
+\end{remark}
+
+\begin{ncorollary}
+\label{crl:II-3}
+    Из Леммы~\ref{lm:II-5} следуют следующие факты:
+    \begin{enumerate}
+        \item
+            В $\Re{s} > 0$ у $L\left(s, \chi_0\right)$ единственный полюс в $s = 1$ порядка $1$ с вычетом $\frac{\phi(m)}{m}$;
+        \item
+            в $\{ \Re{s} > 0 \} \setminus \{ 1 \}$ функция $L\left(s, \chi_0\right)$ аналитична.
+    \end{enumerate}
+\end{ncorollary}
+\begin{proof}
+    Вспомним, что $\phi(m) = m \prod_{p \divides m} \left( 1 - \frac{1}{p} \right)$. У $\zeta(s)$ вычет в единице равен $1$, и функция $\left(1 - \frac{1}{p^s} \right)$ аналитична в $1$.
+\end{proof}
+
+\begin{nlemma}
+\label{lm:II-6}
+    Если $\chi \ne \chi_0$, то $L(s, \chi)$ аналитична при $\Re{s} > 0$. Иными словами, полюс в точке $s = 1$ пропадает.
+\end{nlemma}
+\begin{proof}
+    Применим преобразование Абеля (Лемму~\ref{lm:I-6}), подставив значения $a_n = \chi(n)$, $g(x) = \frac{1}{x^s}$. Тогда получаем
+    \[
+        A(x) = \sum_{n \le x} a_n = \sum_{n \le x} \chi(n),
+    \]
+    и, используя теперь Следствие~\ref{crl:II-2}, замечаем, что $\abs{A(x)} \le \phi(m)$. Далее,
+    \[
+        \sum_{n=1}^{N} \frac{\chi(s)}{n^s} 
+        = A(N) \cdot \frac{1}{N^s} + s \int_{1}^{N} \frac{A(x)}{x^{s+1}} dx.
+    \]
+    Так как мы знаем, что $\abs{A(N)} \le \phi(m)$, то первое слагаемое стремится к нулю при $N \to \infty$ и $\Re{s} > 0$.~\newline
+    Рассмотрим теперь второе слагаемое:
+    \[
+        \int_{1}^{N} \frac{A(x)}{x^{1+s}} 
+        = \sum_{n-1}^{N-1} \phi_n(s), 
+        \quad 
+        \phi_n(s) = \int_{n}^{n+1} \frac{A(x)}{x^{1+s}} \text{ --- аналитическая в \CC.}
+    \]
+    Покажем, что ряд 
+    \[
+        \sum_{n=1}^{\infty} \phi_n(s)
+    \]
+    задаёт аналитическую функцию в $\Re{s} > 0$. При $\Re{s} > \delta > 0$ справедливо
+    \[
+        \abs{\phi_n(s)} 
+        \le \int_n^{n+1} \frac{\phi(m)}{x^{1+\sigma}}dx 
+        \le \frac{\phi(m)}{n^{2+\sigma}} 
+        < \frac{\phi(m)}{n^{2+\delta}},
+    \]
+    где $\frac{\phi(m)}{n^{2+\delta}}$ --- общий член сходящегося ряда. Тогда, наш ряд сходится равномерно при $\Re{s} > \delta$, а следовательно по Теореме Вейерштрасса он сходится к аналитической функции.~\newline
+    Значит, в нашем изначальном равенстве
+    \[
+        \sum_{n=1}^{N} \frac{\chi(n)}{n^s} 
+        = A(N) \cdot \frac{1}{N^s} + s \int_{1}^{N} \frac{A(x)}{x^{1+s}}
+    \]
+    первое слагаемое стремится к нулю, а второе --- сходится к аналитической функции. Следовательно, и вся сумма должна стремиться к аналитической функции.
+\end{proof}
+
+\begin{nlemma}
+\label{lm:II-7}
+    При $\chi \ne \chi_0$ выполнено $L(1, \chi) \ne 0$.
+\end{nlemma}
+\begin{proof}
+\hfill
+    \begin{casesp}
+        \item
+        $\chi^2 \ne \chi_0$.
+            По Лемме~\ref{lm:I-8} при $0 < r < 1$
+            \[
+                \abs{(1 - r)^3 (1 - re^{i\phi})^4 (1 - re^{2i\phi})} \le 1.
+            \]
+            Положим $r = \frac{1}{p^{\sigma}}$, $e^{i\phi} = \chi(p)$ для каждого простого $p$.~\newline
+            Тогда при $\sigma > 1$ имеем
+            \begin{align*}
+                & \abs{L^3\left(\sigma, \chi_0\right) L^4(\sigma, \chi) L\left(\sigma, \chi^2\right)} 
+                = \prod_{p} \abs{
+                    \left(1 - \frac{\chi_0(p)}{p^{\sigma}}\right)^3
+                    \left(1 - \frac{\chi(p)}{p^{\sigma}}\right)^4
+                    \left(1 - \frac{\chi^2(p)}{p^{\sigma}}\right)
+                }^{-1} \\
+                \Rightarrow &
+                \abs{L^3\left(\sigma, \chi_0\right) L^4(\sigma, \chi) L\left(\sigma, \chi^2\right)} 
+                \ge 1.
+            \end{align*}
+            Поскольку $\chi^2 \ne \chi_0$, то у $L\left(\sigma, \chi^2\right)$ в единице есть значение.~\newline
+            Доказываем от противного: пусть $L(1, \chi) = 0$. Тогда
+            \begin{align*}
+                L(\sigma, \chi) = \bigO{\sigma - 1}, &\quad \sigma \to 1+0.\\
+                L\left(\sigma, \chi_0\right) = \bigO{\frac{1}{\sigma - 1}}, &\quad \sigma \to 1+0.\\
+                L\left(\sigma, \chi^2\right) = \bigO{1}, &\quad \text{т.к. } \chi^2 \ne \chi_0.
+            \end{align*}
+            При этом заметим, что у $L\left(\sigma, \chi_0\right) = \bigO{\frac{1}{\sigma - 1}}$ --- полюс порядка $1$.~\newline
+            Отсюда получаем
+            \[
+                \abs{
+                    L^3\left(\sigma, \chi_0\right) 
+                    L^4(\sigma, \chi) 
+                    L\left(\sigma, \chi^2\right)
+                } 
+                = \bigO{
+                    \frac{1}{(\sigma - 1)^3} 
+                    \cdot (\sigma - 1)^4 
+                    \cdot 1
+                } = \bigO{\sigma - 1} 
+                \quad \sigma \to 1+0.
+            \]
+            Иными словами, мы получили, что весь модуль стремится к нулю, хотя выше мы доказали, что он $\ge 1$. Противоречие.
+        \item
+        $\chi^2 = \chi_0$.
+            Заметим, что если рассуждать похожим образом, то в итоге мы получим
+            \[
+                \bigO{
+                    \frac{1}{(\sigma - 1)^3} 
+                    \cdot (\sigma - 1)^4 
+                    \cdot \frac{1}{\sigma - 1}
+                } = \bigO{1},
+            \]
+            и доказать ничего не выйдет.~\newline
+            Пусть $L(1, \chi) = 0$. Рассмотрим функцию
+            \[
+                F(s) = \zeta(s) L(s, \chi).
+            \]
+            У первой функции даёт в точке $s = 1$ полюс порядка $1$, а вторая в точке $s = 1$ даёт ноль порядка $1$. Следовательно, $F(s)$ аналитична при $\Re{s} > 1$.~\newline
+            Докажем следующие утверждения:
+            \begin{enumerate}
+                \item
+                \label{lm:II-7-1}
+                    ряд $F(s) = \sum_{n=1}^{\infty} \frac{a_n}{n^s}$ сходится абсолютно при $\Re{s} > 1$, причем $F^{(k)}(s) = (-1)^k \sum_{n=1}^{\infty} \frac{\ln{n}^k a_n}{n^s}$,
+                \item
+                \label{lm:II-7-2}
+                    $a_n \ge 0$,
+                \item
+                \label{lm:II-7-3}
+                    $a_{r^2} \ge 1$, $\forall r \in \NN$,
+                \item
+                \label{lm:II-7-4}
+                    ряд $\sum_{n=1}^{\infty} \frac{a_n}{n^s}$ расходится при $s = \frac{1}{2}$.
+            \end{enumerate}
+            \begin{statesp}
+                \item
+                    Надо доказать, что ряд $\sum_{n=1}^{\infty} \frac{\abs{a_n}}{n^s}$ сходится при $\Re{s} > 1$. Итак, при $\Re{s} > 1 + \delta$, $\delta > 0$ справедливо
+                    \[
+                        \frac{a_n}{n^s} \le \frac{\abs{a_n}}{n^{\sigma}} < \frac{\abs{a_n}}{n^{1 + \delta}} \text{ --- общий член сходящегося ряда}.
+                    \]
+                    Следовательно, по признаку Вейерштрасса ряд $\sum_{n=1}^{\infty} \frac{a_n}{n^s}$ сходится равномерно. Но тогда по Теореме Вейерштрасса этот ряд задаёт аналитическую функцию, причём его можно почленно дифференцировать.
+                \item
+                    \begin{align*}
+                        a_n &= \sum_{d \divides n} \chi(d) 
+                        = \prod_{j=1}^r \sum_{\beta_j=0}^{a_j} \chi(p_j)^{\beta_j} 
+                        = \prod_{j=1}^r a_{n_j},\\
+                        \text{где } a_{n_j} &= 1 + \chi(p_j) + \dots + \chi(p_j)^{\alpha_j} 
+                        = \begin{cases}
+                            1, & \chi(p_j) = 0, \\
+                            1 + \alpha_j, & \chi(p_j) = 1, \\
+                            \frac{1 - \chi(p_j)^{1+\alpha_j}}{1 - \chi(p_j)}, & \chi(p_j) \not\in \{0, 1\}.
+                        \end{cases}
+                    \end{align*}
+                    То есть по итогу мы можем представить $a_{n_j}$ так:
+                    \[
+                        a_{n_j} 
+                        = \begin{cases}
+                            1 + \alpha_j, & \chi(p_j) = 1, \\
+                            0, & \chi(p_j) = -1,\, \alpha_j \notdivby 2, \\
+                            1, & \chi(p_j) = 0 \text{ или } \chi(p_j) = -1,\, a_j \divby 2.
+                        \end{cases}
+                    \]
+                    Из того, что $a_{n_j} \ge 0$, следует $a_n \ge 0$.
+                \item
+                    Следует из Пункта~\ref{lm:II-7-2}.
+                \item
+                    Следует из Пунктов~\ref{lm:II-7-2} и \ref{lm:II-7-3}.
+            \end{statesp}
+            Из нашего предположения следует, что $F(s)$ аналитична в $\Re{s}>0$, поэтому в круге $\abs{s - 2} < 2$ на вещественной прямой выполняется
+            \begin{align*}
+                F(\sigma) &= \sum_{k=0}^{\infty} \frac{F^{(k)}(2)}{k!}(\sigma - 2)^k \\
+                &= \sum_{k=0}^{\infty} \frac{(\sigma - 2)^k}{k!}\sum_{n=1}^{\infty} (-1)^k\frac{(\ln{n})^k a_n}{n^2} \\
+                &= \sum_{k=0}^{\infty} \frac{(2 - \sigma)^k}{k!} \sum_{n=1}^{\infty} \frac{(\ln{n})^k a_n}{n^2} \\
+                &= \sum_{n=1}^{\infty} \frac{a_n}{n^2} \sum_{k=0}^{\infty} \frac{(\ln{n})^k (2 - \sigma)^k}{k!} \\
+                &= \sum_{n=1}^{\infty} \frac{a_n}{n^2}n^{2-\sigma} \\
+                &= \sum_{n=1}^{\infty} \frac{a_n}{n^\sigma}.
+            \end{align*}
+            В частности, при $\sigma = \frac{1}{2}$ получаем
+            \[
+                F\left( \frac{1}{2} \right) = \sum_{n=1}^{\infty} \frac{a_n}{n^{\sfrac{1}{2}}}.
+            \]
+            Но в Пункте~\ref{lm:II-7-4} мы доказали, что он расходится. Противоречие.
+    \end{casesp}
+\end{proof}

@@ -1,0 +1,77 @@
+% Makes the titlepage's layout wider
+\newgeometry{
+    hmargin=3.5cm,% Equivalent to `left=3.5cm, right=3.5cm`
+    vmargin=1.7cm%  Equivalent to `top=1.7cm, bottom=1.7cm`
+}
+
+
+\begin{titlepage}
+    % Sets the page numbering style to Roman uppercase, removing the ambiguity for hyperref
+    % Since it's the titlepage, it'll only show up in a PDF viewer
+    \pagenumbering{Roman}
+
+    \centering
+
+    \large
+    \scshape
+    МОСКОВСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ~\\
+    имени М.В. ЛОМОНОСОВА
+ 
+    \vspace{0.8cm}
+ 
+    МЕХАНИКО--МАТЕМАТИЧЕСКИЙ ФАКУЛЬТЕТ
+    
+    \vfill
+    
+    % Sets the vector logo of Mechmath MSU, see the .tikz file for details
+    \input{./img/mechmath.tikz}
+
+    \vspace{0.35cm}
+
+    \Huge
+    Конспект лекций по~\\
+    \textbf{%
+        Теории Чисел
+    }
+
+    \vspace{0.5cm}
+
+    \large
+    Лектор --- 
+    \textbf{%
+        Герман Олег Николаевич
+    }
+
+    \vspace{0.8cm}
+    
+    7-й семестр, первый поток, осень 2017
+
+    \vspace{1.8cm}
+
+    \normalsize
+    Конспект подготовили
+
+    \vspace{0.4cm}
+
+    \begin{minipage}{0.49\textwidth}
+        \begin{flushleft}
+            \textbf{Соколов Артемий\\(группа 405)}\\
+            нечётные лекции
+        \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.49\textwidth}
+        \begin{flushright}
+            \textbf{Геворков Артемий\\(группа 402)}\\
+            чётные лекции
+        \end{flushright}
+    \end{minipage}
+
+    \vspace{1.5cm}
+
+    \vfill
+    \textnormal{Москва, 2017 г.}
+\end{titlepage}
+
+
+% Resets the layout to the one defined in preamble/layout.tex for all proceeding pages
+\restoregeometry

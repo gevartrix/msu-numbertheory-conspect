@@ -1,0 +1,17 @@
+%%% PREAMBLE :: Encoding and Languages
+%
+% Sets the proper encoding (UTF-8) for writing in English and Russian
+
+
+%% Imports required packages
+% Sets the font encoding (Latin, Cyrillic)
+\usepackage[%
+    % T1,%  Latin characters including the accented ones. Suggested for writing papers in English
+    T2A%  Cyrillic characters, as well as the Latin ones (first 128 mappings of `T2A` are identical to `T1`). Required for writting papers in Russian
+]{fontenc}
+
+% Makes LaTeX interpret text as UTF-8 rather than ASCII
+\usepackage[utf8]{inputenc} 
+
+% Enables special symbols and hyphenation for Russian (primary) and English
+\usepackage[english,russian]{babel}

@@ -1,0 +1,57 @@
+\documentclass[%
+  a4paper,%    Sets the size of the main font in the document
+  titlepage,%  Specifies that a new page should be started after the document title (can be omitted for the `report` class)
+  11pt%        Sets the size of the main font in the document
+]{article}%    Standard and arguably the most versatile document class. Has `\section` as the top sectioning level
+
+% Sets up the preamble. Please see these .TEX files for details
+\input{./preamble/encoding}%   Encoding and Languages
+\input{./preamble/graphics}%   Graphics paths and parameters
+\input{./preamble/layout}%     General layout
+\input{./preamble/maths}%      Mathematical packages, theorem environments and additional commands/operators
+
+
+% Sets up the .PDF's metadata (see preamble/layout.tex)
+\title{Конспект лекций по Теории Чисел}
+\author{Артемий Соколов \and~Артемий Геворков}
+
+
+\begin{document}
+    \input{./sections/00titlepage}
+    \input{./sections/01intro}
+    % Resets the page numbering style, so the main content starts from page 1
+    \pagenumbering{arabic}
+    \tableofcontents
+
+    % Toggles the fancyhdr configuration for the proceeding pages
+    \pagestyle{fancy}
+
+    \begin{lecture}{5 сентября 2017 г.}
+        \input{./sections/lectures/01}
+    \end{lecture}
+
+    \begin{lecture}{12 сентября 2017 г.}
+        \input{./sections/lectures/02}
+    \end{lecture}
+
+    \begin{lecture}{19 сентября 2017 г.}
+        \input{./sections/lectures/03}
+    \end{lecture}
+
+    \begin{lecture}{26 сентября 2017 г.}
+        \input{./sections/lectures/04}
+    \end{lecture}
+
+    \begin{lecture}{3 октября 2017 г.}
+        \input{./sections/lectures/05}
+    \end{lecture}
+
+    \begin{lecture}{10 октября 2017 г.}
+        \input{./sections/lectures/06}
+    \end{lecture}
+
+    \begin{lecture}{17 октября 2017 г.}
+        \input{./sections/lectures/07}
+    \end{lecture}
+
+\end{document}
