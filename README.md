@@ -48,30 +48,30 @@
 <details>
   <summary>Кликните сюда, чтобы развернуть</summary>
 
-  ├── img
-  │   ├── figures
-  │   │   ├── 4-1.tikz
-  │   │   ├── 4-2.tikz
-  │   │   └── 5-1.tikz
-  │   └── mechmath.tikz
-  ├── preamble
-  │   ├── encoding.tex
-  │   ├── graphics.tex
-  │   ├── layout.tex
-  │   └── maths.tex
-  ├── sections
-  │   ├── lectures
-  │   │   ├── 01.tex
-  │   │   ├── 02.tex
-  │   │   ├── 03.tex
-  │   │   ├── 04.tex
-  │   │   ├── 05.tex
-  │   │   ├── 06.tex
-  │   │   └── 07.tex
-  │   ├── 00titlepage.tex
-  │   └── 01intro.tex
-  ├── main.tex
-  └── Makefile
+    ├── img
+    │   ├── figures
+    │   │   ├── 4-1.tikz
+    │   │   ├── 4-2.tikz
+    │   │   └── 5-1.tikz
+    │   └── mechmath.tikz
+    ├── preamble
+    │   ├── encoding.tex
+    │   ├── graphics.tex
+    │   ├── layout.tex
+    │   └── maths.tex
+    ├── sections
+    │   ├── lectures
+    │   │   ├── 01.tex
+    │   │   ├── 02.tex
+    │   │   ├── 03.tex
+    │   │   ├── 04.tex
+    │   │   ├── 05.tex
+    │   │   ├── 06.tex
+    │   │   └── 07.tex
+    │   ├── 00titlepage.tex
+    │   └── 01intro.tex
+    ├── main.tex
+    └── Makefile
 
 </details>
 
