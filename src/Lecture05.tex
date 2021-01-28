@@ -1,0 +1,74 @@
+\begin{lemma} \label{l5_lm14}
+	Если $|s| = R$, то $\displaystyle \frac{s}{R^2} + \frac{1}{s} = \frac{2 \Re(s)}{R^2}$
+\end{lemma}
+\begin{pf}~\\
+    $\displaystyle \frac{s}{R^2} + \frac{1}{s} = \frac{1}{R} \left( \frac{s}{R} + \frac{R}{s} \right) = \frac{1}{R} \cdot 2 \Re\left(\frac{s}{R}\right) = \frac{2 \Re(s)}{R^2}$.
+\end{pf}
+
+\begin{lemma} \label{l5_lm15}
+    При $T > 1$ и $x \in \mathbb{R}$ выполнено $\displaystyle x T^{-x} \leq \frac{1}{e \ln(T)}$.
+\end{lemma}
+\begin{pf}
+	Считаем производную $\displaystyle (x T^{-x})' = (1 - x \ln(T))T^{-x}$.  Она обращается в $0$ в точке $\displaystyle x_0 = \frac{1}{\ln(T)}$. Ну и несложно видеть, что функция при $x < x_0$ возрастает, при $x > x_0$ убывает, значит максимум значения функции равен $\displaystyle \frac{1}{\ln (T)} T^{-\frac{1}{\ln(T)}} = \frac{1}{e \ln(T)}$.
+\end{pf}
+
+Положим
+$\displaystyle \Gamma_1 = \Gamma \cap \lbrace s \in \mathbb{C} | \Re(s) \geq 0\rbrace$,
+$\displaystyle \Gamma_2 = \Gamma \cap \lbrace s \in \mathbb{C} | \Re(s) \leq 0\rbrace$.\\
+Тогда $\displaystyle I(T) = I_1(T) + I_2(T) = \frac{1}{2 \pi i} \int_{\Gamma_1} \ldots + \frac{1}{2 \pi i} \int_{\Gamma_2} \ldots$\\
+По Лемме \ref{l4_lm13}
+$$|I_1(t)| \leq \frac{1}{2 \pi} \int_{\Gamma_1} A \frac{T^{-\sigma}}{\sigma} T^{\sigma} \frac{2 \sigma}{R^2} ds = \frac{1}{2 \pi} \frac{2 A}{R^2} = A \epsilon$$
+$$I_2(T) = I_3(T) - I_4(T) = \frac{1}{2 \pi i} \int_{\Gamma_2} F(1 + s) T^{\sigma} \left( \frac{s}{R^2} + \frac{1}{s}\right)ds - \frac{1}{2 \pi i} \int_{\Gamma_2} F_T(1 + s) T^{\sigma} \left( \frac{s}{R^2} + \frac{1}{s}\right)ds.$$
+По Лемме \ref{l4_lm13}, $I_4(T)$ оценивается точно так же, как и $I_1(T)$, только надо заменить контур $\Gamma_1$ на $\Gamma_3$. Это можно сделать, так как у подынтегральной функции нет полюсов вне контура $\Gamma_3 \cup \Gamma_2$ (полюс только $0$). Таким образом, $|I_4(T)| \leq A \epsilon$.\\
+Осталось оценить $\displaystyle I_3(T) = \int_{\Gamma_2} F(1 + s) T^s \left( \frac{s}{R^2} + \frac{1}{s}\right)$.\\
+Заметим, что
+\begin{enumerate}[nolistsep]
+	\item на малых дугах $\displaystyle \left| T^s \left( \frac{s}{R^2} + \frac{1}{s} \right) \right| = \frac{2 \sigma}{R^2} T^{\sigma}  \underset{\text{Лемма \ref{l5_lm14}}}{=} \frac{2 \sigma T^{-|\sigma|}}{R^2} \underset{\text{Лемма \ref{l5_lm15}}}{\leq} \frac{2}{R^2} \frac{1}{e \ln(T)}$;
+	\item на вертикальном отрезке $T^s = T^{-h}$;
+	\item на $\Gamma_2$ верно $\displaystyle |F(1 + s) \left( \frac{s}{R^2} + \frac{1}{s} \right)| \leq C = C(\epsilon)$ — не зависит от $T$.
+\end{enumerate}
+Следовательно, $I_3(T) \rightarrow 0$ при $T \rightarrow +\infty$. То есть, $\exists T_0(\epsilon): \forall T > T_0$ выполняется $|I_3(T)| < \epsilon$.\\
+Итак, $|I(T)|\leq |I_1(T)| + |I_4(T)| + |I_3(T)| \leq A\epsilon + A\epsilon + \epsilon = (2 A + 1) \epsilon$.\\
+Теорема \ref{l4_thm7} $\Rightarrow$ Лемма \ref{l4_lm12}.
+Леммы \ref{l1_lm1} и \ref{l4_lm12} $\Rightarrow$ Теорема \ref{l1_thm2} — АЗРПЧ.
+
+\newpage
+\begin{center}
+	\section{Теорема Дирихле о простых числах в арифметических прогрессиях}
+\end{center}
+\begin{theorem}[Дирихле] \label{l6_thm_Dir}
+    Пусть $l, m \in \mathbb{Z}, (l, m) = 1, m \geq 2$. Тогда существует бесконечно много простых $p$ таких, что $p \underset{m}{\equiv} l$.
+\end{theorem}
+
+\begin{note}
+    При фиксированном $m$ таких прогрессий ровно $\phi(m)$ штук. \\
+    Число простых до $x$ в этой прогрессии на самом деле $\frac{1}{\phi(m)} \frac{x}{\ln x}$, то есть эти простые распределены по прогрессии равномерно. Но доказывать мы это, конечно же, не будем.
+\end{note}~\\
+
+\subsection{Свойства характеров}
+\begin{definition}
+    Пусть $m \in \mathbb{N}, m \geq 2$. Функция $\chi : \mathbb{Z} \rightarrow \mathbb{C}$ называется\textit{ числовым характером (Дирихле) по модулю $m$}, если
+    \begin{enumerate}[nolistsep]
+        \item $\forall a \in \mathbb{Z}$ выполняется $\chi(a + m) = \chi(a)$;
+        \item $\chi(a) = 0 \Leftrightarrow (a, m) \ne 1$;
+        \item $\chi(ab) = \chi(a) \chi(b)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{note}
+    Несложно провести биекцию
+    $\displaystyle \chi: \mathbb{Z} \rightarrow \mathbb{C} \leftrightarrow \overline{\chi}: \mathbb{Z}_m^\ast \rightarrow \mathbb{C}^\ast$.
+\end{note}
+
+\begin{note}
+    $|\chi(a)| = 0\text{, если } (a, m) \ne 1; 1\text{, иначе}$.
+    Для начала заметим, что $\chi(1) = \chi(1 \cdot 1) = \chi(1)^2$ , и поскольку $\chi(1) \ne 0$, то $\chi(1) = 1$.
+    Вспомним, что если $(a, m) = 1$, то $a^{\phi(m)} \underset{m}{\equiv} 1$ (Малая теорема Ферма). Тогда
+    $\chi(a)^{\phi(m)} = \chi(a^{\phi(m)}) = \chi(1) = 1$. Таким образом, мы получили, что $\chi(a) \in \sqrt[\phi(m)]{1}$.
+\end{note}
+
+Вспомним теорему с первого курса: $\mathbb{Z}_m^\ast$ циклическая $\Leftrightarrow m = 1, 2, 4, p^k, 2p^k$ для простого $p$. \footnote{Это эквивалентно наличию первообразного корня по искомому модулю}
+
+\begin{proposition}
+    $\mathbb{Z}_m^\ast$ разлагается в прямое произведение циклических групп.
+\end{proposition}

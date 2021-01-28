@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}	
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{multirow,booktabs}
+\usepackage[table]{xcolor}
+\usepackage{fullpage}
+\usepackage{lastpage}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{wrapfig}
+\usepackage{setspace}
+\usepackage{calc}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage[margin=3cm]{geometry}
+\usepackage{amsmath}
+\newlength{\tabcont}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+\usepackage{empheq}
+\usepackage{import}
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage[space]{grffile}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\graphicspath{{./img/}}
+\colorlet{shadecolor}{orange!15}
+\parindent 0in
+\parskip 12pt
+\geometry{margin=1in, headsep=0.25in}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\DeclareMathOperator{\Ree}{Re}
+\DeclareMathOperator{\Imm}{Im}
+
+\textwidth=500pt
+\textheight=700pt
+\oddsidemargin=20pt
+\hoffset=-1.5cm
+\topmargin=-25mm
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{hypothesis}{Гипотеза}[section]
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{proposition}{Предложение}[section]
+\newtheorem{corollary}{Следствие}[section]
+\newtheorem*{note}{Замечание}
+\newtheorem{problem}{Задача}[section]
+\newtheorem*{test}{Признак}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem{example}{Пример}[section]
+\newtheorem{statement}{Утверждение}[section]
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Замечание}
+
+\newenvironment{pf}
+  {\par\noindent{\it Доказательство.}}
+  {\hfill$\scriptstyle\blacksquare$~\\}
+  
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Решение]}
+  {\end{proof}}
+
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+\renewcommand{\Re}{\Ree}
+\renewcommand{\Im}{\Imm}
+
+\hypersetup{
+    colorlinks,
+    citecolor=green,
+    filecolor=red,
+    linkcolor=red,
+    urlcolor=blue
+}
+
+
+\begin{document}
+\title{Лекции по теории чисел}
+
+
+\thispagestyle{empty}
+
+\import{./src/}{Title}
+
+\newpage
+~\\~\\~\\
+\import{./src/}{Annotation}
+
+%\begin{center}
+	% \Large За\TeX ано Артемиями, Геворковым и Соколовым.\\~\\
+%\end{center}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+%\import{./src/}{Summary}
+%\newpage
+
+%Лекция 01 (05.9.2017)
+\import{./src/}{Lecture01}
+
+%Лекция 02 (12.9.2017)
+\import{./src/}{Lecture02}
+
+%Лекция 03 (19.9.2017)
+\import{./src/}{Lecture03}
+
+%Лекция 04 (26.9.2017)
+\import{./src/}{Lecture04}
+
+%Лекция 05 (03.10.2017)
+\import{./src/}{Lecture05}
+
+%Лекция 06 (10.10.2017)
+\import{./src/}{Lecture06}
+
+%Лекция 07 (17.10.2017)
+\import{./src/}{Lecture07}
+
+%Лекция 08 (24.10.2017)
+\import{./src/}{Lecture08}
+
+%Лекция 09 (31.10.2017)
+\import{./src/}{Lecture09}
+
+%Лекция 10 (07.11.2017)
+\import{./src/}{Lecture10}
+
+%Лекция 11 (14.11.2017)
+\import{./src/}{Lecture11}
+
+%Лекция 12 (21.11.2017)
+\import{./src/}{Lecture12}
+
+%Лекция 13 (28.11.2017)
+\import{./src/}{Lecture13}
+
+%Лекция 14 (05.12.2017)
+\import{./src/}{Lecture14}
+
+\end{document}

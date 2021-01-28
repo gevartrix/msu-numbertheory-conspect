@@ -1,0 +1,86 @@
+\begin{definition}
+	Иррациональное число $\theta$ называется \textit{плохо приближаемым}, если $\exists C = C(\theta) > 0$ такое, что $\forall \frac{p}{q}$ выполняется $\displaystyle \left| \theta - \frac{p}{q} \right| \geq \frac{C}{q^2}$.
+\end{definition}
+
+Известно (существует такая теорема), что число плохо приближаемо тогда и только тогда, когда неполные частные при разложении в цепную дробь ограничены.
+Например, для квадратичной иррациональности неполные частные периодичны \footnote{Теорема Лагранжа с $1$-го курса}, а значит и ограничены, т.е. квадратичные иррациональности плохо приближаемы.\\
+Отныне и далее мы будем подразумевать, что $\theta$ — вещественное число, а $\alpha$ — комплексное.
+
+\begin{definition}
+	Число $\alpha \in \mathbb{C}$ называется \it{алгебраическим}, если существует ненулевой многочлен $f(x)$ c рациональными (или целыми) коэффициентами такой, что $f(\alpha) = 0$. Такой многочлен $f(x)$ называется аннулирующим многочленом для числа $\alpha$.
+\end{definition}
+
+\begin{definition}
+	\textit{Степенью алгебраического числа} $\deg \alpha$ называется минимальная степень аннулирующего многочлена.
+\end{definition}
+
+\begin{theorem}[Лиувилля]  \label{l9_Liouv}
+	Пусть $\theta$ — вещественное алгебраическое число степени $d$. Тогда $\exists C = C(\theta) > 0$ такое, что для любого $\displaystyle \frac{p}{q} \in \mathbb{Q} \setminus \lbrace 0 \rbrace$ справедливо $\displaystyle \left|\theta - \frac{p}{q}\right| \geq \frac{C}{q^d}$, или, другими словами, $\mu(\theta) \leq d$.
+\end{theorem}
+\begin{pf}
+	Случай $d = 1$ уже доказан в первом утверждении в разделе.\\
+	Пусть далее $\theta \not \in \mathbb{Q}$. Рассмотрим многочлен $f(x)$ степени $d$ с целыми коэффициентами такой, что $f(\theta) = 0$.\\
+	Заметим, что для любого $\displaystyle \frac{p}{q} \in \mathbb{Q}$ выполнено $\displaystyle f\left(\frac{p}{q}\right) \ne 0$. Действительно, так как иначе бы многочлен $\displaystyle \frac{f(x)}{x - \frac{p}{q}}$ был бы аннулирующим многочленом для $\alpha$ степени $d - 1$.\\
+	Поскольку $f(x)$ с целыми коэффициентами, то $\displaystyle q^d f\left(\frac{p}{q}\right) \in \mathbb{Z} \Rightarrow \left| q^d f\left(\frac{p}{q}\right) \right| \geq 1 \Rightarrow \left| f\left(\frac{p}{q}\right) \right| \geq \frac{1}{q^d}$.\\
+	Если $\displaystyle \left| \theta - \frac{p}{q} \right| \geq 1$, то для любого $\displaystyle \frac{p}{q} \ \left|\theta - \frac{p}{q}\right| \geq \frac{1}{q^d}$.\\
+	Пусть теперь $\displaystyle \left|\theta - \frac{p}{q}\right| < 1$, т.е. $\displaystyle \frac{p}{q} \in [\theta - 1, \theta + 1]$. Тогда
+	$$\frac{1}{q^d} \leq \left| f\left(\frac{p}{q}\right)\right| = \left|f\left(\frac{p}{q}\right) - f\left(\theta\right)\right| = \left|\left(\frac{p}{q} - \theta\right)f'(\xi)\right| \leq M \cdot \left| \theta - \frac{p}{q} \right|, \, \text{ где } M = \max\limits_{[\theta-1,\theta+1]}\left| f'(x) \right|.$$
+	Таким образом, $\displaystyle \left| \theta - \frac{p}{q} \right| \geq \frac{1}{Mq^d}$, и искомое $\displaystyle C = \min\left( 1, \frac{1}{M} \right)$.
+\end{pf}
+
+\begin{definition}
+	Если $\theta \in \mathbb{R}$ таково, что $\forall n \in \mathbb{N}$ неравенство $\displaystyle \left|\theta - \frac{p}{q}\right| < \frac{1}{q^n}$ имеет бесконечное количество решений в $\displaystyle \frac{p}{q} \in \mathbb{Q}$, то число $\theta$  называется \textit{луивиллевым} ( $=$ число Луивилля). Числа, не являющиеся луивиллевыми, называются \textit{диофантовыми}.
+\end{definition}
+
+\begin{proposition} \label{l9_prp}
+	Луивиллевы числа трансцендентны.
+\end{proposition}
+\begin{pf}
+	Предположим противное, т.е. пусть $\theta$ алгебраическое. Тогда для него верна теорема Луивилля, а именно
+	$$\exists C > 0:  \forall  \frac{p}{q} \in \mathbb{Q} \setminus \lbrace 0 \rbrace \text{ выполнено }  \left|\theta - \frac{p}{q}\right| \geq \frac{C}{q^d}.$$
+	Тогда при $n \geq d$ из неравенства $\displaystyle \left|\theta - \frac{p}{q}\right| < \frac{1}{q^{n + 1}}$ следует, что $\displaystyle q \leq \frac{1}{C}$.\\
+	Кроме того, $\displaystyle \left|q \theta - p\right| \leq 1 \Rightarrow |p| \leq 1 + q|\theta| < 1 + \frac{|\theta|}{C}.$\\
+	То есть числа $q$ и $p$ ограничены, значит и количество решений. Противоречие.
+\end{pf}
+
+\begin{example}
+	Число $\displaystyle \theta = \sum_{n = 0}^{\infty} \frac{1}{2^{n!}}$ — луивиллево.
+\end{example}
+\begin{pf}
+	Пусть $m \in \mathbb{N}$. Рассмотрим $N \geq m$. Обозначим через $\displaystyle \frac{p}{q} = \sum_{n = 1}^{N} \frac{1}{2^{n!}}$. Тогда $\displaystyle \left| \theta - \frac{p}{q} \right| = \sum_{n = N + 1}^{\infty} \frac{1}{2^{n!}} \leq 2 \cdot \frac{1}{2^{(N+1)!}} = \frac{2}{q^{N + 1}} \leq \frac{1}{q^N} \leq \frac{1}{q^m}$.\\
+	Таким образом, неравенство $\displaystyle \left| \theta - \frac{p}{q} \right| \leq \frac{1}{q^m}$ имеет бесконечное число решений.
+\end{pf}
+
+Кругозора ради добавим, что существует следующая очень сложная
+
+\begin{theorem}[Туэ-Зигеля-Рота]
+	Пусть $\theta$ — иррациональное алгебраическое число. Тогда $\forall \epsilon > 0$ такое, что $\exists C = C(\theta, \epsilon)$, что для любых $\frac{p}{q} \in \mathbb{Q}$ справедливо
+	$$\left|\theta - \frac{p}{q}\right| \geq \frac{C}{q^{2 + \epsilon}} = \frac{2}{q^{N+1}} \leq \frac{1}{q^N} \leq \frac{1}{q^m}.$$
+	Таким образом, неравенство $\displaystyle \left|\theta - \frac{p}{q}\right| \leq \frac{1}{q^m}$ имеет бесконечное количество решений.
+\end{theorem}~\\
+
+\subsection{Иррациональность $e$ и $\pi$}
+\begin{theorem} \label{l9_thm_e_irr}
+	$e \not\in \mathbb{Q}$.
+\end{theorem}
+\begin{pf}
+	Вспомним, что $\displaystyle e = \sum_{n=0}^{\infty} \frac{1}{n!}$. Пусть $e = \frac{p}{q} \in \mathbb{Q}$. Тогда $q! e \in \mathbb{N}$. Несложно видеть, что
+	$$\mathbb{N} \ni \sum_{n = q + 1}^{\infty} \frac{q!}{n!} = \frac{1}{q + 1} + \frac{1}{(q + 1)(q+2)} + \frac{1}{(q+1)(q+2)(q+3)} + \ldots < \sum_{k = 1}^{\infty} \frac{1}{(q+1)^k} \leq 1.$$
+	Получаем противоречие.
+\end{pf}
+
+\begin{theorem} \label{l9_thm_pi_irr}
+	$\pi \not \in \mathbb{Q}$.
+\end{theorem}
+\begin{pf}
+	Пусть $\pi = \frac{p}{q}, \, p,q \in \mathbb{N}$.
+	Положим $\displaystyle f_n(x) = q^n \frac{x^n (\pi - x)^n}{n!} = \frac{x^n (q - px)^n}{n!} = \frac{q(x)}{n!}$, где $g(x) \in \mathbb{Z}[x]$.\\
+	Рассмотрим $\displaystyle I_n = \int_{0}^{\pi} f_n(x) \sin(x) dx$, $I_n \geq 0$.\\
+	Положим $\displaystyle F_n(x) = f_n(x) - f_n''(x) + f_n^{(4)}(x) + \ldots = \sum_{k = 0}^{\infty} (-1)^k f_n^{(2k)}(x)$.\\
+	Поскольку $f_n(x) = f_n(\pi - x)$, то $f_n^{(k)}(x) = f_n^{(k)}(\pi - x)$ для чётных $k$. Из этого мы видим, что $F_n(x) = F_n(\pi - x)$.\\
+	Заметим, что $\left( F_n'(x) \sin x - F_n(x) \cos x\right)' = f_n(x) \sin x$.\\
+	$I_n = \left(F_n'(x) \sin x - F_n(x) \cos x \right)_{0}^{\pi} = F_n(0) + F_n(\pi)$.\\
+	$$|f(x) \sin x| \leq \frac{b^n \left( \frac{\pi}{2}\right)^{2n}}{n!} \rightarrow 0 \text{ при } n \rightarrow \infty,$$
+	$$I_n = 2F_n(0) = 2 \sum_{k=0}^{\infty} (-1)^kf^{(2k)}(0) \in \mathbb{Z}.$$
+	Итак, последовательность $\lbrace I_n \rbrace$ положительна, целочисленна, и стремится к нулю, в чём и заключается противоречие.
+\end{pf}

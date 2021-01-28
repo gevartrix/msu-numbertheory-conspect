@@ -1,0 +1,81 @@
+\subsection{Трансцендентность числа $e$}
+\begin{theorem}
+	Число $e$ трансцендентно.
+\end{theorem}
+\begin{pf}
+	Предположим противное: пусть $\displaystyle \exists a_0,\dots,a_m \in \mathbb{Z}: \ \sum\limits_{k=0}^m a_ke^k = 0$, где не все $a_k = 0$.
+	Считаем, что $\left( a_0, \dots, a_m \right)=1$. Ортогональным дополнением к $\left( a_0, \dots, a_m \right)$ является полуплоскость $\Pi$, проходящая через $\left( 1, e, e^2, \dots, e^m \right)$. При этом в гиперплоскости можно выбрать базис из целочисленных векторов.\\
+	Разбиваем все точки $\mathbb{Z}^{m+1}$ на параллельные слои $\mathbb{Z}^m$ (любое $b \in \mathbb{Z}^{m+1}$ лежит в слое с номером $\langle a,b \rangle$). Расстояние между слоями одинаковое и (при условии, что $(a_0,\dots,a_m) = 1$) оно равно $\displaystyle \Delta = \frac{1}{\sqrt{a_0^2 + a_1^2 +\dots+ a_m^2}}$. Построим последовательность $\mathcal{B}^{(n)} \in \mathbb{Z}^{m+1}$ такую, что
+	\begin{enumerate}[nolistsep]
+		\item[1)] расстояние от $\mathcal{B}^{(n)}$ до $\langle \left(1,e,e^2,\dots,e^m\right) \rangle$ меньше $\Delta$,
+		\item[2)] точка $\mathcal{B}^{(n)}$ не лежит в $\Pi$.
+	\end{enumerate}
+	Напомним, что $\displaystyle \int_0^\infty x^ke^{-x}dx = \Gamma(k+1) = k!$ Тогда можно брать $\displaystyle \int_0^\infty f(x)e^{-x}dx$ для многочленов $f$. Положим $\displaystyle f_n(x) = \frac{x^{n-1}(x-1)^n\dots(x-m)^n}{(n-1)!}$. Возьмём $\displaystyle \mathcal{B}_k^{(n)} = \int_0^{+\infty} f_n(x+k)e^{-x}dx, \ k=0,\dots,m$.\\ Покажем, что $\mathcal{B}_0^{(n)}e^k - \mathcal{B}_k^{(n)} \xrightarrow{n \to \infty} 0$:\\
+	При $k=0$ это просто $0$. Пусть $k \ne 0$: $\displaystyle \left| \mathcal{B}_0^{(n)}e^k - \mathcal{B}_k^{(n)} \right| = \left| e^k\int_0^\infty f_n(x)e^{-x}dx - \int_0^\infty f_n(x+k)e^{-x}dx \right| = e^k \left| \int_0^\infty f_n(x)e^{-x}dx - \int_k^\infty f_n(y)e^{-y}dy \right| = e^k \left| \int_0^k f_n(x)e^{-x}dx \right| \leq e^m m \frac{m^{n+nm-1}}{(n-1)!} = \frac{e^m m^{m(n+1)}}{(n-1)!} \xrightarrow{n \to \infty} 0$.\\
+	То есть $\mathcal{B}_0^{(n)}\left( 1, e, e^2, \dots, e^m \right)^T - \mathcal{B}^{(n)} \xrightarrow{n \to \infty} 0$. Следовательно, последовательность точек $\mathcal{B}^{(n)}$ стремится к прямой $\langle \left( 1, e, e^2, \dots, e^m \right) \rangle$ и, начиная с некоторого $n$, расстояние станет меньше $\Delta$.\\
+	Покажем теперь, что $\mathcal{B}_k^{(n)} \in \mathbb{Z}$, где $k=0,\dots,m$:\\
+	При $k=0$:\\
+	$\displaystyle \mathcal{B}_0^{(n)} = \frac{1}{(n-1)!} \sum\limits_k \left[ \text{коэффициент в } x^{n-1}(x-1)^n\dots(x-m)^n \text{ при } x^k \right] \cdot \int_0^\infty x^ke^{-x}dx = \\ = \frac{1}{(n-1)!}\left( (-1)^{mn} m!^n (n-1)! + A_n n! + \dots + A_N N! \right) \equiv (-1)^{mn}m!^n \mod n$.\\
+	При $k \geq 1$:\\
+	 $\displaystyle \mathcal{B}_k^{(n)} = \int_0^{+\infty}f_n(x+k)e^{-x}dx = \sum\limits_j \left[ \text{коэффициент в } \frac{(x+k)^{n-1}(x+k-1)^n\dots x^n \dots}{(n-1)!} \text{ при } x^j \right] \cdot j! = \frac{1}{(n-1)!}\left( C_nn! + C_{n+1}(n+1)! + \dots + C_NN! \right) \equiv 0 \mod n$.\\
+	Покажем, наконец, что для бесконечно многих $\displaystyle n \ \sum\limits_{k=0}^m a_k \mathcal{B}_k^{(n)} \ne 0$ (то есть, что $\mathcal{B}^{(n)} \not\in \Pi$):
+	$$\sum\limits_{k=0}^m a_k \mathcal{B}_k^{(n)} \equiv a_0(-1)^{mn}m!^n \ (\mathrm{mod} \ n).$$
+	Тогда при $\left(n, \ a_0m! \right) = 1$, где $a_0m!$ — некоторое фиксированное число, ряд будет не равен нулю.
+\end{pf}
+
+\newpage
+
+\begin{center}
+	\section{Алгебраические и трансцендентные числа}
+\end{center}
+
+\subsection{Основные сведения}
+Множество алгебраических чисел будем обозначать $\mathbb{A}$.\\
+Пусть $f(x) \in \mathbb{Q}[x], , f(\alpha) = 0, \, \deg f = \deg \alpha$. Тогда $f(x)$ неприводим над $\mathbb{Q}$. Следовательно, если $g(x) \in \mathbb{Q}[x], \, g(\alpha) = 0, \, \deg g = \deg \alpha (= \deg f)$, то НОД$(f(x), \, g(x)) = h(x) \in \mathbb{Q}[x]$, при этом $h(\alpha) = 0 = \deg h = \deg f,$ то есть, если $h \vert f, \, h \vert g, \deg h = \deg f = \deg f$ то они три все пропорциональны.
+
+\begin{definition}
+	Унитарный многочлен $p_\alpha(x) \in \mathbb{Q}[x]$ называется \textit{минимальным многочленом $\alpha$}, если
+	$p_\alpha(\alpha) = 0$ и $\deg p_\alpha = \deg \alpha$.
+\end{definition}
+
+Оказывается, что $\mathbb{A}$ — алгебраически замкнутое поле, т.е. корень многочлена с алгебраическими коэффициентами тоже будет алгебраическим числом.\\
+Для доказательства нам сначала понадобятся несколько лемм.
+
+\begin{theorem}[О симметрических многочленах] \label{l10_thSymm}~\\
+	Пусть $R$ — ассоциативное коммутативное кольцо с единицей и без делителей нуля.\\
+	Пусть $f \left( x_1, \dots, x_m \right) \in R \left[ x_1, \dots, x_m \right]$ — симметрический многочлен.\\
+	Тогда $\exists g\left( x_1, \dots x_m \right) \in R \left[ x_1, \dots, x_m \right]: \ f\left( x_1, \dots, x_m \right) = g\left( s_1\left( x_1, \dots, x_m \right), \dots, s_m\left( x_1, \dots, x_m \right) \right)$, где $s_k\left( x_1, \dots, x_m \right)$ — $k$-ый симметрический многочлен.
+\end{theorem}
+
+\begin{lemma} \label{l10_lm1}
+	Пусть $f(x,y) \in R[x,y]$. Тогда
+	$\displaystyle \exists g(x, y_1, \dots, y_m) \in R[x, y_1, \dots, y_m]: \ f(x,y_1)\cdot...\cdot f(x,y_m) = g(x,s_1(y_1,\dots,y_m),\dots,s_m(y_1,\dots,y_m))$.
+\end{lemma}
+\begin{pf}
+	$f(x,y_1) \cdot ... \cdot f(x, y_m) \in R[x][y_1,\dots,y_m]$, т.е. он симметричный по $y_1,\dots,y_m$ над $R[x]$. По Теореме \ref{l10_thSymm} существует искомый многочлен $g$, причём $g$ — многочлен от $(x,y_1,\dots,y_m$ над $R$.
+	%$\exists g \in R[x][yy_1,\dots,y_m]: \  g\left( s_1\left( y_1, \dots, y_m \right), \dots, s_m\left( y_1, \dots, y_m \right) \right) = 0$.
+\end{pf}
+
+\begin{lemma} \label{l10_lm2}
+	Пусть $f(x,y) \in \mathbb{Q}[x,y], \, \alpha \in \mathbb{A}, \, \deg\alpha = n, \, \alpha_1 = \alpha, \, \alpha_2,\dots,\alpha_n$ — корни $p_\alpha(x)$\footnote{Они попарно различны как корни любого неприводимого многочлена $f(x)$. Иначе бы у $f'(x)$ и $f(x)$ был этот корень общим, но $\deg(f') < \deg(f)$ — противоречие с неприводимостью.}. Тогда $F(x) = \prod\limits_{k=1}^n f(x,\alpha_k) \in \mathbb{Q}[x]$.
+\end{lemma}
+\begin{pf}
+	Применим Лемму \ref{l10_lm1}:
+	$$\prod\limits_{k=1}^n f(x, \alpha_k) = g\left( s_1\left( \alpha_1, \dots, \alpha_n \right), \dots, s_n\left( \alpha_1, \dots, \alpha_n \right) \right).$$
+	По теореме Виета все $s_i(\alpha_1,\dots,\alpha_n)$ выражаются через коэффициенты многочлена $p_\alpha$ и, следовательно, $s_i(\alpha_1,\dots,\alpha_n) \in \mathbb{Q}$.
+\end{pf}
+
+\begin{theorem} \label{l10_th1}
+	$\mathbb{A}$ — поле.
+\end{theorem}
+\begin{pf}
+	Пусть $\alpha, \beta \in \mathbb{A}$. Хотим проверить что $\{ \alpha @ \beta \vert @ \in \{+, -, /, \cdot \} \}$.\\
+	\textit{Сложение:}\\
+	Рассмотрим $\displaystyle F_1(x) = \prod\limits_{k=1}^m p_\alpha\left( x-\beta_k \right)$, где $\beta_1 = \beta, \, \beta_2,\dots,\beta_m$ — корни $p_\beta(x)$. Тогда по Лемме \ref{l10_lm2}: $F_1(x) \in \mathbb{Q}[x]$. При этом $\displaystyle F_1(\alpha + \beta) = \dots \cdot p_\alpha(\alpha) \cdot \dots = 0$.\\
+	\textit{Вычитание:}\\
+Если $\beta$ — алгебраическое, то алгебраическим будет и $-\beta$. Тогда $\alpha-\beta$ — тоже алгебраическое. Ну или так: $\displaystyle F_2(x) = \prod\limits_{k=1}^m p_\alpha \left( x+\beta \right) \in \mathbb{Q}[x], \, F_2(\alpha-\beta)=0$.\\
+	\textit{Деление:}\\
+	$\displaystyle F_3(x) = \prod\limits_{k=1}^m p_\alpha\left( x\beta_k \right) \in \mathbb{Q}[x], \, F_3\left( \frac{\alpha}{\beta} \right) = 0$.\\
+	\textit{Умножение:}\\
+	$\displaystyle F_4(x) = \prod\limits_{k=1}^m \beta_k^m p_\alpha\left( \frac{x}{\beta_k} \right) \in \mathbb{Q}[x], \, F_4\left( \alpha\beta \right) = 0$.
+\end{pf}

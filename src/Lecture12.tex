@@ -1,0 +1,66 @@
+\begin{pf} (Теоремы \ref{l11_th4})\\
+	Достаточно доказать для двух чисел: $E=\mathbb{Q}(\xi,\,\eta)$.\\
+	Пусть $\xi_1 = \xi, \xi_2,\dots,\xi_m$ — сопряженное к $\xi$, $\eta_1 = \eta, \eta_2,\dots,\eta_l$ — сопряженное к $\eta$.	Возьмём $c \in \mathbb{Q}$: все числа $\xi_i + c\eta_j$ попарно различны. Положим $\theta = \xi + c\eta$, утверждается, что $\theta$ — искомое. Обозначим $K = \mathbb{Q}(\theta)$, тогда $\mathbb{Q} \subset K \subset E$ — расширение полей. Покажем, что $\xi, \eta \in K$ — отсюда будет следовать, что $E \subset K$, т.е. $E=K$.\\
+	Рассмотрим $p_\xi(x),\,p_\eta(x)$, пусть $f(x) = p_\xi(\theta - cx)$, где $\theta \in K, \, c \in \mathbb{Q}, \, p_\xi \in \mathbb{Q}[x]$. Тогда $f(x) \in K[x]$. Заметим, что
+	$$f(\eta) = p_\xi(\theta - c\eta) = p_\xi(\xi) =0, \text{ т.е. } \eta \text{ — корень } f(x).$$
+	Так как $f$ и $p_\eta$ оба имеют коэффициенты из $K$, то рассмотрим $d(x) = \text{НОД}(f(x), p_\eta(x))$. Ясно, что $d(\eta) = 0 \ \Rightarrow \ (x-\eta) \vert d(x)$; $p_\eta(x)$ имеет корни $\eta_1, \eta_2, \dots, \eta_l$. Поэтому, $d \subset \{ \eta_1, \eta_2, \dots, \eta_l \}$.\\
+	Пусть $d(\eta_i)=0$. Так как $d \vert f$, то $f(\eta_i)=0$, но $f(\eta_i) = p_\xi(\theta - c\eta_i)$. То есть, $\theta - c\eta_i = \xi_j$ для некоторого $j$ (корни $p_\xi$), но $\theta = \xi_j + c\eta_i$ только когда $i=j=1$. Следовательно, $\eta$ — единственный корень $d(x)$. Так как $d$ делит $p_\eta$, и у $p_\eta$ нет кратных корней, то $d(x) = x - \eta$. Но $d(x) \in K[x] \ \Rightarrow \ \eta \in K$. Тогда $\xi = \theta - c\eta \in K$, ведь $\theta \in K$ (по определению $K$), $c \in \mathbb{Q}, \, \eta \in K$.
+\end{pf}
+
+\begin{theorem} \label{l12_th5}~\\
+	Поле $\mathbb{A}$ алгебраически замкнуто. То есть, если $f(x) \in \mathbb{A}[x]$, то $\exists \beta \in \mathbb{A}: \ f(\beta) = 0$.
+\end{theorem}
+\begin{pf}
+	Пусть $f(x) = \alpha_nx^n + \dots + \alpha_1x + \alpha_0 \in \mathbb{A}[x]$. Так как $\mathbb{A}$ — поле, то не теряя общности можно считать, что $\alpha_n = 1$. Рассмотрим $E = \mathbb{Q}\left( \alpha_1, \dots, \alpha_{n-1}, \alpha_n \right)$. По теореме \ref{l11_th4} о примитивном элементе: $E = \mathbb{Q}(\theta)$ для некоторого $\theta, \, \deg(\theta)=m$. Тогда $\alpha_i = r_i(\theta)$, где $r_i(x) \in \mathbb{Q}[x], \, \deg(r_i) \leq m-1$. То есть
+	$$f(x) = x^n + r_{n-1}(\theta) x^{n-1} + \dots + r_1(\theta)x + r_0(\theta).$$
+	Пусть $\theta_1, \theta_2, \dots, \theta_m$ — все сопряжены к $\theta$. Рассмотрим
+	$$F(x) = \prod\limits_{j=1}^m \left[ x^n + r_{n-1}(\theta_j)x^{n-1} + \dots + r_1(\theta_j) + r_0(\theta_j) \right],$$
+	заметим, что $f(x,y) = x^n + r_{n-1}(y)x^{n-1} + \dots + r_1(y) + r_0(y) \in \mathbb{Q}[x,y]$. По лемме \ref{l10_lm2}:
+	$F(x) \in \mathbb{Q}[x]$, при этом $f(x) \vert F(x)$ в $\mathbb{C}[x]$.
+	Следовательно, все корни $f(x)$ лежат в $\mathbb{A}$.
+\end{pf}~\\
+
+\subsection{Нормальные расширения}
+\begin{definition}
+	Пусть $E$ — конечное расширение поля $\mathbb{Q}$. Отображение $\sigma\colon E \to \mathbb{C}$ называется \textit{вложением}, если это инъективный гомоморфизм полей.
+\end{definition}
+
+\begin{theorem} \label{l12_th6}
+	Если $[E \colon \mathbb{Q}] = n$, то существует ровно $n$ различных вложений $E$ в $\mathbb{C}$.
+	При этом, если $E = \mathbb{Q}(\theta)$ и $\theta_1, \dots, \theta_m$ — все сопряжены к $\theta$, то отображение $\sigma \colon E \to \mathbb{C} \ (\alpha \cdot r(\theta) \mapsto r(\theta_i), \text{ где } r(x)\in\mathbb{Q}[x])$ является вложением $E$ в $\mathbb{C}$.
+\end{theorem}
+\begin{pf}
+	Покажем, что любое $\alpha \in E$ при вложении переходит в какое-то своё сопряжённое:\\
+	Пусть $\sigma$ — вложение. Тогда $0 \ne \sigma(1) = \sigma(1 \cdot 1) = \sigma(1)\sigma(1) \ \Rightarrow \sigma(1)=1$.\\
+	Тогда $\sigma(k) = \sigma(1+1+\dots+1) = \sigma(1)+\sigma(1)+\dots+\sigma(1) = k, \, \sigma(-1)+\sigma(1)=\sigma(0)=0 \ \Rightarrow \ \sigma(-1)=-1$.\\
+	Значит, $\forall k \in \mathbb{Z} \ \sigma(k)=k$.\\
+	Далее, $\forall k \in \mathbb{N} \ \sigma(k)\sigma\left(\frac{1}{k}\right) = \sigma(1) = 1$, откуда $\forall k \in \mathbb{Q} \ \sigma(k)=k$. Стало быть, если $f \in \mathbb{Q}[x]$, то $\forall \alpha \in E \ \sigma(f(\alpha)) = f(\sigma(\alpha))$. В частности, $p_\alpha(\sigma(\alpha)) = \sigma(p_\alpha(\alpha)) = \sigma(0) = 0 \ \Rightarrow \ \sigma(\alpha)$ — сопряжённое к $\alpha$.\\
+	Возьмём $\alpha = \theta$, тогда $\sigma \colon \theta \mapsto \theta_i$, где $i$ зависит от $\sigma$. И тогда $\forall r(x) \in \mathbb{Q}[x]: \ \sigma(r(\theta)) = r(\sigma(\theta)) = r(\theta_i)$.\\
+	Пусть $\sigma_i\colon E \to \mathbb{C} \ (\alpha = r(\theta) \mapsto r(\theta_i))$. Почему это вложение?\\
+	Пусть $\alpha, \beta \in E, \, \alpha = r(\theta), \, \beta = s(\theta), \, r(x), s(x) \in \mathbb{Q}[x], \, \deg(r) \leq n-1, \, \deg(s) \leq n-1$.\\
+	$\alpha + \beta = (r+s)(\theta), \, \alpha \cdot \beta = u(\theta)$, где $u(x)$ — остаток от деления $r(x)s(x)$ на $p_\theta(x)$. Аналогично, $r(\theta_i)s(\theta_i) = u(\theta_i)$.\\
+	Тогда
+	$$\sigma_i(\alpha)+\sigma_i(\beta) = r(\theta_i)+s(\theta_i) = (r+s)(\theta_i) = \theta_i((r+s)(\theta)) = \sigma_i(\alpha+\beta).$$
+	$$\sigma_i(\alpha)\sigma_i(\beta) = r(\theta_i)s(\theta_i) = u(\theta_i) = \sigma_i(u(\theta)) = \sigma_i(r(\theta)s(\theta)) = \sigma_i(\alpha\beta).$$
+	Если $\sigma_i(\alpha) = 0$ для некоторого $\alpha \ne 0$, то $1=\sigma_i(1 =\sigma_i(\alpha)\sigma_i(\alpha^{-1})=0$.
+	Противоречие.
+\end{pf}
+
+\begin{theorem} \label{l12_th7}
+	Пусть $[E \colon \mathbb{Q}] = n, \, \sigma_1,\dots,\sigma_n$ — все вложения $E$ в $\mathbb{C}, \, \alpha \in E, \, \deg(\alpha) = d$. Тогда $d \vert n$ и множество $\{ \sigma_1(\alpha),\dots,\sigma_n(\alpha) \}$ состоит из всех сопряжений к $\alpha$, каждое из которых повторяется $\displaystyle \frac{n}{d}$ раз.
+\end{theorem}
+\begin{pf}
+	$\alpha = r(\theta), \, r(x) \in \mathbb{Q}[x], \, \deg(r) \leq n-1$.
+	Рассмотрим $\displaystyle F(x) = \prod\limits_{i=0}^n (x-\sigma_i)(\alpha)$. Тогда $\displaystyle F(x) = \prod\limits_{i=1}^n (x-r(\theta_i))$ и по лемме \ref{l10_lm2} $F(x) \in \mathbb{Q}[x] \ \Rightarrow \ p_\alpha(x) \vert F(x)$.
+	Пусть $k$ максимальное такое, что $p_\alpha^k(x) \vert F(x)$. Рассмотрим $\displaystyle \frac{F(x)}{p_\alpha^k(x)} = g(x) \in \mathbb{Q}[x]$.
+	Если у $g$ есть корни (если $g \not\equiv const$), то его корни — какие-то сопряжённые с $\alpha$. Следовательно, $p_\alpha(x) \vert g(x)$ — противоречие с максимальностью $k$.
+	Значит, $g(x)=1,\,F(x)=p_\alpha^k(x),\,n=kd$.
+\end{pf}
+
+\begin{corollary}
+	$\sigma(\alpha) = \alpha$ при всех вложениях $E$ в $\mathbb{C} \ \Leftrightarrow \ \alpha \in \mathbb{Q}$.
+\end{corollary}
+\begin{pf}~\\
+	$(\Leftarrow)$ Очевидно.\\
+	$(\Rightarrow)$ Из теоремы \ref{l12_th7}.
+\end{pf}

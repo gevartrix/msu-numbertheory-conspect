@@ -1,0 +1,86 @@
+%\setcounter{section}{2}
+\subsection{Воспоминания из былых времен}
+\begin{theorem}[Вейерштрасса] \label{l2_th_Weierstrass}
+	Пусть в области $\Omega$ функции $f_n(s)$ аналитичны и ряд $\displaystyle \sum\limits_{n=1}^\infty f_n(s)$ сходится равномерно (по $\Omega$). Тогда он сходится к функции $f(x)$, аналитической в $\Omega$, причём $\displaystyle f'(s) = \sum\limits_{n=1}^\infty f_n'(s)$ \text{ — также сходится равномерно}.
+\end{theorem}
+
+\begin{test}[Вейерштрасса]
+	Если в $\Omega$ справедливо $|f_n(s)| < c_n$, и $\displaystyle \sum\limits_{n=1}^\infty c_n$ сходится, то ряд
+	$\displaystyle \sum\limits_{n=1}^\infty f_n(s)$ равномерно сходится в $\Omega$.
+\end{test}
+\begin{definition}
+	Функция $f: \mathbb{N} \rightarrow \mathbb{C}$ называется \textit{арифметической} функцией.
+    Если $f \not\equiv 0$ и $f(ab) = f(a) f(b)$ для любых $a, b$ таких, что $(a, b) = 1$, то функция называется \textit{мультипликативной}.
+	А если равенство $f(ab) = f(a) f(b)$ выполнено для абсолютно всех $a, b \in \mathbb{N}$, то функция называется \textit{вполне мультипликативной}.\\
+    \textit{Сверткой Дирихле} двух арифметических функций $f(n)$ и $g(n)$ является функция
+    $$\displaystyle (f \ast g)(n) = (g \ast f)(n) =  \sum_{k | n} f(k) g\left(\frac{n}{k}\right)$$
+    \textit{Формула обращения Мебиуса} гласит, что если $F = f \ast \textbf{1}$, то $f = F \ast \mu$, где $\mu(n)$ — функция Мебиуса\footnote{$\mu(n) =
+    \begin{cases}
+	     1, n = 1, \\
+	 0, \exists p^2 | n, \\
+	(-1)^r, n = p_1 \ldots, p_r.
+	\end{cases}$}
+\end{definition}
+
+\begin{definition}
+	Рядом Дирихле называется ряд вида $\displaystyle \sum\limits_{n=1}^\infty \frac{a_n}{n^s}$, где $a_n \in \mathbb{Z}$.\\
+	%Пусть $f(k), \, g(l)$ — арифметические функции (т.е. $f,g: \ \mathbb{N} \to \mathbb{C}$). Тогда
+	%$$\sum\limits_{k=1}^\infty \frac{f(k)}{k^s} \cdot \sum\limits_{l=1}^\infty \frac{g(l)}{l^s} = \dots = \sum\limits_{n=1}^\infty \fr	ac{\sum_{l | n}f\left(\frac{n}{l}\right)g(l)}{n^s} = \sum\limits_{n=1}^\infty \frac{(f \ast g)(n)}{n^s},$$ где $(f \ast g)(n)$ есть свёртка Дирихле.
+	Несложно видеть, что если $\displaystyle F(s) = \sum_{n = 1}^{\infty} \frac{f(n)}{n^s}$, а $\displaystyle G(s) = \sum_{n = 1}^{\infty} \frac{g(n)}{n^s}$, то $\displaystyle F(s) G(s) = \sum_{n = 1}^{\infty} \frac{(f \ast g)(n)}{n^s}$.
+\end{definition}
+
+Заметим, что $\displaystyle 1=\sum\limits_{n=1}^\infty \frac{a_n}{n^s}$, где $a_1=1$, а остальные $a_i =0, (i \ne 1)$. Хотим найти "обратную" функцию к $\zeta(s).$\\
+Известно, что $\displaystyle \frac{1}{\zeta(s)} = \sum\limits_{n=1}^\infty \frac{\mu(n)}{n^s}$, где $\mu(n)$ — функция Мёбиуса.
+
+\begin{theorem} \label{l2_th3}
+	Пусть $\Re(s) > 1$. Тогда:
+	\begin{enumerate}[nolistsep]
+		\item[1)] ряд $\displaystyle \sum\limits_{n=1}^\infty \frac{1}{n^s}$ сходится абсолютно и задаёт аналитическую функцию $\zeta(s)$;
+		\item[2)] $\displaystyle \zeta'(s) = -\sum\limits_{n=1}^\infty \frac{\ln(n)}{n^s}$;
+		\item[3)] $\displaystyle \zeta(s) \ne 0$ и $\displaystyle \frac{\zeta'(s)}{\zeta(s)} = -\sum\limits_{n=1}^\infty \frac{\Lambda(n)}{n^s}$, где $\Lambda(n) =
+		\begin{cases}
+			\ln(p), & n=p^k,\,k\geq 1,\\
+			0, & \text{иначе}
+		\end{cases}$ — функция Мангольдта.
+	\end{enumerate}
+\end{theorem}
+\begin{pf}~\\
+	\textbf{Пункт 1):} Обозначим $s=\sigma+it.$ Тогда $\displaystyle \left| \frac{1}{n^s} \right| = \frac{1}{n^\sigma},\,\sigma > 1$ — таким образом, абсолютная сходимость есть. При этом в области $\Omega_\delta = \{ s \in \mathbb{C} \ | \ \Re(s) > 1+\delta \},\, \delta>0,$ сходимость будет равномерной, ибо $\displaystyle \left| \frac{1}{n^s} \right| = \frac{1}{n^\sigma} < \frac{1}{n^{1+\delta}}$, а ряд $\displaystyle \sum\limits_{n=1}^\infty \frac{1}{n^{1+\delta}}$ сходится. Но тогда по признаку Вейерштрасса $\displaystyle \sum\limits_{n=1}^\infty \frac{1}{n^s}$ равномерно сходится в $\Omega_\delta.$ По теореме \ref{l2_th_Weierstrass} сумма ряда является аналитичной в $\Omega_\delta$ (каждая $\displaystyle \frac{1}{n^s}$ является целой функцией $s$). И это справедливо для всех $\delta$.\\
+	\textbf{Пункт 2):} По теореме \ref{l2_th_Weierstrass} в каждой $\displaystyle \Omega_\delta: \ \left(\frac{1}{n^s}\right)' = \left(e^{-s \ln n}\right)'.$ Далее очевидно.\\
+	\textbf{Пункт 3):} Заметим, что в области $\displaystyle \Omega_\delta:$ $$\left| \frac{\Lambda(n)}{n^s} \right| = \frac{\Lambda(n)}{n^\sigma} \leq \frac{\ln n}{n^\sigma} < \frac{\ln(n)}{n^{1+\delta}},$$ а мы знаем, что ряд $\displaystyle \sum\limits_{n=1}^\infty \frac{\ln(n)}{n^{1+\delta}}$ сходится. Тогда по признаку Вейерштрасса $\displaystyle \sum\limits_{n=1}^\infty \frac{\Lambda(n)}{n^s}$ сходится в $\Omega_\delta$ равномерно. По теореме \ref{l2_th_Weierstrass} сходится к аналитической функции, причём абсолютно. Перемножим два абсолютно сходящихся ряда:
+		$$\left( \sum\limits_{k=1}^\infty \frac{1}{k^s} \right)\left( \sum\limits_{l=1}^\infty \frac{\Lambda(l)}{l^s} \right) = \sum\limits_{k,l=1}^\infty \frac{\Lambda(l)}{(kl)^s} = \sum\limits_{n=1}^\infty \frac{\sum_{l | n}\Lambda(l) \ (\ast)}{n^s} = \sum\limits_{n=1}^\infty \frac{\ln(n)}{n^s} = -\zeta'(s).$$
+		($(\ast)$ пусть $n = p_1^{\alpha_1}\dots p_r^{\alpha_r}$, тогда $\displaystyle \sum\limits_{l | n}\Lambda(l) = \sum\limits_{j=1}^r \left( \sum\limits_{\beta_j=1}^{\alpha_j} \Lambda\left(p_j^{\beta_j} \right) \right) = \sum\limits_{j=1}^r \ln\left( p_j^{\alpha_j} \right) = \ln(n)$).\\
+	Итак, при $\Re(s)>1$ имеем
+		$$-\zeta'(s) = \zeta(s) \cdot \sum\limits_{n=1}^\infty \frac{\Lambda(n)}{n^s}.$$
+	Из аналитичности всех функций: пусть $s_0$ — ноль $\zeta(s)$ кратности $k>0$, тогда $s_0$ — ноль $\zeta'(s)$ кратности $k-1$. Так как мы перемножаем две функции, то их кратности должны складываться. Значит, $k-1=k+$нечто неотрицательное.  Получаем противоречие. Почему кратность обязательно конечна? Предположим противное, пусть она бесконечна и тогда $\zeta(s)|_{\Re(s)>1} \equiv 0$ — противоречие.
+\end{pf}
+
+%\textit{Напоминание:}
+%\begin{definition}
+%Функция $f: \ \mathbb{N} \to \mathbb{C}, \, f \not\equiv 0$ называется мультипликативной, если $\forall a,b\in\mathbb{N},\, (a,b)=1:\, f(ab)=f(a)f(b)$, и вполне мультипликативной, если $\forall a,b\in\mathbb{N}: \, f(ab)=f(a)f(b)$.
+%\end{definition}
+
+\begin{lemma} \label{l2_lm4}
+	Пусть $f$ — вполне мультипликативная функция, ряд $\displaystyle \sum\limits_{n=1}^\infty f(n)$ абсолютно сходится и $\displaystyle S = \sum\limits_{n=1}^\infty f(n)$. Тогда
+	$$S = \prod\limits_p(1-f(p))^{-1}.$$
+\end{lemma}
+\begin{pf}
+	Положим $\displaystyle S(x) = \prod\limits_{p \leq x}(1-f(p))^{-1}$, покажем, что $S(x) \xrightarrow{x\to\infty} S$. Заметим, что из мультипликативности $f$ следует $f(1) = 1$ и что $|f(n)|<1$ при $n \geq 2$ (т.к. иначе $f(n^k)=f(n)^k \not \to 0$, а члены ряда обязаны $\to 0$ из его абсолютной сходимости). Далее, при простом $\displaystyle p: \ \frac{1}{1-f(p)} = \sum\limits_{k=0}^\infty f(p)^k = \sum\limits_{k=0}^\infty f(p^k)$. Следовательно, $\displaystyle S(x) = \prod\limits_{p\leq x} (1-f(p))^{-1} = \prod\limits_{p\leq x}\sum\limits_{k=0}^\infty f(p^k) = \sum\limits_{\substack{n\in\mathbb{N}: \\ \forall p|n \ p \leq x}}f(n)$ (такие $n$ зовутся "$x$-гладкими"). Стало быть, $\displaystyle \left|S-S(x)\right|=\left|\sum\limits_{\substack{n\in\mathbb{N}: \\ \exists p|n \ p > x}}f(n)\right| \leq \sum\limits_{\substack{n\in\mathbb{N}: \\ \exists p|n \ p > x}}\left|f(n)\right| \leq \sum\limits_{n>x}\left|f(n)\right| \xrightarrow{x\to\infty} 0$ (т.к. последний ряд — хвост сходящегося).
+\end{pf}
+
+\begin{theorem}[формула Эйлера] \label{l2_Euler_formula}
+	Пусть $\Re(s)>1$. Тогда $$\zeta(s) = \prod\limits_p\left( 1-\frac{1}{p^s}\right)^{-1}.$$
+\end{theorem}
+\begin{pf}
+%\textit{(Теоремы \ref{l2_Euler_formula}).}\\
+	Возьмём (и положим) $\displaystyle f(n) = \frac{1}{n^s}$ и применим лемму \ref{l2_lm4}. Тогда
+		$$\zeta(s) = \sum\limits_{n=1}^\infty \frac{1}{n^s} = \prod\limits_p\left( 1-\frac{1}{p^s} \right)^{-1}.$$
+\end{pf}
+
+\begin{lemma} \label{l2_lm5}
+	$\displaystyle \psi(x) = \sum\limits_{n \leq x} \Lambda(n)$ (ну, т.е. $\psi(n)-\psi(n-1)=\Lambda(n)$).
+\end{lemma}
+\begin{pf}
+	Следует из определений $\psi(x)$ и $\Lambda(n)$.
+\end{pf}
+%В следующий раз нам предстоит доказать, что $\frac{\zeta'(s)}{\zeta(s)} = -s\int_1^\infty \frac{\psi(x)}{x^{1+s}}dx$.

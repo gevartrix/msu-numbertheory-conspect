@@ -1,0 +1,108 @@
+\begin{center}
+	\section{Асимптотический закон распределения простых чисел}
+\end{center}
+\begin{note}
+	Впредь, если мы будем писать сумму вида $\displaystyle \sum_{ \ldots p \ldots} \ldots$, то мы будем иметь в виду, что $p$ — простое число.
+\end{note}
+
+\subsection{Игры c $\pi(x), \theta(x), \psi(x)$}
+Изучение распределения простых чисел непосредственно связано с изучением следующих функций:
+\begin{itemize}[nolistsep]
+   \item $\displaystyle \pi(x) = \sum_{p \leq x} 1$ — количество простых чисел, не превосходящих $x$;
+   \item $\displaystyle \theta(x) = \sum_{p \leq x} \ln p = \ln \left(\prod_{p \leq x} p\right)$ — $\theta$-функция Чебышева;
+   %$ = \ln \left( \text{НОД}(1, 2, \ldots, [x]) \right)$;
+   \item $\displaystyle \psi(x) = \sum_{p^{\alpha} \leq x} \ln(p) = \sum_{p \leq x} \left[\frac{\ln(x)}{\ln(p)}\right] \ln(p) = \ln \left( \text{НОК}(1, 2, \ldots, [x]) \right)$ — $\psi$-функция Чебышева.
+\end{itemize}
+Как эти функции связаны? Оказывается, следующим соотношением:
+\begin{lemma} \label{l1_lm1}
+	$$\underline{\overline{\lim}} \frac{\theta(x)}{x} = \underline{\overline{\lim}} \frac{\psi(x)}{x} = \underline{\overline{\lim}} \frac{\pi(x)}{x / \ln(x)}, \quad x \to \infty.$$
+%    $$\underline{{\lim}} \frac{\theta(x)}{x} = \underline{\lim} \frac{\psi(x)}{x} = \underline{\lim} \frac{\pi(x)}{x / \ln x}$$
+\end{lemma}
+\begin{pf}
+	Заметим, что
+	$$\theta(x) \leq \psi(x) \leq \sum_{p \leq x} \left[ \frac{\ln(x)}{\ln(p)} \right] \ln(p) = \ln(x) \sum_{p \leq x} 1 = \pi(x) \ln(x)$$
+	$$\underline{\overline{\lim}} \frac{\theta(x)}{x} \leq \underline{\overline{\lim}} \frac{\psi(x)}{x} \leq \underline{\overline{\lim}} \frac{\pi(x)}{x / \ln x}$$
+	Будем рассматривать простые числа на отрезке $[x^{\alpha}, x]$ для некоторого фиксированного $0 < \alpha < 1$.  Тогда
+	$$\theta(x) = \left( \sum_{p \leq x} \ln(p) \right) \geq \left( \sum_{x^{\alpha} < p \leq x} \ln(p) \right) >  \left( \ln \left( x^{\alpha} \right)  \sum_{x^{\alpha} < p \leq x} 1 \right) = \alpha \ln(x) \left( \pi(x) - \pi(x^{\alpha}) \right) \geq \alpha \ln(x) \left( \pi(x) - x^{\alpha} \right).$$
+	$$\frac{\theta(x)}{x} > \alpha \left( \frac{\pi(x)}{x / \ln x} - \frac{\ln(x)}{x^{1 - \alpha}}  \right) \quad \forall 0 < \alpha < 1.$$
+	Тогда для любого $\alpha \in (0, 1)$ получаем, что $\displaystyle \overline{\lim} \frac{\theta(x)}{x} \geq \overline{\lim} \alpha \frac{\pi(x)}{x / \ln x}$.\\
+	Значит $\displaystyle \underline{\overline{\lim}} \frac{\theta(x)}{x} \geq \underline{\overline{\lim}} \frac{\pi(x)}{x / \ln x}$.
+\end{pf}~\\
+
+\subsection{Оценки Чебышева}
+\begin{theorem}[Оценки Чебышева] \label{l1_thm1}
+	Существуют $a, b > 0$ такие, что
+	$$a \frac{x}{\ln(x)} \leq \pi(x) \leq b \frac{x}{\ln(x)}.$$
+\end{theorem}
+Перед доказательством этой теоремы сформулируем и докажем несколько вспомогательных лемм.
+\begin{lemma} \label{l1_lm2}
+	$$\prod_{p \leq n} p \leq 4^n.$$
+\end{lemma}
+\begin{pf}
+	Будем доказывать методом математической индукции по $n$.\\
+    \textbf{База.} При $n = 2, 3$ утверждение верно.\\
+    \textbf{Переход.} Если $n = 2k$ — чётно, то видно, что
+    $\displaystyle \prod_{p \leq 2k} p = \prod_{p \leq 2k - 1} p \leq 4^{2k - 1} \leq 4^{2k}$.\\
+    Если $n = 2k - 1 $ — нечётное, то по предложению индукции
+    $\displaystyle \prod_{p \leq n} p = \left( \prod_{p \leq k} p \right)\left( \prod_{k < p \leq 2k-1} p \right) \leq 4^k4^{k-1}=4^n$.
+    Заметим, что $\displaystyle  \prod_{k < p \leq 2k - 1} p  < C_{2k - 1}^k = \frac{(2k-1)!}{k! (k - 1)!}$, т.к. каждое такое простое число входит в числитель, но не входит в знаменатель. Поэтому
+	$\displaystyle \prod_{k < p \leq 2k-1} p \leq C_{2k - 1}^{k} \leq \frac{1}{2} \cdot 2^{2m - 1} = 4^{m - 1}$.
+    % Следовательно, $\displaystyle \prod_{p \leq n} p \leq 4^k \cdot 4^{k - 1} = 4^n$.
+\end{pf}
+
+\begin{corollary} \label{l1_cor1}
+    $\theta(n) < n \ln(4)$.
+\end{corollary}
+
+\begin{corollary} \label{l1_cor2}
+    $\theta(x) < x \cdot 3 \ln(2)$.
+\end{corollary}
+\begin{pf}
+    Пусть $n - 1 < x \leq n$. Тогда $\theta(x) \leq \theta(n) < n \ln(4) < (x + 1) \ln 4 \leq x \cdot 3\ln 2$.
+\end{pf}
+
+\begin{lemma} \label{l1_lm3}
+    $K := \text{НОК}\left( 1, 2, \ldots, 2n + 1 \right) > 4^n$
+\end{lemma}
+\begin{pf}
+    Рассмотрим $\displaystyle I = \int_{0}^{1} x^n (1 - x)^n dx$. Поскольку на отрезке $[0, 1]$ величина $x(1 - x)$ не превосходит $\displaystyle \frac{1}{4}$, то $\displaystyle I < \frac{1}{4^n}$.\\
+    Заметим, что $x^n(1 - x)^n = a_n  x^n + \ldots + a_{2n} x^{2n}$ — многочлен с целыми коэффициентами. Тогда $\displaystyle I = \frac{a_n}{n + 1} + \ldots + \frac{a_{2n}}{2n + 1}$, и $K \cdot I \in \mathbb{Z}$. Причём $K$ и $I$ оба больше нуля, т.е. $K \cdot I \geq 1$. Откуда следует, что $\displaystyle K \geq \frac{1}{I} > 4^n$.
+\end{pf}
+
+\begin{corollary} \label{l1_cor3}
+    $\psi(2n+1) > n \ln(4)$.
+\end{corollary}
+
+\begin{corollary} \label{l1_cor4}
+    $\psi(x) > x \frac{\ln(2)}{2}$ при $x \geq 6$.
+\end{corollary}
+\begin{pf}
+    Пусть $2n+1 \leq x < 2n+3$. Тогда
+    $\displaystyle \psi(x) \geq \psi(2n+1) > n \ln(4) > \frac{x - 3}{2} \ln 4 = (x-3) \ln(2) \geq x \frac{\ln(2)}{2}$.
+\end{pf}
+
+\begin{pf} (Теоремы \ref{l1_thm1}.)~\\
+    Применим следствия \ref{l1_cor2} и \ref{l1_cor4}. Тогда при $x \geq 6$ выполнено
+	$\displaystyle  \frac{\theta(x)}{x} < 3 \ln 2, \frac{\psi(x)}{x} > \frac{\ln 2}{2}$.\\
+    Учитывая Лемму \ref{l1_lm1} получаем, что $\displaystyle \overline{\lim} \frac{\pi(x)}{x / \ln x} \leq 3 \ln 2$ и
+    $\displaystyle \underline{\lim} \frac{\pi(x)}{x / \ln x} \geq \frac{\ln 2}{2}$.
+\end{pf}
+
+\begin{theorem}[Асимптотический Закон Распределения Простых Чисел] \label{l1_thm2}
+	$$\pi(x) \sim \frac{x}{\ln x}.$$
+\end{theorem}~\\
+
+\subsection{Дзета-функция Римана}
+Положим при $\Re(s) > 1$
+$$\zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s}.$$
+Будем писать $s = \sigma + it$. Мы докажем, что $\zeta(s)$ — аналитическая функция на $\Re(s) > 1$, и аналитически продолжим её на $\Re(s) > 0$ (можно и на всю $\mathbb{C}$, будет единственный полюс в точке $1$).
+
+\begin{theorem}[Гипотеза Римана] \label{l1_RiemannHypothesis}
+	Нетривиальные нули $\zeta$-функции лежат на прямой $\Re(s) = \frac{1}{2}$.
+\end{theorem}
+
+\textit{Отступление:}\\
+	Предположим, что $p_1,\,p_2,\dots,p_r$ — все простые. Тогда
+	$\displaystyle \sum\limits_{k=0}^\infty \frac{1}{p_j^k} = \frac{1}{1-\frac{1}{p_j}}$. Следовательно,
+	$$\sum_{(k_1,\dots,k_r)} \frac{1}{p_1^{k_1} \dots p_r^{k_r}} = \prod_{j=1}^r \frac{1}{1-\frac{1}{p_j}} \text{ — сходится}.$$
+	Но слева — сумма гармонического ряда. Противоречие.

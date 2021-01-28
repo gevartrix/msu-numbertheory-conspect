@@ -1,0 +1,71 @@
+\subsection{Преобразование Абеля}
+\begin{lemma}(Преобразование Абеля) \label{l3_Abel_transform}
+	Пусть $\lbrace a_n \rbrace_{n \in \mathbb{N}}$ — последовательность комплексных чисел. Пусть $\displaystyle g(x) \in C^1([1; \infty), \mathbb{C}), A(x) = \sum\limits_{n \leq x} a_n$. Тогда для любого $N \in \mathbb{R}$ выполнено
+	$$\sum_{n \leq N} a_n g(n) = A(N) g(N) - \int_{1}^{N} A(x) g'(x) dx.$$
+\end{lemma}
+\begin{pf}
+	$$A(N) g(N)- \sum_{n \leq N} a_n g(n) = \sum_{n \leq N} a_n (g(N) - g(n)) = \sum_{n \leq N} a_n \int_{n}^{N} g'(x) dx.$$
+	Положим $\phi_n(x)= a_n$, если $x \geq n$ или 0, если $x < n$. Тогда
+	$$\sum_{n \leq N} a_n \int_{n}^{N} g'(x) dx = \sum_{n \leq N} \int_{1}^{N} \phi_n(x) g'(x) dx = \int_{1}^{N} \left( \sum_{n \leq N} \phi_n(x) \right) g'(x) dx = \int_{1}^{N} A(x) g'(x) dx.$$
+\end{pf}
+
+\begin{theorem} \label{l3_thm5}
+	$$\zeta(s) = 1 + \frac{1}{s - 1} - s \int_{1}^{+\infty} \frac{\{x\}}{x^{1 + s}} dx,$$
+	причем интеграл в правой части сходится в полуплоскости $\Re(s) > 0$ и задает аналитическую функцию.
+\end{theorem}
+\begin{pf}
+	При $\Re(s) > 1$ выполнено $\displaystyle \zeta(s) = \sum_{n = 1}^{\infty} \frac{1}{n^s}$. Используя преобразование Абеля с параметрами $a_n = 1$ и $\displaystyle g(x) = \frac{1}{x^s}$ получим, что
+	$$\sum_{n = 1}^{N} \frac{1}{n^s} = N \frac{1}{N^s} + s \int_{1}^{N}\frac{[x]}{x^{1 + s}} = \frac{1}{N^{s - 1}} + s \left( \int_{1}^{N}\frac{1}{x^s} - \int_{1}^{N}\frac{\{x\}}{x^{1 + s}}\right) = $$
+	$$ = \frac{1}{N^{s - 1}} + s \left( \frac{1}{s - 1} - \frac{1}{(s - 1)N^{s - 1}} - \int_{1}^{N}\frac{\{x\}}{x^{1 + s}}\right) = 1 + \frac{1}{s - 1} - \frac{1}{(s - 1)N^{s - 1}} - s \int_{1}^{N}\frac{\{x\}}{x^{1 + s}}.$$
+	Поскольку $s = \sigma + i t$, где $\sigma > 1$, и $|N^{s - 1}| = N^{\sigma - 1}$, то при $N \rightarrow \infty $ третье слагаемое стремится к 0, а последнее стремится к несобственному интегралу в условии теоремы.\\
+	Итак, при $Re(s) > 1$ выполнено равенство
+	$$\zeta(s) = 1 + \frac{1}{s - 1} - s \int_{1}^{\infty} \frac{\{x\}}{x^{1 + s}} dx.$$
+	Как только мы докажем, что этот интеграл задает аналитическую функцию в $\Re(s) > 0$, мы получим	две функции, которые аналитичны в $\Re(s) > 0$ и совпадают  в $\Re(s) > 1$, откуда будет следовать, что они совпадают везде\footnote{Теорема единственности}.\\
+	Положим
+	$$f_n(s) = \int_{n}^{n + 1} \frac{\{x\}}{x^{s + 1}} dx = \int_{n}^{n + 1} \frac{x - n}{x^{s + 1}} dx = \int_{n}^{n + 1} \frac{1}{x^{s}} dx - n \int_{n}^{n + 1} \frac{1}{x^{s + 1}} dx.$$
+	Первый интеграл аналитичен\footnote{При $s \ne 1$ это просто разность степеней, а почему есть аналитичность в точке $s = 1$? Упражнение!} в $\mathbb{C}$, второй отличается от первого просто сдвигом на $1$.\\
+	Таким образом, $f_n(s)$ аналитична в $\mathbb{C}$. При $\Re(s) = \sigma > \delta > 0$ получим, что
+	$$|f_n(s)| \leq \int_{n}^{n + 1} \frac{dx}{x^{1 + \sigma}} \leq \frac{1}{n^{1 + \sigma}} < \frac{1}{n^{1 + \delta}}$$
+	Поскольку ряд $\displaystyle \sum_{n = 1}^{\infty} \frac{1}{n^{1 + \delta}}$ сходится, то по признаку Вейерштрасса ряд $\displaystyle \sum_{n = 1}^{\infty} f_n(s)$ сходится равномерно, поэтому задает аналитическую функцию.
+\end{pf}
+
+\begin{corollary} \label{l3_cor1}
+	У функции $\zeta(s)$ полюс первого порядка с вычетом $1$, поскольку $\displaystyle \underset{1}{Res} \frac{1}{s - 1} = 1$.
+\end{corollary}
+
+\begin{lemma} \label{l3_lm7}
+	При $\Re(s) > 1$ выполнено
+	$$\frac{\zeta'(s)}{\zeta(s)} = -s \int_{1}^{\infty} \frac{\psi(x)}{x^{1 + s}}dx.$$
+\end{lemma}
+
+\begin{pf}
+	При $\Re(s) > 1$ имеем
+	$$\frac{\zeta'(s)}{\zeta(s)} = -\sum_{n = 1}^{\infty} \frac{\Lambda(n)}{n^s}$$
+	Используя преобразование Абеля с параметрами $\displaystyle a_n = \Lambda(n), g(x) = \frac{1}{x^s}$ и тот факт, что $\displaystyle \sum_{n \leq x} \Lambda(n) = \psi(x)$ получим, что
+	$$\sum_{n = 1}^{N} \frac{\Lambda(n)}{n^s} = \frac{\psi(N)}{N^s} + s \int_{1}^{N} \frac{\psi(x)}{x^{1 + s}}dx.$$
+	Поскольку мы знаем, что у отношения $\displaystyle \frac{\psi(x)}{x}$ верхний и нижний пределы ограничены, то при $\Re(s) > 1$  $\displaystyle \frac{\psi(N)}{N^{1 + s}} \rightarrow 0 $ при $N \rightarrow \infty$.\\
+	Таким образом, при $N \rightarrow \infty$ пределы выражений $\displaystyle \sum_{n = 1}^{N} \frac{\Lambda(n)}{n^s}$ и  $\displaystyle s \int_{1}^{N} \frac{\psi(x)}{x^{1 + s}}dx$ существуют и равны, откуда следует утверждение леммы.
+\end{pf}
+
+\begin{lemma} \label{lm3_lm8}
+	Пусть $0 < r < 1, \phi \in \mathbb{R}$. Тогда
+	$$|(1 - r)^3 (1 - re^{i \phi})^4 (1 - r e^{2 i \phi})| \leq 1.$$
+\end{lemma}
+\begin{pf}
+	Положим $M = |(1 - r)^3 (1 - re^{i \phi})^4 (1 - r e^{2 i \phi})|$. Тогда
+	$$\ln(M) = 3 \ln( |1 - r|) + 4 \ln (|1 - re^{i \phi}|) + \ln (|1 - r e^{2 i \phi}|) = \Re \left( 3 \ln (1 - r) + 4 \ln (1 - re^{i \phi}) + \ln (1 - r e^{2 i \phi}) \right) = $$
+	$$ = - \sum_{n = 1}^{\infty} \frac{r^n}{n} \Re \left( 3 + 4e^{i n \phi} + e^{2 i n \phi} \right) = - \sum_{n = 1}^{\infty} \frac{r^n}{n} \left( \cos 2n\phi + 4 \cos n\phi + 3 \right) = - \sum_{n = 1}^{\infty} \frac{r^n}{n} 2 \left( \cos n \phi + 1 \right)^2 \leq 0.$$
+	Следовательно, $M \leq 1$.
+\end{pf}
+
+\begin{lemma} \label{l3_lm9}
+	При $s = \sigma + i t, \sigma > 1$ выполнено неравенство
+	$$|\zeta^3(\sigma) \zeta^4(\sigma + it)  \zeta(\sigma + 2 i t)| \geq 1.$$
+\end{lemma}
+\begin{pf}
+	Положим $\displaystyle r = \frac{1}{p^{\sigma}}, e^{i \phi} = p^{-i t}$. Применим лемму \ref{lm3_lm8} и формулу Эйлера \ref{l2_Euler_formula}.
+\end{pf}
+
+\begin{theorem} \label{l3_thm6}
+	$\zeta(1 + it) \ne 0 $ при всех $t \in \mathbb{R} \backslash \{0\}$.
+\end{theorem}

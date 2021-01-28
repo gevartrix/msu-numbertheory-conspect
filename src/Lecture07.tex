@@ -1,0 +1,93 @@
+\begin{lemma} \label{l7_Euler_ident}
+	При $\Re(s) > 1$ выполнено
+	$$L(s, \chi) = \prod_{p} \left(1 - \frac{\chi(p)}{p^s} \right)^{-1}.$$
+\end{lemma}
+\begin{pf}
+	Поскольку функция $\displaystyle \frac{\chi(p)}{p^s}$ вполне мультипликативна, то по лемме \ref{l2_lm4} все следует.
+\end{pf}
+
+\begin{corollary} \label{l7_cor1}
+	$$L(s, \chi_0) = \zeta(s) \prod_{p | m} \left( 1 - \frac{1}{p^s} \right).$$
+\end{corollary}
+\begin{pf}	
+	Подставим $\chi = \chi_0$. $\chi$ — характер по модулю $m \Rightarrow \chi(p) = 0 \Leftrightarrow p | m$.
+	$\displaystyle \zeta(s) = \prod_p  \left( 1 - \frac{1}{p^s} \right)^{-1}$, однако это представление верно только при
+	$\Re(s) > 1$. Равенство везде следует из аналитичности $L$-функции, $\zeta$-функции и $\displaystyle \left(1 - \frac{1}{p^s} \right)$.
+\end{pf}
+
+\begin{note}
+	Обобщенная гипотеза Римана звучит, что с некоторой оговоркой все нули $L$-функции Дирихле лежат на
+	$\displaystyle \Re(s) = \frac{1}{2}$.
+\end{note}
+
+\begin{corollary} \label{l7_col2}
+	В $\Re(s) > 0$ у $L(s, \chi_0)$ ровно один полюс в $s = 1$ порядка $1$ с вычетом $\displaystyle \frac{\phi(m)}{m}$, и в $\lbrace \Re(s) > 0 \rbrace \setminus \lbrace{1\rbrace}$ функция $L(s, \chi_0)$ аналитична.
+\end{corollary}
+\begin{pf}
+	Вспомним, что $\displaystyle \phi(m) = m \prod_{p | m} \left( 1 - \frac{1}{p} \right)$. У $\zeta(s)$ вычет в $1$ равен $1$, и функция $\displaystyle \left(1 - \frac{1}{p^s} \right)$ аналитична в $1$.
+\end{pf}
+
+\begin{lemma} \label{l7_lm6}
+	Если $\chi \ne \chi_0$, то $L(s, \chi)$ аналитична при $\Re(s) > 0$ \bf (то есть полюс пропадает!).
+\end{lemma}
+\begin{pf}
+	Применим преобразование Абеля к $\displaystyle a_n = \chi(n), g(x) = \frac{1}{x^s}$. Тогда $\displaystyle A(x) = \sum_{n \leq x} a_n = \sum_{n \leq x} \chi(n)$, и используя следствие \ref{l6_cor} $|A(x)| \leq \phi(m)$.
+	$$\sum_{n = 1}^{N} \frac{\chi(s)}{n^s} = A(N) \frac{1}{N^s} + s \int_{1}^{N} \frac{A(x)}{x^{s + 1}} dx.$$
+	Так как $|A(N)| \leq \phi(m)$, то первое слагаемое стремится к $0$ при $N \rightarrow \infty$ и $\Re(s) > 0$.\\
+	Рассмотрим $\displaystyle \int_1^N \frac{A(x)}{x^{1 + s}} = \sum_{n - 1}^{N - 1} \phi_n(s)$, где $\displaystyle \phi_n(s) = \int_{n}^{n + 1} \frac{A(x)}{x^{1 + s}}$ — аналитическая в $\mathbb{C}$\footnote{Упражнение!}\\
+	Покажем, что ряд $\displaystyle \sum_{n = 1}^{\infty} \phi_n(s)$ задает аналитическую функцию в $\Re(s) > 0$. При $\Re(s) > \delta > 0$
+	$$|\phi_n(s)| \leq \int_n^{n + 1} \frac{\phi(m)}{x^{1 + \sigma}} dx \leq  \frac{\phi(m)}{n^{2 + \sigma}} < \frac{\phi(m)}{n^{2 + \delta}} \text{ —  общий член сходящегося ряда} \Rightarrow$$
+	$\displaystyle \sum_{n = 1}^{\infty}$ сходится равномерно при $\Re(s) > \delta \Rightarrow$ по теореме Вейерштрасса ряд сходится к аналитической функции.\\
+	Тогда в предыдущем равенстве
+	$$\sum_{n = 1}^{N} \frac{\chi(n)}{n^s} = A(N) \frac{1}{N^s} + s \int_{1}^{N} \frac{A(x)}{x^{1 + s}} dx$$
+	первое слагаемое стремится к 0, а второе сходится к аналитической функции, значит и вся сумма стремится к аналитической функции.
+\end{pf}
+
+\begin{lemma} \label{l7_lm7}
+	При $\chi \ne \chi_0$ выполнено $L(1, \chi) \ne 0$.
+\end{lemma}
+\begin{pf}~\\
+	\textbf{Случай $1$:} $\chi^2 \ne \chi_0$.
+	По лемме \ref{lm3_lm8} из I части
+	$$|(1 - r)^3 (1 - re^{i \phi})^4 (1 - re^{2i\phi})| \leq 1 \text{ при } 0 < r < 1.$$
+	Положим $\displaystyle r = \frac{1}{p^{\sigma}}, e^{i \phi} = \chi(p)$ для каждого простого $p$.\\
+	Тогда при $\sigma > 1$:
+	$$|L^3(\sigma, \chi_0) L^4(\sigma, \chi) L (\sigma, \chi^2)| = \prod_p \left|\left(1 - \frac{\chi_0(p)}{p^{\sigma}}\right)^3\left(1 - \frac{\chi(p)}{p^{\sigma}}\right)^4\left(1 - \frac{\chi^2(p)}{p^{\sigma}}\right) \right|^{-1} \geq 1.$$
+	Поскольку $\chi^2 \ne \chi_0$, то у $L(\sigma, \chi^2)$ в 1 есть значение. Предположим, что $L(1, \chi) = 0$. Тогда\\
+	$L(\sigma, \chi) = O(\sigma - 1)$ при $\sigma \rightarrow 1+0$.\\
+	При этом $\displaystyle L(\sigma, \chi_0) = O(\frac{1}{\sigma - 1})$ при $\sigma \rightarrow 1+0$ — полюс порядка $1$.\\
+	$L(\sigma, \chi^2) = O(1)$, т.к. $\chi^2 \ne \chi_0$.
+	Отсюда $\displaystyle |L^3(\sigma, \chi_0) L^4(\sigma, \chi) L(\sigma, \chi^2)| = O(\frac{1}{(\sigma - 1)^3} (\sigma - 1)^4 \cdot 1) = O(\sigma - 1)$ при $\sigma \rightarrow 1+0$, т.е. $\rightarrow 0$, что противоречит неравенству выше.\\
+	\textbf{Случай $2$:} $\chi^2 = \chi_0$.\\
+	Заметим, что если рассуждать похожим образом, то мы получим $O(1)$, и ничего не выйдет.\\
+	Пусть $L(1, \chi) = 0$. Рассмотрим $F(s) = \zeta(s) L(s, \chi)$. Первая функция дает в точке $1$ имеет полюс порядка $1$, а вторая в точке $1$ дает ноль порядка $1$, значит она аналитична при $\Re(s) > 1$.
+	Докажем, что
+	\begin{itemize}[nolistsep]
+		\item[$1)$] ряд $\displaystyle F(s) = \sum\limits_{n=1}^\infty \frac{a_n}{n^s}$ сходится абсолютно при $\Re(s) > 1$, причем $\displaystyle F^{(k)}(s) = (-1)^k \sum_{n = 1}^{\infty} \frac{\ln(n)^k a_n}{n^s}$,
+		\item[$2)$] $a_n \geq 0$,
+		\item[$3)$] $a_{r^2} \geq 1, \, \forall r \in \mathbb{N}$,
+		\item[$4)$] $\displaystyle \sum\limits_{n=1}^\infty \frac{a_n}{n^s} $ расходится при $\displaystyle s = \frac{1}{2}$.
+	\end{itemize}
+	\textbf{Пункт $1)$:}\\
+	Надо доказать, что $\displaystyle \sum\limits_{n=1}^\infty \frac{|a_n|}{n^s}$ сходится при $\Re(s) > 1$. При $\Re(s) > 1 + \delta, \delta > 0$ выполнено $\displaystyle \frac{a_n}{n^s} \leq \frac{|a_n|}{n^{\sigma}} < \frac{|a_n|}{n^{1 + \delta}}$ — общий член сходящегося ряда. Следовательно, по признаку Вейерштрасса ряд $\displaystyle \sum\limits_{n=1}^\infty \frac{a_n}{n^s}$ сходится равномерно. Но тогда по Теореме \ref{l2_th_Weierstrass} Вейерштрасса этот ряд задаёт аналитическую функцию, причём его можно почленно дифференцировать.\\
+	\textbf{Пункт $2)$:}
+	$$a_n = \sum_{d | n} \chi(d) = \prod_{j=1}^r \sum_{\beta_j=0}^{a_j} \chi(p_j)^{\beta_j} = \prod_{j=1}^r a_{n_j},$$
+	$$\text{где } a_{n_j} = 1+\chi(p_j)+\dots+\chi(p_j)^{\alpha_j} = \begin{cases}
+		1, & \chi(p_j)=0, \\
+		\frac{1-\chi(p_j)^{1+\alpha_j}}{1-\chi(p_j)}, & \chi(p_j) \ne 0, 1, \\
+		1+{\alpha_j}, & \chi(p_j) = 1.
+	\end{cases}$$
+	То есть
+	$$a_{n_j} = \begin{cases}
+		1+\alpha_j, & \chi(p_j)=1, \\
+		1, & \chi(p_j)=0 \text{ или } \chi(p_j) = -1, \, a_j \vdots 2, \\
+		0, & \chi(p_j)=-1, \, \alpha_j \not\vdots 2.
+	\end{cases}$$
+	Из того, что $a_{n_j} \geq 0$, следует $a_n \geq 0$.\\
+	\textbf{Пункт $3)$:} Очевидно из $2)$.\\
+	\textbf{Пункт $4)$:} Следует из $2)$ и $3)$.\\
+	$F(s)$ аналитична в $\Re(s)>0$, поэтому в круге $\lvert s-2 \rvert < 2$ на вещественной прямой выполняется
+	$$F(\sigma) = \sum\limits_{k=0}^\infty \frac{F^{(k)}(2)}{k!}(\sigma-2)^k = \sum\limits_{k=0}^\infty \frac{(\sigma-2)^k}{k!}\sum\limits_{n=1}^\infty (-1)^k\frac{(\ln n)^ka_n}{n^2} = \sum\limits_{k=0}^\infty \frac{(2-\sigma)^k}{k!} \sum\limits_{n=1}^\infty \frac{(\ln n)^ka_n}{n^2} =$$
+	$$= \sum\limits_{n=1}^\infty \frac{a_n}{n^2} \sum\limits_{k=0}^\infty \frac{(\ln n)^k(2-\sigma)^k}{k!} = \sum\limits_{n=1}^\infty \frac{a_n}{n^2}n^{2-\sigma} = \sum\limits_{n=1}^\infty \frac{a_n}{n^\sigma}.$$
+	В частности, при $\displaystyle \sigma = \frac{1}{2}: \ F\left( \frac{1}{2} \right) = \sum\limits_{n=1}^\infty \frac{a_n}{n^{\frac{1}{2}}}$. Но мы доказали, что он расходится. Противоречие.
+\end{pf}

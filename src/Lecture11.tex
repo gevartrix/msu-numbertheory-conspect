@@ -1,0 +1,108 @@
+\subsection{Целые алгебраические числа}
+
+\begin{definition}
+	Алгебраическое число $\alpha$ называется \textit{целым алгебраическим}, если $p_{\alpha}(x) \in \mathbb{Z}[x]$. Множество всех целых алгебраических чисел обозначим через $\mathbb{Z}_{\mathbb{A}}$.
+\end{definition}
+
+\begin{example}~\
+	\begin{itemize}[nolistsep]
+		\item Пусть $\alpha \in \mathbb{Q}$. Тогда $\alpha \in \mathbb{Z_{\mathbb{A}}} \Leftrightarrow \alpha \in \mathbb{Z}$.
+		\item $\sqrt{2} \in \mathbb{Z_{\mathbb{A}}}$
+		\item $a, b, d \in \mathbb{Z} \Rightarrow a + b\sqrt{d} \mathbb{Z_{\mathbb{A}}}$
+		\item $\frac{1 + \sqrt{5}}{2} \in \mathbb{Z_{\mathbb{A}}}$
+	\end{itemize}
+\end{example}
+
+\begin{definition}
+	Многочлен $f(x) = a_n x^n + a_{n - 1} x^{n - 1} + \ldots + a_1 x + a_0 \in \mathbb{Z}[x]$ называется \textit{примитивным}, если  $(a_n, a_{n - 1}, \ldots, a_1, a_0) = 1$.
+\end{definition}
+
+\begin{lemma}[Гаусса] \label{l11_Gauss_lemma}
+	Произведение примитивных многочленов примитивно.
+\end{lemma}
+\begin{pf}
+	Пусть $f(x) = a_n x^n + a_{n - 1}x^{n - 1} + a_1 x + a_0, g(x) = b_m x^m + b_{m - 1} x^{m - 1} + b_1 x + b_0$.\\
+	А также рассмотрим $h(x) = f(x) g(x) = c_{m + n} x^{m + n} + \ldots + c_1 x + c_0$.\\
+	Пусть существует простое $p$ такое, что $p | c_k, \forall 0 \leq k \leq m + n$.\\
+	Пусть $r = \min{k | a_k \vdots p}, s = \min{k | b_k \vdots p}$.\\
+	Тогда $\displaystyle c_{r + s } = \sum_{i + j = r + s} a_i b_j \equiv a_r b_s \not \equiv 0 \mod p$, т.е. $p \not | c_{r + s}$. Получаем противоречие.
+\end{pf}
+
+\begin{theorem} \label{l11_th2}
+	Если существует унитальный многочлен $f(x) \ne 0 \in \mathbb{Z}[x]: f(\alpha) = 0$, то $\alpha \in \mathbb{Z_{\mathbb{A}}}$.
+\end{theorem}
+\begin{pf}
+	$p_{\alpha}(x) | f(x)$ в $\mathbb{Q}[x]$, т.е. $\exists g(x) \in \mathbb{Q}[x]: f(x) = g(x) p_{\alpha}(x)$.\\
+	Покажем, что  $g(x), p_{\alpha}(x) \in \mathbb{Z}[x]$.\\
+	Пусть $A, B$ — НОК знаменателей коэффициентов $g(x)$ и $p_{\alpha}(x)$ соответственно. Тогда $Ag(x)$ и $Bp_{\alpha}(x)$ — примитивные многочлены.\\
+	$ABf(x) = Ag(x) Bp_{\alpha}(x)$ — примитивный многочлен по лемме \ref{l11_Gauss_lemma} Гаусса. Тогда $AB = 1 \Rightarrow A = B = 1$.
+\end{pf}
+
+\begin{lemma} \label{l11_lm4}
+	Пусть $f(x, y) \in \mathbb{Z}[x, y]$. Пусть $\alpha = \alpha_1, \ldots, \alpha_n$ — сопряженные к $\alpha \in \mathbb{Z_{\mathbb{A}}}$.
+	Тогда $\displaystyle F(x) = \prod_{i = 1}^{n} f(x, \alpha_i) \in \mathbb{Z}[x]$.
+\end{lemma}
+\begin{pf}
+	Аналогично доказательству леммы \ref{l10_lm2}.
+\end{pf}
+
+\begin{theorem} \label{l11_th3}
+	$\mathbb{Z_{\mathbb{A}}}$ — кольцо.
+\end{theorem}
+\begin{pf}
+	Пусть $\alpha, \beta \in \mathbb{Z_{\mathbb{A}}}$. Пусть $\alpha = \alpha_1, \ldots, \alpha_n$  — сопряженные к $\alpha$, $\beta = \beta_1, \ldots, \beta_m$ — сопряженные к $\beta$.
+	Тогда, по Лемме \ref{l11_lm4}:
+	$$F_1(x) = \prod_{i = 1}^{m} p_{\alpha}(x - \beta_i) \in \mathbb{Z}[x],$$
+	$$F_2(x) = \prod_{i = 1}^{m} p_{\alpha}(x + \beta_i) \in \mathbb{Z}[x],$$
+	$$F_3(x) = \prod_{i = 1}^{m} \beta_i^{\deg p_{\alpha}} p_{\alpha}(x / \beta_i) \in \mathbb{Z}[x].$$
+	Тогда все три многочлена унитарны и $F_1(\alpha + \beta) = F_2(\alpha - \beta) = F_3(\alpha \beta) = 0$. Применив Теорему \ref{l11_th2}, получаем условие теоремы.
+\end{pf}
+
+\begin{problem}
+	$\forall \alpha \in \mathbb{A} \ \exists d \in \mathbb{Z}$ такое, что $d \alpha \in \mathbb{Z_{\mathbb{A}}}$.
+\end{problem}~\\
+
+\subsection{Конечные расширения $\mathbb{Q}$}
+Пусть $\alpha_1, \ldots, \alpha_n$ — произвольные алгебраические числа.
+\begin{definition}
+	$\displaystyle \mathbb{Q}(\alpha_1, \ldots, \alpha_n) = \lbrace \frac{f(\alpha_1, \ldots, \alpha_n)}{g(\alpha_1, \ldots, \alpha_n)} \mid| f, g \in \mathbb{Q}[x_1, \ldots, x_n], g(\alpha_1, \ldots, \alpha_n) \ne 0\rbrace$ — \textit{расширение} $\mathbb{Q}$, порожденное $\alpha_1, \ldots, \alpha_n$.
+\end{definition}
+
+\begin{problem}
+	Доказать, что $\mathbb{Q}(\alpha_1, \ldots, \alpha_n)$ — минимальное по включению поле, содержащее и $\mathbb{Q}$, и $\alpha_1, \ldots, \alpha_n$.
+\end{problem}
+
+\begin{lemma} \label{l11_lm5}
+	Пусть $E = \mathbb{Q}(\theta), \, \deg(\theta) = n$. Тогда любой элемент $\alpha \in E$ однозначно представим в виде
+	$\alpha = c_0  + c_1 \theta + \ldots + c_{n - 1} \theta^{n - 1}, \, c_i  \in \mathbb{Q}$.
+\end{lemma}
+\begin{pf}~\\
+	Докажем существование:	рассмотрим $\displaystyle \alpha = \frac{f(\theta)}{g(\theta)} \in E$. Заметим, что поскольку $g(\theta) \ne 0$, то $(p_{\theta}(x), g(x)) = 1$, т.е. $\exists u(x), v(x) \in \mathbb{Q}[x]: \ u(x) p_{\theta}(x) + v(x)g(x) = 1$.\\
+	Тогда $u(\theta) p_{\theta}(\theta) + v(\theta) g(\theta) = 1$. Отсюда $\displaystyle \frac{1}{g(\theta)} = v(\theta)$ и, стало быть, $\alpha = f(\theta) v(\theta)$.\\
+	Положим $h(x) = f(x) v(x)$. Поделим $h(x)$ с остатков на $p_{\theta}(x): h(x) = q(x) p_{\theta}(x) + r(x), \deg r(x) < \deg \theta$.\\
+	Тогда $\alpha = h(\theta) = r(\theta), \, \deg r(x) < n, \, r(x) \in \mathbb{Q}[x]$.\\
+	Докажем единственность: пусть $\alpha = c_0 + c_1 \theta + \ldots + c_{n - 1} \theta^{n - 1} = d_0 + d_1 \theta + d_{n - 1} \theta^{n - 1}$. Тогда
+	$$(c_0 - d_0) + (c_1 - d_1)\theta  + \ldots + (c_{n - 1} - d_{n - 1}) \theta^{n - 1} = 0 \text{ — обнуляющий многочлен } \theta \text{ степени не более } \deg(\theta-1).$$
+	Следовательно, по определению $\deg(\theta)$: $\forall i: \ c_i = d_i$.
+\end{pf}
+
+Таким образом, $\mathbb{Q}(\theta)$ — линейное пространство над $\mathbb{Q}$ размерности $n$ с базисом $1, \theta, \ldots, \theta^{n - 1}$.
+
+\begin{theorem}[О примитивном элементе] \label{l11_th4}
+	Пусть $E = \mathbb{Q}(\alpha_1, \ldots, \alpha_n)$. Тогда $\exists \theta \in E: E = \mathbb{Q}(\theta)$.
+\end{theorem}
+
+\begin{definition}
+	Такое $\theta$ называется \textit{примитивным элементом} $E$ (над $\mathbb{Q}$).
+\end{definition}
+
+\begin{corollary}
+	Любое конечное расширение $\mathbb{Q}$ является конечномерным пространством над $\mathbb{Q}$.
+\end{corollary}
+
+\begin{definition}
+	Размерность $E$ как линейного пространства над $\mathbb{Q}$ называется \textit{степенью расширения}.
+	Обозначается $[E \colon \mathbb{Q}]$.
+\end{definition}
+
+Обозначим $\mathbb{Z}_E = E \cap \mathbb{Z_A}$, $\mathbb{Z_Q} = \mathbb{Z}$.

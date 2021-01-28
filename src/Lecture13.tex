@@ -1,0 +1,99 @@
+\begin{definition}
+	Если для любого вложения $\sigma$ расширения $E$ справедливо $\sigma(E) = E$, то $E$ называется \textit{нормальным}.
+\end{definition}
+
+\begin{lemma} \label{l13_lm6}
+	Пусть $E$ — конечное расширение $\mathbb{Q}$, $\sigma$ — вложение $E$ в $C$. Пусть $\sigma(E) \subset E$. Тогда $\sigma(E) = E$.
+\end{lemma}
+
+\begin{pf}
+	$E$ — конечномерное линейное пространство над $\mathbb{Q}$, $\sigma: E \rightarrow E$ — линейное отображение с нулевым ядром. Следовательно, $\dim \sigma(E) = \dim E$ и $\sigma(E) = E$.
+\end{pf}
+
+\begin{example}~\
+	\begin{itemize}[nolistsep]
+		\item $\mathbb{Q}(\sqrt{2})$ — нормально;
+		\item $\mathbb{Q}(\sqrt[3]{2})$ — не нормально.
+	\end{itemize}
+\end{example}
+
+\begin{theorem} \label{l13_th8}
+	Пусть $E = \mathbb{Q}(\alpha_1, \ldots, \alpha_m)$ и пусть все сопряженные ко всем $\alpha_i$ лежат в $E$. Тогда $E$ — нормально.
+\end{theorem}
+\begin{pf}
+	Пусть $\alpha \in E$. Тогда $\alpha = \frac{f(\alpha_1, \ldots, \alpha_m)}{g(\alpha_1, \ldots, \alpha_m)}, f, g \in \mathbb{Q}[x_1, \ldots, x_m]$.\\
+	Если $\sigma$ — вложение $E$ в $\mathbb{C}$, то $\sigma(\alpha) = \frac{f(\sigma(\alpha_1), \ldots, \sigma(\alpha_m))}{g(\sigma(\alpha_1), \ldots, \sigma(\alpha_m))} \in E$.\\
+	Таким образом, $\sigma(E) \subset E$. Применяя лемму \ref{l13_lm6} получаем, что $\sigma(E) = E$, т.е. $E$ нормально.
+\end{pf}
+
+Если $E$ нормально, то все вложения $E$ в $\mathbb{C}$ — автоморфизмы $E$. Можно брать их композиции, существует обратный элемент. Получается группа автоморфизмов $E$, называемой \textit{группой Галуа}.
+\begin{example}
+	Группа Галуа $\mathbb{Q}(\sqrt{2})$ изоморфна $\mathbb{Z}_2$.
+\end{example}
+
+Пусть $E$ — конечное расширение $\mathbb{Q}, [E:\mathbb{Q}] = n$, $\sigma_1, \ldots, \sigma_n$ — все вложения $E$ в $\mathbb{C}$.
+
+\begin{definition}
+	Для каждого  $\alpha \in E$ \textit{нормой относительно $E$}  называется величина\\
+	$\displaystyle N(\alpha) = \prod_{i= 1}^{n} \sigma_i(\alpha)$.
+\end{definition}
+
+\begin{example}
+	$E = \mathbb{Q}(\sqrt{2}): \ N(\alpha + \beta\sqrt{2}) = (\alpha + \beta \sqrt{2})(\alpha - \beta \sqrt{2}) = \alpha^2 - 2\beta^2$.
+\end{example}
+
+\begin{theorem}~\ \label{l13_th9}
+	\begin{enumerate}[nolistsep]
+		\item Если $\alpha \in E$ и $p_{\alpha}(x) = x^d + \ldots + a_1 x + a_0$, то $N(\alpha) = (-1)^n a_0^{\frac{n}{d}}$.
+		\item Если $\alpha \in E$, то $N(\alpha) \in \mathbb{Q}$. Если $\alpha \in \mathbb{Z}_E = \mathbb{Z_\mathbb{A}} \cap E$, то $N(\alpha) \in \mathbb{Z}$.
+		\item $N(\alpha) = 0 \Leftrightarrow \alpha = 0$.
+		\item $N(\alpha \beta) = N(\alpha) N(\beta)$, $N(\frac{\alpha}{\beta}) = \frac{N(\alpha)}{N(\beta)}$.
+	\end{enumerate}
+\end{theorem}
+\begin{pf}
+	\begin{enumerate}[nolistsep]
+		\item Следует из теоремы \ref{l12_th7} и теоремы Виета.
+		\item Следует из первого пункта.
+		\item Следует из определения вложения.
+		\item Следует из определения вложения.
+	\end{enumerate}
+\end{pf}~\\
+
+\subsection{Трансцендентность $\pi$}
+\begin{theorem}[Линдемана-Вейерштрасса] \label{l13_Lin_Vei}
+	Пусть $\alpha_0, \ldots, \alpha_m$ — различные алгебраические числа.
+	Тогда $e^{\alpha_0}, \ldots, e^{\alpha_m}$ линейно независимы (ЛНЗ) над $\mathbb{A}$.
+\end{theorem}
+
+\begin{theorem}[Об экспоненциальной линейной форме] \label{l13_exp_form}
+	Пусть $\alpha_0, \ldots, \alpha_m \in \mathbb{A}, a_0, \ldots, a_m \in \mathbb{A}$. Пусть $\displaystyle A(x) = \sum_{k = 0}^{m} a_k e^{\alpha_k x} = \sum_{l = 0}^{\infty} \left( \sum_{k = 0}^{\infty} a_k \frac{\alpha_k^l}{l!} \right)x^l \in \mathbb{Q}[[x]] \setminus \lbrace 0 \rbrace$.
+	Тогда $A(1) \ne 0$.
+\end{theorem}
+
+\begin{theorem} \label{l13_th10}
+	\ref{l13_exp_form} $\Rightarrow$ \ref{l13_Lin_Vei}.
+\end{theorem}
+\begin{pf}
+	Нужно показать, что $A(1) \ne 0$. Тогда мы применим \ref{l13_exp_form} и получим, что $\forall a_0, \ldots, a_m$ $A(1) \ne 0$, т.е. линейная комбинация $e^{\alpha_0}, \ldots, e^{\alpha_m}$ не 0, и утверждение теоремы выполнено.\\
+	Можно считать, что все $a_0, \ldots, a_m \ne 0$.\\
+	Тогда $\displaystyle A(x) = \sum_{k = 0}^{m} a_k e^{\alpha_k x} \ne 0$, т.к. вронскиан $W$\\
+	\[ W(e^{\alpha_0 x, \ldots, \alpha_m x}) = \left|
+	\begin{array}{cccc}
+		e^{\alpha_0 x}       & e^{\alpha_1 x}   & \ldots & e^{\alpha_m x}  \\
+	\alpha_0 e^{\alpha_0 x}       & \alpha_1 e^{\alpha_1 x}   & \ldots & \alpha_m e^{\alpha_m x} \\
+	\ldots & \ldots & \ldots & \ldots \\
+	\alpha_0^m e^{\alpha_0 x}       & \alpha_1^m e^{\alpha_1 x}   & \ldots & \alpha_m^m e^{\alpha_m x}
+    \end{array} \right|  = \mathrm{exp}\left(\left(\sum_{k=0}^{m} \alpha_k\right)x\right)  V(\alpha_0, \ldots, \alpha_m) \ne 0,\]
+    где $V(x_1, \ldots, x_m)$ является Вандермондом для чисел $x_1, \ldots, x_m$.\\
+    Почему $A(x) \in \mathbb{Q}[[x]]$? Рассмотрим нормальное расширение $E$ поле $\mathbb{Q}$, содержащее $a_0, \ldots, a_m, \alpha_0, \ldots, \alpha_m$. (Например, можно взять все сопряженные к ним и добавить к $\mathbb{Q}$, по теореме \ref{l13_th8} будет нормальное расширение).\\
+    Пусть $[E : \mathbb{Q}] = \eta, \sigma_1, \ldots, \sigma_{\eta}$ — все автоморфизмы $E$ над $\mathbb{Q}$. Тогда $A(x) = E[[x]]$.\\
+    Определим $\sigma_1, \ldots, \sigma_{\eta}$ на $E[[x]]$ так:
+    $$\sigma_i: \sum_{l = 0}^{\infty} \gamma_l x^l \mapsto \sum_{l = 0}^{\infty} \sigma_i(\gamma_l)x^l$$
+	$$\sigma_i(A(x)) = \sum_{l = 0}^{\infty} \left( \sum_{k = 0}^{\infty} \sigma_i(a_k) \frac{\sigma_i(\alpha_k)^l}{l!} \right) x^l = \sum_{k = 0}^{m} \sigma_i(a_k) e^{\sigma_i(\alpha_k) x} = A_i(x)$$
+	Поскольку $A(x) \ne 0$, то  $A_i(x) \ne 0$.\\
+	Рассмотрим $\displaystyle B(x) = \prod_{i = 1}^{\eta} A_i(x) \in E[[x]], B(x) \not\equiv 0.$\\
+	Заметим, что
+	$$\sigma_i(B(x)) = \sigma_i\left(\prod_{i = 1}^{\eta} A_i(x)\right) = \prod_{i = 1}^{\eta} \sigma(A_i(x)) = \prod_{i = 1}^{\eta} \sigma_i(\sigma_j(x)) = \prod_{i = 1}^{\eta} \sigma_j(A_i(x)) = B(x) \Rightarrow B(x) \in \mathbb{Q}[[x]].$$
+	$$B(x) = \prod_{i = 1}^{\eta} \sum_{k = 0}^{n} \sigma_i(a_k) e^{\sigma_i(\alpha_k)x} = \sum_{l =0}^{L} b_l e^{\beta_l x}.$$
+	По Теореме \ref{l13_exp_form} $B(1) \ne 0$. Тогда $\displaystyle B(1) = \prod_{j=1}^\eta A_j(1) \ne 0 \Rightarrow \forall j $ $A_j(1) \ne 0$. А для тождественного $\sigma_j$ имеем  $A_j(x) = A(x)$ получаем, что $A(1) \ne 0$.
+\end{pf}
