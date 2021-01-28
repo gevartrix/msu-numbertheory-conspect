@@ -1,6 +1,6 @@
 <div align="center">
 
-[<img src="https://raw.githubusercontent.com/gevartrix/msu-numbertheory-conspect/master/assets/mechmath-logo.svg?sanitize=true&raw=true" width="250" height="280"/>](https://math.msu.su/)
+[<img src="https://raw.githubusercontent.com/gevartrix/msu-numbertheory-conspect/master/assets/mechmath_logo.svg?sanitize=true&raw=true" width="250" height="280"/>](https://math.msu.su/)
 
 </div>
 
