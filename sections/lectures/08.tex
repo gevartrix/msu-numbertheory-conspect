@@ -3,7 +3,7 @@
     \[
         -\frac{L'(s, \chi)}{L(s, \chi)} = \sum_{n=1}^{\infty} \frac{\Lambda(n)\chi(n)}{n^s}.
     \]
-    Пусть далее $s = \sigma \in \RR$, $s>1$. Вспомним ещё Определение~\ref{def:I_Mangoldt-function} функции Монгольдта:
+    Пусть далее $s = \sigma \in \RR$, $s>1$. Вспомним ещё Определение~\ref{def:I_Mangoldt-function} функции Мангольдта:
     \[
         \Lambda(n) := 
         \begin{cases}
@@ -126,7 +126,6 @@
     \]
 \end{ntheorem}
 \begin{proof}
-    \hfill
     Хотим получить, что $\abs{q\theta - p} < \frac{1}{T}$. Можно считать, что $\theta \in [0, 1)$, и потом просто прибавить целую часть.~\newline
     Рассмотрим числа $\{ n\theta \}$, где $n = 0, 1, \dots, T$. Разобьём отрезок $[0, 1]$ на полуинтервалы $\left[ \frac{k}{T}, \frac{k+1}{T} \right)$, $k = 0, 1, \dots, T-1$ (то есть, на $T$ равных). По принципу Дирихле
     \[
@@ -142,7 +141,8 @@
     Если $\theta \in \RR \setminus \QQ$, то неравенство
     \[
         \abs{\theta - \frac{p}{q}} < \frac{1}{q^2}
-    \] имеет бесконечно много решений в $\frac{p}{q} \in \QQ$.
+    \]
+    имеет бесконечно много решений в $\frac{p}{q} \in \QQ$.
 \end{ncorollary}
 \begin{proof}
     Докажем от противного: пусть $\frac{p_1}{q_1}, \frac{p_2}{q_2}, \dots, \frac{p_k}{q_k}$ --- все решения $\abs{\theta - \frac{p}{q}} < \frac{1}{q^2}$. 
@@ -155,7 +155,7 @@
     \[
         \abs{\theta - \frac{p}{q}} < \frac{1}{qT} < \frac{\delta}{q} \le \delta.
     \]
-    Таким образом, $\frac{p}{q}$ ближе, чем наименьшее $\delta$ --- пришли к противоречию.
+    Таким образом, $\frac{p}{q}$ ``ближе'', чем наименьшее $\delta$ --- пришли к противоречию.
 \end{proof}
 
 \begin{ndefinition}
