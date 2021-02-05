@@ -1,4 +1,4 @@
-name: Build and upload the master-file LaTeX document
+name: Build and (pre-)release the master-file LaTeX document
 on: 
   push:
     branches: [master]
@@ -25,3 +25,36 @@ jobs:
         with:
           name: main
           path: main.pdf
+  latex-deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    needs: [latex-build]
+    steps:
+      - name: Variables
+        id: vars
+        run: |
+          echo «::set-output name=date::$(date +'%Y-%m-%d')»
+          echo «::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)»
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: main
+      - name: Create Release
+        uses: actions/create-release@v1
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: main-${{ steps.vars.outputs.date }}-${{ steps.vars.outputs.sha8 }}
+          release_name: Конспект по Теории Чисел (версия ${{ steps.vars.outputs.date }})
+          draft: false
+          prerelease: true
+      - name: Upload pdf asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./main.pdf
+          asset_name: main.pdf
+          asset_content_type: application/pdf
