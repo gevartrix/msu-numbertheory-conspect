@@ -121,6 +121,13 @@
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi}{\varphi}
 
+% Redefines the universal and existential quantifiers to adjust spacing
+\let\oldforall\forall
+\let\oldexist\exists
+\renewcommand{\forall}{\oldforall \, }
+\renewcommand{\exists}{\oldexist \: }
+\newcommand\existu{\oldexist! \: }
+
 
 %% Defines additional commands for document-specific notations
 % Defines the `divisible by` symbol (three vertical dots with the right spacing)

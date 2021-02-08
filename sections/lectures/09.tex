@@ -1,0 +1,226 @@
+\begin{ndefinition}
+\label{def:III_badly-approximable}
+    Иррациональное число $\theta$ называется \emph{плохо приближаемым}, если 
+    \[
+        \exists C = C(\theta) > 0\ \forall \frac{p}{q}\colon \ \abs{\theta - \frac{p}{q}} \ge \frac{C}{q^2}.
+    \]
+\end{ndefinition}
+
+\begin{remark}
+    Известно (существует такая теорема), что число плохо приближаемо тогда и только тогда, когда неполные частные при разложении в цепную дробь ограничены. Например, для квадратичной иррациональности неполные частные периодичны \footnote{По Теореме Лагранжа с первого курса}, а значит и ограничены, то есть квадратичные иррациональности плохо приближаемы.
+\end{remark}
+
+\begin{remark}
+    Отныне и далее мы будем подразумевать, что $\theta \in \RR$, а $\alpha \in \CC$.
+\end{remark}
+
+\begin{ndefinition}
+\label{def:III_algebraic-number}
+    Число $\alpha \in \CC$ называется \emph{алгебраическим}, если существует ненулевой многочлен $f(x) \in \QQ[x] \setminus \{ 0\}$ такой, что
+    \[
+        f(\alpha) = 0.
+    \]
+    Такой многочлен $f(x)$ называется \emph{аннулирующим} для числа $\alpha$.
+\end{ndefinition}
+
+\begin{ndefinition}
+\label{def:III_algebraic-number-degree}
+    \emph{Степенью алгебраического числа} $\deg{\alpha}$ называется минимальная степень аннулирующего многочлена:
+    \[
+        \deg{\alpha} := \min\left\{ \deg{f} \mid f(x) \in \QQ[x] \setminus \{ 0 \},\, f(x) = 0 \right\}.
+    \]
+\end{ndefinition}
+
+\begin{ntheorem}[Лиувилля]
+\label{thm:III_Liouville}
+    Пусть $\theta \in \RR$ --- алгебраическое число степени $d$. Тогда
+    \[
+        \exists C = C(\theta) > 0\ \forall \frac{p}{q} \in \QQ \setminus \{ 0 \}\colon \ \abs{\theta - \frac{p}{q}} \ge \frac{C}{q^d}.
+    \]
+    То есть $\mu(\theta) \le d$.
+\end{ntheorem}
+\begin{proof}
+    \hfill
+    \begin{casesp}
+        \item
+        $\theta \in \QQ$. 
+            Случай $d = 1$ ($\theta \in \QQ$) уже был нами рассмотрен и доказан в Утверждении~\ref{stm:III-1}.
+        \item
+        $\theta \not\in \QQ$. 
+            Рассмотрим многочлен $f(x) \in \ZZ[x] \setminus \{ 0 \}$, $\deg{f} = d \ge 2$, $f(\theta) = 0$. Заметим, что для любой $\frac{p}{q} \in \QQ$ справедливо $f\left(\frac{p}{q}\right) \ne 0$. Действительно, так как иначе многочлен $g(x) = \frac{f(x)}{x - \sfrac{p}{q}}$ был бы аннулирующим многочленом для $\theta$ степени $\deg{g} = \deg{f} - 1 = d - 1$. Пришли к противоречию.~\newline
+            Поскольку многочлен $f(x)$ с целыми коэффициентами, то 
+            \[
+                q^d f\left(\frac{p}{q}\right) \in \ZZ \ \Rightarrow \ 
+                \abs{q^d f\left(\frac{p}{q}\right)} \ge 1 \ \Rightarrow \ 
+                \abs{f\left(\frac{p}{q}\right)} \ge \frac{1}{q^d}.
+            \]
+            \begin{casesp}
+                \item
+                $\abs{\theta - \frac{p}{q}} \ge 1$,
+                    \[
+                        \forall \frac{p}{q}\colon \ \abs{\theta - \frac{p}{q}} \ge \frac{1}{q^d}.
+                    \]
+                \item
+                $\abs{\theta - \frac{p}{q}} < 1$, то есть $\frac{p}{q} \in [\theta - 1, \theta + 1]$. 
+                    \begin{align*}
+                        \frac{1}{q^d} &\le \abs{f\left(\frac{p}{q}\right)} = \abs{f\left(\frac{p}{q}\right) - f\left(\theta\right)} \\
+                        &= \abs{\left(\frac{p}{q} - \theta\right)f'(\xi)} \le M \cdot \abs{\theta - \frac{p}{q}},
+                    \end{align*}
+                    где $M = \max_{[\theta-1, \theta+1]} \abs{f'(x)}$. Таким образом, $\abs{\theta - \frac{p}{q}} \ge \frac{1}{Mq^d}$.~\newline
+                    Следовательно, 
+                    \[
+                        C = \min\left( 1, \frac{1}{M} \right).
+                    \]
+            \end{casesp}
+    \end{casesp}
+\end{proof}    
+
+\begin{ndefinition}
+\label{def:III_Liouville-number}
+    Если $\theta \in \RR$ таково, что $\forall n \in \NN$ неравенство $\abs{\theta - \frac{p}{q}} < \frac{1}{q^n}$ имеет бесконечное количество решений в $\frac{p}{q} \in \QQ$, то число $\theta$  называется \emph{луивиллевым} (или \emph{числом Луивилля}.
+\end{ndefinition}
+
+\begin{ndefinition}
+\label{def:III_Diophantine-number}
+     Числа, не являющиеся луивиллевыми, называются \emph{диофантовыми}.
+\end{ndefinition}
+
+\begin{proposition}
+\label{pr:III-1}
+    Луивиллевы числа трансцендентны.
+\end{proposition}
+\begin{proof}
+    Предположим противное --- пусть $\theta$ алгебраическое. Тогда для него верна Теорема~\ref{thm:III_Liouville} Луивилля:
+    \[
+        \exists C > 0\ \forall \frac{p}{q} \in \QQ \setminus \{ 0 \}\colon \ \abs{\theta - \frac{p}{q}} \ge \frac{C}{q^d}.
+    \] 
+    Тогда при $n \ge d$ из неравенства 
+    \[
+        \abs{\theta - \frac{p}{q}} < \frac{1}{q^{n + 1}}
+    \]
+    следует, что $q \le \frac{1}{C}$. Кроме того, 
+    \[
+        \abs{q\theta - p} \le 1 \ \Rightarrow \ 
+        \abs{p} \le 1 + q\abs{\theta} < 1 + \frac{\abs{\theta}}{C}.
+    \]
+    То есть числа $q$ и $p$ ограничены, значит и количество решений тоже --- получили противоречие.
+\end{proof}
+
+\begin{example}
+    Число $\theta = \sum_{n=0}^{\infty} \frac{1}{2^{n!}}$ --- луивиллево.
+\end{example}
+\begin{proof}
+    Пусть $m \in \NN$, $N \ge m$. Положим 
+    \[
+        p = 2^{N!} \sum_{n=0}^{N} \frac{1}{2^{n!}}, 
+        \quad 
+        q = 2^{N!}.
+    \]
+    Тогда
+    \[
+        \frac{p}{q} = \sum_{n=0}^{N} \frac{1}{2^{n!}},
+    \]
+    а следовательно,
+    \begin{align*}
+        \abs{\theta - \frac{p}{q}} &= \sum_{n=N+1}^{\infty} \frac{1}{2^{n!}} 
+          \le \frac{1}{2^{(N+1)!}}\left( 1 + \frac{1}{2^{(N+2)! - (N+1)!}} + \frac{1}{2^{(N+3)! - (N+1)!}} + \dots \right) \\
+          &< \frac{1}{2^{(N+1)!}}\left( 1 + \frac{1}{2} + \frac{1}{4} + \dots \right) = \frac{2}{2^{(N+1)!}} \\
+          &= \frac{2}{q^{N+1}} \le \frac{1}{q^N} \le \frac{1}{q^m}.
+    \end{align*}
+    Таким образом, неравенство 
+    \[
+        \abs{\theta - \frac{p}{q}} 
+        = \abs{\theta - \frac{2^{N!} \sum_{n=0}^{N} \frac{1}{2^{n!}}}{2^{N!}}} 
+        < \frac{1}{q^m}
+    \]
+    имеет бесконечное число решений.
+\end{proof}
+
+Кругозора ради добавим, что существует следующая очень сложная Теорема:
+
+\begin{ntheorem}[Туэ--Зигеля--Рота]
+\label{thm:III_Thue-Siegel-Roth}
+    Пусть $\theta$ --- иррациональное алгебраическое число. Тогда 
+    \[
+        \forall \epsilon > 0 \ \exists C = C(\theta, \epsilon)\colon \forall \frac{p}{q} \in \QQ\ \abs{\theta - \frac{p}{q}} \ge \frac{C}{q^{2 + \epsilon}} = \frac{2}{q^{N+1}} \le \frac{1}{q^N} \le \frac{1}{q^m}.
+    \]
+    Таким образом, неравенство $\abs{\theta - \frac{p}{q}} \le \frac{1}{q^m}$ имеет бесконечное количество решений.
+\end{ntheorem}
+
+
+\subsection{\texorpdfstring{Иррациональность $e$ и $\pi$}{Иррациональность e и π}}
+\label{subsec:III_E-PI-irrationality}
+
+\begin{ntheorem}
+\label{thm:III_E-irrationality}
+    $e \not\in \QQ$.
+\end{ntheorem}
+\begin{proof}
+    Вспомним первый семестр курса математического анализа:
+    \[
+        e = \sum_{n=0}^{\infty} \frac{1}{n!}.
+    \]
+    Допустим противное: пусть $e = \frac{p}{q} \in \QQ$. Тогда 
+    \[
+        q!e \in \NN.
+    \]
+    Несложно тогда заметить, что 
+    \begin{align*}
+        \NN \ni \sum_{n=q+1}^{\infty} \frac{q!}{n!} &= \frac{1}{q+1} + \frac{1}{(q+1)(q+2)} + \frac{1}{(q+1)(q+2)(q+3)} + \dots \\
+        &< \sum_{k=1}^{\infty} \frac{1}{(q+1)^k} = \frac{1}{q} \\
+        &\le 1.
+    \end{align*}
+    Получили противоречие.
+\end{proof}
+
+\begin{ntheorem}
+\label{thm:III_PI-irrationality}
+    $\pi \not \in \QQ$.
+\end{ntheorem}
+\begin{proof}
+    Снова допустим противное: пусть $\pi = \frac{p}{q} \in \QQ$. Тогда положим 
+    \begin{align*}
+        f_n(x) &= q^n\frac{x^n (\pi - x)^n}{n!} = \frac{x^n(q - px)^n}{n!} \\
+        &= \frac{q(x)}{n!}, \quad g(x) \in \ZZ[x].
+    \end{align*}
+    Далее рассмотрим
+    \[
+        I_n = \int_{0}^{\pi} f_n(x)\sin(x)dx, \quad I_n \ge 0
+    \]
+    и
+    \[
+        F_n(x) = f_n(x) - f_n''(x) + f_n^{(4)}(x) + \dots = \sum_{k = 0}^{\infty} (-1)^k f_n^{(2k)}(x).
+    \]
+    Поскольку $f_n(x) = f_n(\pi-x)$, то при чётных $k$ справедливо
+    \[
+        f_n^{(k)}(x) = f_n^{(k)}(\pi - x).
+    \]
+    Из этого мы видим, что $F_n(x) = F_n(\pi - x)$. Тогда
+    \[
+        \left( F_n'(x)\sin{x} - F_n(x)\cos{x} \right)' = f_n(x)\sin x.
+    \]
+    А следовательно,
+    \[
+        I_n = \left( F_n'(x)\sin{x} - F_n(x)\cos{x} \right)\Bigr|_0^\pi = F_n(0) + F_n(\pi) = 2F_n(0).
+    \]
+    Докажем теперь следующие (взаимоисключающие) утверждения про такой интеграл:
+    \begin{enumerate}
+        \item $I_n > 0$.
+        \item $I_n \to 0$ при $n \to \infty$.
+        \item $I_n \in \ZZ$ при $n \in \NN$.
+    \end{enumerate}
+    \begin{statesp}
+        \item
+            Очевидно.
+        \item
+            \[
+                \abs{f_n(x)\sin{x}} \le \frac{b^n\left( \sfrac{\pi}{2} \right)^{2n}}{n!} \xrightarrow{n \to \infty} 0.
+            \]
+        \item
+            \[
+                I_n = 2F_n(0) = 2 \sum_{k=0}^{\infty} (-1)^k, \quad f^{(2k)}(0) \in \ZZ.
+            \]
+            Поясним, что $f^{(2k)}(0) \in \ZZ$, так как при $g(x) \in \ZZ[x]$ и $l \ge n$ выполняется $\frac{g^{(l)}(x)}{n!} \in \ZZ[x]$.
+    \end{statesp}
+    Таким образом, пришли к тому, что последовательность $\left\{ I_n \right\}$ положительна, целочисленна, и стремится к нулю одновременно. То есть к противоречию.
+\end{proof}

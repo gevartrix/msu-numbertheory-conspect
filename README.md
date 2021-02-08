@@ -69,7 +69,8 @@
     │   │   ├── 05.tex
     │   │   ├── 06.tex
     │   │   ├── 07.tex
-    │   │   └── 08.tex
+    │   │   ├── 08.tex
+    │   │   └── 09.tex
     │   ├── 00titlepage.tex
     │   └── 01intro.tex
     ├── main.tex
