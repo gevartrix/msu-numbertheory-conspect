@@ -8,38 +8,38 @@ on:
       - 'img/**'  
 jobs:
   latex-build:
-    name: build main
+    name: Build and upload document
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: Compile LaTeX document
+      - name: Compile document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
           compiler: latexmk
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           post_compile: "latexmk -c"
-      - name: Upload pdf document
+      - name: Upload document
         uses: actions/upload-artifact@v2
         with:
           name: main
           path: main.pdf
-  latex-deploy:
+  latex-release:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     needs: [latex-build]
     steps:
-      - name: Variables
+      - name: Set variables
         id: vars
         run: |
-          echo "::set-output name=date::$(date +'%Y-%m-%d')"
+          echo "::set-output name=date::$(date +'%Y%m%d')"
           echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
           name: main
-      - name: Create Release
+      - name: Release document
         uses: actions/create-release@v1
         id: create_release
         env:
@@ -49,7 +49,7 @@ jobs:
           release_name: Конспект по Теории Чисел (версия ${{ steps.vars.outputs.date }})
           draft: false
           prerelease: true
-      - name: Upload pdf asset
+      - name: Upload PDF asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
