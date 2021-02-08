@@ -22,6 +22,9 @@
     pdfusetitle%  Catches the document's @title and @author arguments for \hypersetup 
 ]{hyperref}
 
+% Enables conditional commands like `\ifthenelse` and `\whiledo` 
+\usepackage{ifthen}
+
 % Indents first paragraph after (sub)section headers
 \usepackage{indentfirst}
 
@@ -120,13 +123,17 @@
 }
 
 
-%% [fancyhdr,lastpage] Sets up the header and footer parts of pages' layout
+%% [fancyhdr, ifthen, lastpage] Sets up the header and footer parts of pages' layout
 % Clears header and footer completely
 \fancyhf{}
 % Puts the current subsection number and name on the left side of the header
-% The `\leftmark` command outputs the number and name of the current section in the `article` document class
+% If subsection has been reset by a new section it puts the current section number and name instead
+% The `\leftmark` command outputs the number and name of the current section in the `article` document class, while the `\rightmark` does it for current subsection
 \lhead{
-    \sc\S\rightmark
+    \scshape\small\ifthenelse{%
+        \equal{\rightmark}{}}%
+        {\bfseries\nouppercase{\leftmark}}%
+        {\S\rightmark}
 }
 % Puts the current lecture number on the right side of the header
 \rhead{
