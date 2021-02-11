@@ -1,0 +1,18 @@
+% First illustration of the orthogonal complement used in the proof of Theorem III.6 (the transcendentality of E)
+% See Lecture 10
+\tikz[cm={cos(-18),-sin(-18),sin(-18),cos(-18),(0,0)}]{
+    % Sets the axes
+    \draw[thick,->]
+        (0, 0) -- (0, 1.5) 
+        node[anchor=south east]{$\left( a_0, a_1, \dots, a_m \right)$};
+    \draw[thick,->] 
+        (0, 0) -- (1.5, 0) 
+        node[anchor=south west]{$\left( 1, e, e^2, \dots, e^m \right)$};
+    % Draws the origin point
+    \filldraw 
+        (0, 0) circle (1.8pt) 
+        node[anchor=north east]{$O$};
+    % Draws the right angle
+    \draw
+        (0, 0.32) -- (0.32, 0.32) -- (0.32, 0);
+}

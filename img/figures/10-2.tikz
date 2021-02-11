@@ -1,0 +1,17 @@
+% Second illustration of the orthogonal complement used in the proof of Theorem III.6 (the transcendentality of E)
+% See Lecture 10
+\tikz[ultra thin,cm={cos(90),-sin(90),sin(90),cos(90),(0,0)}]{
+    % Sets the bottom hyperplane
+    \node[trapezium,trapezium left angle=100,trapezium right angle=80,minimum width=3.2cm,minimum height=2cm,fill=blue!45,opacity=0.48] at (1, 1){};
+    % Sets the middle hyperplane (the orthogonal complement itself)
+    \node[trapezium,trapezium left angle=100,trapezium right angle=80,minimum width=3.2cm, minimum height=2cm,fill=blue!45,opacity=0.48] at (0.5, 0.5){};
+    \draw[thick,->]
+        (1.37, -0.5) -- (1.37, 1.8)
+        node[anchor=north west]{$\left( 1, e, e^2, \dots, e^m \right)$};
+    % Sets the top hyperplane
+    \node[trapezium,trapezium left angle=100,trapezium right angle=80,minimum width=3.2cm,minimum height=2cm,fill=blue!45,opacity=0.48] at (0, 0){};
+    % Sets the hyperplane's label
+    \draw
+        (0.3, 1.7)
+        node[anchor=north west]{$\Pi$}
+}

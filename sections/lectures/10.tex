@@ -1,0 +1,218 @@
+\subsection{\texorpdfstring{Трансцендентность числа $e$}{Трансцендентность числа e}}
+\label{III_E-transcendental}
+
+\begin{ntheorem}
+    Число $e$ трансцендентно.
+\end{ntheorem}
+\begin{proof}
+    Предположим противное: пусть $e$ --- алгебраическое число степени $m$. В таком случае
+    \[
+        \exists a_0, a_1, \dots, a_m \in \ZZ\colon \sum_{k=0}^m a_ke^k = 0,\, \exists k\colon a_k \ne 0.
+    \]
+    Можно считать, что $\left( a_0, a_1, \dots, a_m \right) = 1$. Ортогональным дополнением к вектору ${\left( a_0, a_1 \dots, a_m \right)}$ является гиперплоскость $\Pi$, проходящая через $\left( 1, e, e^2, \dots, e^m \right)$ (Рис.~\ref{fg:IV-1}). При этом в гиперплоскости можно выбрать базис из целочисленных векторов.
+    \begin{figure}[h]
+        \centering
+        \input{././img/figures/10-1.tikz}
+        \caption{Ортогональное дополнение к $\left( a_0, a_1 \dots, a_m \right)$}
+        \label{fg:IV-1}
+    \end{figure}
+
+    Разбиваем все точки $\ZZ^{m+1}$ на параллельные слои $\ZZ^m$ (любое $b \in \ZZ^{m+1}$ лежит в соответствующем слое с номером $\langle a, b \rangle$) (Рис.~\ref{fg:IV-2}).
+    
+    \begin{figure}[!ht]
+        \centering
+        \input{././img/figures/10-2.tikz}
+        \caption{Расслоение $\ZZ^{m+1}$}
+        \label{fg:IV-2}
+    \end{figure}
+    
+    Расстояние между слоями одинаковое и (при условии, что $(a_0, a_1, \dots, a_m) = 1$) оно равно $\Delta := \frac{1}{\sqrt{a_0^2 + a_1^2 + \dots + a_m^2}}$. Построим последовательность $\mathcal{B}^{(n)} \in \ZZ^{m+1}$ такую, что
+    \begin{enumerate}
+        \item
+            расстояние от $\mathcal{B}^{(n)}$ до $\left< \left(1, e, e^2, \dots, e^m \right) \right>$ меньше $\Delta$,
+        \item
+            точка $\mathcal{B}^{(n)}$ не лежит в гиперплоскости $\Pi$.
+    \end{enumerate}
+    Напомним четвёртый семестр курса математического анализа:
+    \[
+        \int_{0}^{\infty} x^ke^{-x}dx = \Gamma(k+1) = k!
+    \]
+    Тогда можно брать $\int_{0}^{\infty} f(x)e^{-x}dx$ для многочленов $f$. Положим 
+    \[
+        f_n(x) = \frac{x^{n-1}(x-1)^n(x-2)^n \dots (x-m)^n}{(n-1)!}.
+    \]
+    Возьмём
+    \[
+        \mathcal{B}_k^{(n)} = \int_{0}^{+\infty} f_n(x+k)e^{-x}dx,
+        \quad 
+        k = 0, 1, \dots, m.
+    \]
+    Покажем справедливость следующего Утверждения:
+    \begin{statement}
+        \[
+            \mathcal{B}_0^{(n)}e^k - \mathcal{B}_k^{(n)} \to 0,\ n \to \infty.
+        \]
+    \end{statement}
+    \begin{proof}
+    \hfill
+        \begin{casesp}
+            \item
+            $k = 0$.
+                В этом случае разность будет равна нулю.
+            \item
+            $k \ne 0$. Обозначим $y = x + k$.
+                \begin{align*} 
+                    \abs{\mathcal{B}_0^{(n)}e^k - \mathcal{B}_k^{(n)}} 
+                    &= \abs{e^k \int_{0}^{\infty} f_n(x)e^{-x}dx - \int_{0}^{\infty} f_n(x + k)e^{-x}dx} \\
+                    &= e^k \abs{\int_{0}^{\infty} f_n(x)e^{-x}dx - \int_{k}^{\infty} f_n(y)e^{-y}dy} \\
+                    &= e^k \abs{\int_{0}^{k} f_n(x)e^{-x}dx} \\
+                    &\le e^m m \frac{m^{n+nm-1}}{(n-1)!} = \frac{e^m m^{n(1+m)}}{(n-1)!} \xrightarrow{n \to \infty} 0.
+                \end{align*}
+        \end{casesp}
+    \end{proof}
+    \noindent
+    Таким образом, мы показали справедливость нашего Утверждения. А это означает, что последовательность точек $\mathcal{B}^{(n)}$ стремится к прямой $\left< \left( 1, e, e^2, \dots, e^m \right) \right>$ и, начиная с некоторого $n$, расстояние между ними станет меньше $\Delta$.~\newline
+    Покажем теперь, что $\mathcal{B}_k^{(n)} \in \ZZ$, где $k = 0, \dots, m$:
+    \begin{casesp}
+        \item
+        $k = 0$.
+            \begin{align*}
+                \mathcal{B}_0^{(n)} 
+                 &= \frac{1}{(n-1)!} \sum_k \left( \left[\text{коэффициент в } x^{n-1}(x-1)^n \dots (x-m)^n \text{ при } x^k \right] \cdot \right. \\
+                 &\phantom{= \frac{1}{(n-1)!} \sum_k} \left. \cdot \int_{0}^{\infty} x^ke^{-x}dx \right) \\
+                &= \frac{1}{(n-1)!}\left( (-1)^{mn} m!^n (n-1)! + A_n n! + \dots + A_N N! \right) \\
+                &= (-1)^{mn}m!^n + nA,\, A \in \ZZ.
+            \end{align*}
+        \item
+        $k \ge 1$:
+            \begin{align*}
+                \mathcal{B}_k^{(n)}
+                 &= \int_{0}^{+\infty}f_n(x+k)e^{-x}dx \\
+                 &= \sum_j \left( \left[\text{коэффициент в } \frac{(x+k)^{n-1}(x+k-1)^n \dots x^n \dots}{(n-1)!} \text{ при } x^j \right] \cdot j! \right) \\
+                 &= \frac{1}{(n-1)!}\left( C_nn! + C_{n+1}(n+1)! + \dots + C_NN! \right) = nC,\, C \in \ZZ.
+            \end{align*}
+    \end{casesp}
+    Осталось показать, что для бесконечно многих $n$ справедливо, что $\mathcal{B}^{(n)} \not\in \Pi$. То есть что
+    \[
+        \sum_{k=0}^{m} a_k \mathcal{B}_k^{(n)} \ne 0.
+    \]
+    Для этого обратим внимание на следующее сравнение:
+    \[
+        \congr{\sum_{k=0}^m a_k \mathcal{B}_k^{(n)}}
+          {a_0(-1)^{mn} {m!}^n}
+          {n}.
+    \]
+    Тогда при $\gcd{n, a_0m!} = 1$, где $a_0m!$ --- некоторое фиксированное число, ряд как раз и станет отличным от нуля.
+\end{proof}
+
+
+
+\section{Алгебраические и трансцендентные числа}
+\label{sec:IV_algebraic-transcendental-numbers}
+
+
+\subsection{Основные сведения}
+\label{subsec:1_summary}
+
+\begin{remark}
+    Как уже упоминалось ранее, множество алгебраических чисел обозначается через \AA.
+\end{remark}
+
+Пусть заданы некоторый многочлен $f(x) \in \QQ[x]$ и $\alpha \in \AA$. Далее, пусть $f(\alpha) = 0$, $\deg{f} = \deg{\alpha}$. Тогда $f(x)$ неприводим над $\QQ$. Следовательно, если 
+\[
+    g(x) \in \QQ[x],\, g(\alpha) = 0,\, \deg{g} = \deg{\alpha} = \deg{f},
+\]
+то $\gcd{f(x), g(x)} = h(x) \in \QQ[x]$, при этом $h(\alpha) = 0 = \deg{h} = \deg{f}$. То есть, если $h$ делит $f$ и $g$, а $\deg{h} = \deg{f} = \deg{g}$, то все три являются пропорциональными:
+\[
+    f \sim g \sim h.
+\]
+
+\begin{ndefinition}
+\label{def:IV_minimal-polynomial}
+    Унитарный многочлен\footnote{То есть многочлен, старший член которого равен единице.} $p_\alpha(x) \in \QQ[x]$ называется \emph{минимальным многочленом $\alpha$}, если
+    \[
+        p_\alpha(\alpha) = 0, \quad \deg{p_\alpha} = \deg{\alpha}.
+    \]
+\end{ndefinition}
+
+\begin{theorem}[Алгебраическая замкнутость поля \AA]
+    Поле \AA~--- алгебраически замкнутое поле. Иными словами, корень многочлена с алгебраическими коэффициентами также алгебраическое число.
+\end{theorem}
+
+Для доказательства этой Теоремы нам сперва понадобится установить несколько дополнительных фактов и лемм.
+
+\begin{ntheorem}[О симметрических многочленах]
+\label{thm:IV-1}
+    Пусть \rr~--- ассоциативное коммутативное кольцо с единицей и без делителей нуля. Далее, пусть многочлен $f \left( x_1, x_2, \dots, x_m \right) \in \rr\left[ x_1, x_2, \dots, x_m \right]$ является симметрическим. Тогда 
+    \begin{align*}
+        \exists g\left( x_1, x_2, \dots x_m \right) &\in \rr\left[ x_1, x_2, \dots, x_m \right]\colon \\
+        f\left( x_1, x_2, \dots, x_m \right) &= g\left( s_1\left( x_1, x_2, \dots, x_m \right), \dots, s_m\left( x_1, x_2, \dots, x_m \right) \right),
+    \end{align*}
+    где $s_k\left( x_1, x_2, \dots, x_m \right)$ --- $k$-ый симметрический многочлен.
+\end{ntheorem}
+
+\begin{nlemma}
+\label{lm:IV-1}
+    Пусть $f(x,y) \in \rr[x, y]$, тогда
+    \begin{align*}
+        \exists g(x, y_1, \dots, y_m) &\in \rr[x, y_1, \dots, y_m]\colon \\
+        \prod_{i=1}^{m} f(x, y_i) &= g(x, s_1(y_1, \dots, y_m), \dots, s_m(y_1, \dots, y_m)).
+    \end{align*}
+\end{nlemma}
+\begin{proof}
+    Заметим, что
+    \[
+        \prod_{i=1}^{m} f(x, y_i) \in \rr[x][y_1, y_2, \dots, y_m].
+    \]
+    Таким образом, он является симметрическим по $y_1, y_2, \dots, y_m$ над кольцом $\rr[x]$. По Теореме~\ref{thm:IV-1} существует искомый многочлен $g$, причём $g$ --- многочлен от $(x, y_1, \dots, y_m)$ над $\rr$:
+    \[
+        \exists g \in \rr[x][y_1, y_2, \dots, y_m]\colon g\left( s_1\left( y_1, \dots, y_m \right), \dots, s_m\left( y_1, \dots, y_m \right) \right) = 0.
+    \]
+\end{proof}
+
+\begin{nlemma}
+\label{lm:IV-2}
+    Пусть многочлен $f(x,y) \in \QQ[x, y]$, элемент $\alpha \in \AA$, $\deg{\alpha} = n$, $\alpha_1 = \alpha$, $\alpha_2, \alpha_3, \dots, \alpha_n$ --- корни многочлена $p_\alpha(x)$\footnote{Они попарно различны как корни любого неприводимого многочлена $f(x)$. Иначе бы у $f'(x)$ и $f(x)$ был общий корень, но $\deg{f'} < \deg{f}$ --- противоречие с неприводимостью.}. Тогда 
+    \[
+        F(x) = \prod_{k=1}^n f(x, \alpha_k) \in \QQ[x].
+    \]
+\end{nlemma}
+\begin{proof}
+    Применим Лемму~\ref{lm:IV-1}:
+    \[
+        \prod_{k=1}^n f(x, \alpha_k) = g\left( s_1\left( \alpha_1, \dots, \alpha_n \right), \dots, s_n\left( \alpha_1, \dots, \alpha_n \right) \right).
+    \]
+    По Теореме Виета все $s_i(\alpha_1,\dots,\alpha_n)$ выражаются через коэффициенты многочлена $p_\alpha$. А следовательно, для каждого индекса $i$ справедливо $s_i(\alpha_1, \dots, \alpha_n) \in \QQ$.
+\end{proof}
+
+\begin{ntheorem}
+\label{thm:IV-2}
+    \AA --- поле.
+\end{ntheorem}
+\begin{proof}
+    Пусть $\alpha, \beta \in \AA$. Проверяем, что $\left\{ \alpha @ \beta \in \AA \mid @ \in \{+, -, /, \cdot \} \right\}$.
+    \begin{statesp}
+        \item[($+$):]
+            Рассмотрим $F_1(x) = \prod_{k=1}^m p_\alpha\left( x-\beta_k \right)$, где $\beta_1 = \beta, \beta_2, \dots, \beta_m$ --- корни $p_\beta(x)$. Тогда по Лемме~\ref{lm:IV-2}:
+            \[
+                F_1(x) \in \QQ[x].
+            \]
+            При этом 
+            \[
+                F_1(\alpha + \beta) = \ldots \cdot p_\alpha(\alpha + \beta - \beta) \cdot \ldots = 0.
+            \]
+        \item[($-$):]
+            Если $\beta$ --- алгебраическое число, то алгебраическим будет и $-\beta$. Тогда $\alpha - \beta$ -- тоже алгебраическое. Ну или так:
+            \[
+                F_2(x) = \prod_{k=1}^m p_\alpha \left( x + \beta \right) \in \QQ[x], \quad F_2(\alpha - \beta) = 0.
+            \]
+        \item[($/$):]
+            \[
+                F_3(x) = \prod_{k=1}^m p_\alpha\left( x\beta_k \right) \in \QQ[x], \quad F_3\left( \frac{\alpha}{\beta} \right) = 0.
+            \]
+        \item[($\cdot$):]
+            \[
+                F_4(x) = \prod_{k=1}^m \beta_k^m p_\alpha\left( \frac{x}{\beta_k} \right) \in \QQ[x], \quad F_4\left( \alpha\beta \right) = 0.
+            \]
+    \end{statesp}
+\end{proof}
