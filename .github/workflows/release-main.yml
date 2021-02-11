@@ -26,6 +26,7 @@ jobs:
           name: main
           path: main.pdf
   latex-release:
+    name: (Pre-)release document
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     needs: [latex-build]
