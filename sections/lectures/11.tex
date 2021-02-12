@@ -1,0 +1,217 @@
+\subsection{Целые алгебраические числа}
+\label{subsec:IV-2}
+
+\begin{ndefinition}
+\label{def:IV_algebraic-integer}
+    Алгебраическое число $\alpha$ называется \emph{целым алгебраическим}, если $p_{\alpha}(x) \in \ZZ[x]$, т.е. если $p_{\alpha}(x)$ имеет целые коэффициенты. Множество всех целых алгебраических чисел обозначим через $\ZZ_\AA$.
+\end{ndefinition}
+
+\begin{example}
+\hfill
+    \begin{enumerate}
+        \item
+            Пусть $\alpha \in \QQ$. Тогда $\alpha \in \ZZ_\AA \Leftrightarrow \alpha \in \ZZ$;
+        \item
+            $\sqrt{2} \in \ZZ_\AA$;
+        \item
+            $a, b, d \in \ZZ \ \Rightarrow \ a + b\sqrt{d} \ZZ_\AA$;
+        \item
+            $\frac{1 + \sqrt{5}}{2} \in \ZZ_\AA$.
+    \end{enumerate}
+\end{example}
+
+\begin{remark}[Анонс!]
+    Почему $\ZZ_\AA$ --- кольцо? Нужно смотреть в сторону доказательства Теоремы~\ref{thm:IV-2}. Для $\alpha \pm \beta$ и $\alpha\beta$ мы построили какие-то многочлены из $\ZZ[x]$ со старшим членом равным единице, которые обнуляют $\alpha \pm \beta$ и $\alpha\beta$ соответственно. А в Определении~\ref{def:IV_algebraic-integer} --- минимальный многочлен (а не какой-то там). Вопрос: можно ли выкинуть из Определения слово ``минимальный''? Оказывается, что можно, и это будет следовать из Леммы~\ref{lm:IV-3} Гаусса.
+\end{remark}
+
+\begin{ndefinition}
+\label{def:IV_primitive-polynomial}
+    Многочлен 
+    \[
+        f(x) = a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0 \in \ZZ[x]
+    \]
+    называется \emph{примитивным}, если $\gcd{a_n, a_{n-1}, \dots, a_1, a_0} = 1$.
+\end{ndefinition}
+
+\begin{nlemma}[Гаусса]
+\label{lm:IV-3}
+    Произведение примитивных многочленов примитивно.
+\end{nlemma}
+\begin{proof}
+    Рассмотрим следующие примитивные многочлены:
+    \begin{align*}
+        f(x) &= a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0, \\
+        g(x) &= b_mx^m + b_{m-1}x^{m-1} + \dots + b_1x + b_0.
+    \end{align*}
+    А также введём многочлен
+    \[
+        h(x) := f(x)g(x) = c_{m+n}x^{m+n} + c_{m+n-1}x^{m+n-1} + \dots + c_1x + c_0.
+    \]
+    Допустим противное: пусть существует такое простое $p$, что $\forall 0 \le k \le m + n\colon p \divides c_k$. Пусть 
+    \[
+        r = \min\left\{k \mid p \notdivides a_k\right\},
+        \quad
+        s = \min\left\{k \mid p \notdivides b_k\right\}.
+    \]
+    Но тогда 
+    \[
+        c_{r+s} = \sum_{i+j=r+s} a_ib_j = \notcongr{a_rb_s}{0}{p}.
+    \]
+    То есть получается, что $p \notdivides c_{r+s}$. Противоречие.
+\end{proof}
+
+\begin{ntheorem}
+\label{thm:IV-3}
+    Если существует унитарный многочлен
+    \[
+        f(x) \ne 0 \in \ZZ[x]\colon f(\alpha) = 0,
+    \]
+    то $\alpha \in \ZZ_\AA$.
+\end{ntheorem}
+\begin{proof}
+    Заметим, что $p_{\alpha}(x) \divides f(x)$ в $\QQ[x]$, иными словами
+    \[
+        \exists g(x) \in \QQ[x]\colon f(x) = g(x)p_{\alpha}(x).
+    \]
+    Так как многочлены $f(x)$ и $p_{\alpha}(x)$ оба унитарные, то старший коэффициент $g(x)$ равен единице.~\newline
+    Покажем, что  $g(x), p_{\alpha}(x) \in \ZZ[x]$. Пусть $A, B$ --- НОК знаменателей коэффициентов $g(x)$ и $p_{\alpha}(x)$ соответственно. Тогда $Ag(x)$ и $Bp_{\alpha}(x)$ --- примитивные многочлены. Далее, многочлен
+    \[
+        ABf(x) = Ag(x)Bp_{\alpha}(x)
+    \]
+    является примитивным по Лемме~\ref{lm:IV-3} Гаусса. Тогда все коэффициенты $ABf(x)$ делятся на $AB$, а следовательно, $AB = 1$ и $A = B = 1$.~\newline
+    Таким образом, мы доказали, что $p_{\alpha}(x) \in \ZZ[x]$, а значит, что $\alpha \in \ZZ_\AA$.
+\end{proof}
+
+\begin{nlemma}
+\label{lm:IV-4}
+    Пусть $f(x, y) \in \ZZ[x, y]$, $\alpha_1, \alpha_2 \dots, \alpha_n$ -- сопряжённые к $\alpha \in \ZZ_\AA$. Тогда
+    \[
+        F(x) = \prod_{i=1}^{n} f\left(x, \alpha_i\right) \in \ZZ[x].
+    \]
+\end{nlemma}
+\begin{proof}
+    Аналогично доказательству Леммы~\ref{lm:IV-2}.
+\end{proof}
+
+\begin{ntheorem}
+\label{thm:IV-4}
+    $\ZZ_\AA$ --- кольцо.
+\end{ntheorem}
+\begin{proof}
+    Пусть $\alpha, \beta \in \ZZ_\AA$ и 
+    \begin{align*}
+        \alpha_1, \alpha_2, \dots, \alpha_n \\
+        \beta_1, \beta_2, \dots, \beta_m
+    \end{align*}
+    сопряженные к $\alpha$ и $\beta$ соответственно.
+    Тогда, по Лемме~\ref{lm:IV-4}
+    \begin{align*}
+        F_1(x) &= \prod_{i=1}^{m} p_{\alpha}(x - \beta_i) \in \ZZ[x], \\
+        F_2(x) &= \prod_{i=1}^{m} p_{\alpha}(x + \beta_i) \in \ZZ[x], \\
+        F_3(x) &= \prod_{i=1}^{m} \beta_i^{\deg{p_{\alpha}}} p_{\alpha}\left( \frac{x}{\beta_i} \right) \in \ZZ[x],
+    \end{align*}
+    причём все три многочлена являются унитарными и
+    \[
+        F_1(\alpha + \beta) = F_2(\alpha - \beta) = F_3(\alpha\beta) = 0.
+    \]
+    Для завершения доказательства остаётся применить Теорему~\ref{thm:IV-3}.
+\end{proof}
+
+\begin{nproblem}
+\label{prb:IV-1}
+    Доказать, что для каждого $\alpha \in \AA$ существует такое $d \in \ZZ$, что $d\alpha \in \ZZ_\AA$.
+\end{nproblem}
+
+
+\subsection{\texorpdfstring{Конечные расширения поля \QQ}{Конечные расширения поля Q}}
+\label{subsec:IV-3}
+
+\begin{remark}
+    В этом параграфе подразумевается, что $\alpha_1, \alpha_2, \dots, \alpha_n$ --- произвольные алгебраические числа.
+\end{remark}
+
+\begin{ndefinition}
+\label{def:IV-extension}
+    \emph{Расширением} \QQ, порождённым числами $\alpha_1, \alpha_2, \dots, \alpha_n$ называется
+    \[
+        \QQ(\alpha_1, \alpha_2, \dots, \alpha_n) := 
+        \left\{ 
+          \frac{f(\alpha_1, \alpha_2, \dots, \alpha_n)}{g(\alpha_1, \alpha_2, \dots, \alpha_n)} 
+        \bigg| 
+          f, g \in \QQ\left[ x_1, \dots, x_n \right],\, 
+          g(\alpha_1, \dots, \alpha_n) \ne 0 
+        \right\}.
+    \]
+\end{ndefinition}
+
+\begin{nproblem}
+\label{prb:IV-2}
+    Доказать, что $\QQ\left(\alpha_1, \alpha_2, \dots, \alpha_n\right)$ --- минимальное по включению поле, содержащее и $\QQ$, и $\alpha_1, \alpha_2, \dots, \alpha_n$.
+\end{nproblem}
+
+\begin{nlemma}
+\label{lm:IV-5}
+    Пусть $\EE = \QQ(\theta)$, где $\deg{\theta} = n$. Тогда любой элемент $\alpha \in \EE$ однозначно представим в виде
+    \[
+        \alpha = c_0 + c_1\theta + \dots + c_{n-1} \theta^{n-1},\ c_i \in \QQ.
+    \]
+\end{nlemma}
+\begin{proof}
+\hfill
+    \begin{statesp}
+        \item[($\exists$):]
+            Рассмотрим $\alpha = \frac{f(\theta)}{g(\theta)} \in \EE$. Так как $g(\theta) \ne 0$, то ${\gcd{p_{\theta}(x), g(x)} = 1}$. Если записать формально, то
+            \[
+                \exists u(x), v(x) \in \QQ[x]\colon u(x) p_{\theta}(x) + v(x)g(x) = 1.
+            \]
+            Тогда $u(\theta) p_{\theta}(\theta) + v(\theta) g(\theta) = 1$. Поскольку первое слагаемое обращается в ноль из-за $p_{\theta}(\theta)$, то $\frac{1}{g(\theta)} = v(\theta)$ и, стало быть, $\alpha = f(\theta) g(\theta)$. Положим теперь ${h(x) = f(x)g(x)}$ и поделим $h(x)$ с остатком на $p_{\theta}(x)$:
+            \[
+                h(x) = q(x)p_{\theta}(x) + r(x),\ \deg{r(x)} < \deg{\theta},\, q(x), r(x) \in \QQ[x].
+            \]
+            Тогда подтверждаем представимость элемента $\alpha$ в искомом виде:
+            \[
+                \alpha = h(\theta) = r(\theta),\ \deg{r(x)} < n,\, r(x) \in \QQ[x].
+            \]
+        \item[($!$):]
+            Пусть 
+            \[
+                \alpha = c_0 + c_1\theta + \dots + c_{n-1}\theta^{n-1} = d_0 + d_1\theta + \dots + d_{n-1}\theta^{n-1}.
+            \]
+            Тогда легко вывести обнуляющий многочлен $\theta$ степени не больше $\deg{\theta-1}$:
+            \[
+                (c_0-d_0) + (c_1-d_1)\theta + \dots + (c_{n-1}-d_{n-1})\theta^{n-1} = 0.
+            \]
+            Следовательно, по определению $\deg{\theta}$ получаем, что $\forall i\colon c_i = d_i$, а следовательно, представление единственно.
+    \end{statesp}
+\end{proof}
+
+\begin{remark}
+    Таким образом, $\QQ(\theta)$ --- линейное пространство над $\QQ$ размерности $n$ с базисом $1, \theta, \dots, \theta^{n-1}$.
+\end{remark}
+
+\begin{ntheorem}[О примитивном элементе]
+\label{thm:IV-5}
+    Пусть $\EE = \QQ(\alpha_1, \alpha_2, \dots, \alpha_n)$. Тогда
+    \[
+        \exists \theta \in \EE\colon \EE = \QQ(\theta).
+    \]
+\end{ntheorem}
+
+\begin{ndefinition}
+\label{def:IV_primitive-element}
+    Число $\theta$ из Теоремы~\ref{thm:IV-5} называется \emph{примитивным элементом} \EE~над полем \QQ.
+\end{ndefinition}
+
+\begin{corollary}
+    Любое конечное расширение \QQ~является конечномерным пространством над \QQ.
+\end{corollary}
+\begin{proof}
+    Действительно, возьмём примитивный элемент --- по Лемме~\ref{lm:IV-4} его степень будь равна размерности.
+\end{proof}
+
+\begin{ndefinition}
+\label{def:IV_extension-degree}
+    Размерность \EE~как линейного пространства над \QQ~называется \emph{степенью расширения}. Обозначается как $\left[\EE : \QQ\right]$.
+\end{ndefinition}
+
+Обозначим $\ZZ_\EE := \EE \cap \ZZ_\AA$. В частности, $\ZZ_\QQ = \ZZ$.
