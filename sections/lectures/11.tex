@@ -3,7 +3,7 @@
 
 \begin{ndefinition}
 \label{def:IV_algebraic-integer}
-    Алгебраическое число $\alpha$ называется \emph{целым алгебраическим}, если $p_{\alpha}(x) \in \ZZ[x]$, т.е. если $p_{\alpha}(x)$ имеет целые коэффициенты. Множество всех целых алгебраических чисел обозначим через $\ZZ_\AA$.
+    Алгебраическое число $\alpha$ называется \emph{целым алгебраическим}, если минимальный многочлен $p_{\alpha}(x) \in \ZZ[x]$, т.е. если $p_{\alpha}(x)$ имеет целые коэффициенты. Множество всех целых алгебраических чисел обозначим через $\ZZ_\AA$.
 \end{ndefinition}
 
 \begin{example}
@@ -14,7 +14,7 @@
         \item
             $\sqrt{2} \in \ZZ_\AA$;
         \item
-            $a, b, d \in \ZZ \ \Rightarrow \ a + b\sqrt{d} \ZZ_\AA$;
+            $a, b, d \in \ZZ \ \Rightarrow \ a + b\sqrt{d} \in \ZZ_\AA$;
         \item
             $\frac{1 + \sqrt{5}}{2} \in \ZZ_\AA$.
     \end{enumerate}
@@ -43,9 +43,9 @@
         f(x) &= a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0, \\
         g(x) &= b_mx^m + b_{m-1}x^{m-1} + \dots + b_1x + b_0.
     \end{align*}
-    А также введём многочлен
+    Перемножим их:
     \[
-        h(x) := f(x)g(x) = c_{m+n}x^{m+n} + c_{m+n-1}x^{m+n-1} + \dots + c_1x + c_0.
+        f(x)g(x) = c_{m+n}x^{m+n} + c_{m+n-1}x^{m+n-1} + \dots + c_1x + c_0.
     \]
     Допустим противное: пусть существует такое простое $p$, что $\forall 0 \le k \le m + n\colon p \divides c_k$. Пусть 
     \[
@@ -84,7 +84,7 @@
 
 \begin{nlemma}
 \label{lm:IV-4}
-    Пусть $f(x, y) \in \ZZ[x, y]$, $\alpha_1, \alpha_2 \dots, \alpha_n$ -- сопряжённые к $\alpha \in \ZZ_\AA$. Тогда
+    Пусть $f(x, y) \in \ZZ[x, y]$, $\alpha_1 = \alpha, \alpha_2 \dots, \alpha_n$ --- сопряжённые элементы\footnote{То есть все (остальные) корни минимального многочлена алгебраического числа $\alpha$.} к $\alpha \in \ZZ_\AA$. Тогда
     \[
         F(x) = \prod_{i=1}^{n} f\left(x, \alpha_i\right) \in \ZZ[x].
     \]
@@ -103,7 +103,7 @@
         \alpha_1, \alpha_2, \dots, \alpha_n \\
         \beta_1, \beta_2, \dots, \beta_m
     \end{align*}
-    сопряженные к $\alpha$ и $\beta$ соответственно.
+    сопряжённые к $\alpha$ и $\beta$ соответственно.
     Тогда, по Лемме~\ref{lm:IV-4}
     \begin{align*}
         F_1(x) &= \prod_{i=1}^{m} p_{\alpha}(x - \beta_i) \in \ZZ[x], \\
@@ -132,7 +132,7 @@
 
 \begin{ndefinition}
 \label{def:IV-extension}
-    \emph{Расширением} \QQ, порождённым числами $\alpha_1, \alpha_2, \dots, \alpha_n$ называется
+    \emph{Расширением} \QQ, порождённым числами $\alpha_1, \alpha_2, \dots, \alpha_n$, называется
     \[
         \QQ(\alpha_1, \alpha_2, \dots, \alpha_n) := 
         \left\{ 
@@ -181,7 +181,7 @@
             \[
                 (c_0-d_0) + (c_1-d_1)\theta + \dots + (c_{n-1}-d_{n-1})\theta^{n-1} = 0.
             \]
-            Следовательно, по определению $\deg{\theta}$ получаем, что $\forall i\colon c_i = d_i$, а следовательно, представление единственно.
+            Значит, по определению $\deg{\theta}$ получаем, что $\forall i\colon c_i = d_i$, а следовательно, представление единственно.
     \end{statesp}
 \end{proof}
 
