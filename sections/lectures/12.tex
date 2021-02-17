@@ -1,0 +1,176 @@
+\begin{proof}[Доказательство Теоремы~\ref{thm:IV-5}]
+    Нам достаточно доказать утверждение Теоремы лишь для двух алгебраических чисел. То есть мы рассматриваем случай, когда $\EE = \QQ(\xi, \eta)$. Итак, пусть
+    \begin{align*}
+        \xi_1 &= \xi, \xi_2, \dots, \xi_m \\
+        \eta_1 &= \eta, \eta_2, \dots, \eta_l
+    \end{align*}
+    сопряжённые элементы к $\xi$ и $\eta$ соответственно. Возьмём $c \in \QQ$ --- очевидно, что все числа вида $\xi_i + c\eta_j$ попарно различны. Положим $\theta = \xi + c\eta$ --- утверждается, что введённое $\theta$ и есть искомая величина.~\newline
+    Обозначим $K := \QQ(\theta)$. Тогда $\QQ \subset K \subset \EE$ --- расширение полей. Если мы покажем, что $\xi, \eta \in K$, то из этого сразу же последует обратное включение $\EE \subset K$ (а значит, что $\EE = K$).~\newline
+    Рассмотрим минимальные многочлены $p_{\xi}(x)$, $p_{\eta}(x)$, и пусть
+    \[
+        f(x) = p_\xi(\theta - cx) \in \QQ[x],\ \theta \in K,\, c \in \QQ.
+    \]
+    Следовательно, $f(x) \in K[x]$. Заметим также, что
+    \[
+        f(\eta) = p_{\xi}(\theta - c\eta) = p_{\xi}(\xi) = 0,
+    \] 
+    то есть, что $\eta$ --- корень многочлена $f(x)$. Так как у обоих многочленов --- и у $f$, и у $p_{\eta}$ --- коэффициенты из $K$, то мы можем рассмотреть их НОД:
+    \[
+        d(x) = \gcd{f(x), p_\eta(x)}.
+    \]
+    Очевидно, что $d(\eta) = 0$, и тогда $(x - \eta) \divides d(x)$. Напомним, что у $p_\eta(x)$ корни $\eta_1, \eta_2, \dots, \eta_l$. Поэтому выходит, что 
+    \[
+        d \subset \left\{ \eta_1, \eta_2, \dots, \eta_l \right\}.
+    \]
+    Пусть $\exists i\colon d\left( \eta_i \right) = 0$. Из того, что $d \divides f$ получаем, что 
+    \[
+        f\left( \eta_i \right) = 0.
+    \]
+    Но с другой стороны
+    \[
+        f\left( \eta_i \right) = p_{\xi}\left( \theta - c\eta_i \right).
+    \]
+    Иными словами, $\theta - c\eta_i = \xi_j$ для некоторого $j$, но $\theta = \xi_j + c\eta_i$ только в случае $i = j = 1$.~\newline
+    Следовательно, $\eta$ --- единственный корень многочлена $d(x)$. Так как $d$ делит $p_\eta$, а у $p_\eta$ нет кратных корней, то $d(x) = x - \eta$. Но $d(x) \in K[x]$, а это значит, что и $\eta \in K$. Тогда $\xi = \theta - c\eta \in K$ --- ведь $\theta \in K$ (по определению $K$), $c \in \QQ$, $\eta \in K$. Тем самым пы показали, что $\theta$ --- примитивный элемент.
+\end{proof}
+
+Вернёмся теперь к Теореме, которую мы сформулировали в самом начале раздела~\ref{sec:IV_algebraic-transcendental-numbers} --- к Теореме об алгебраической замкнутости поля \AA. Теперь у нас есть должный инструментарий для её доказательства.
+
+\begin{ntheorem}[Алгебраическая замкнутость поля \AA]
+\label{thm:IV-6}
+    Поле \AA~--- алгебраически замкнуто. Иными словами, если $f(x) \in \AA[x]$, то существует такое $\beta \in \AA$, что $f(\beta) = 0$.
+\end{ntheorem}
+\begin{proof}
+    Пусть
+    \[
+        f(x) = \alpha_nx^n + \alpha_{n-1}x^{n-1} + \dots + \alpha_1x + \alpha_0 \in \AA[x].
+    \]
+    Так как \AA~--- поле, то, не теряя общности, считаем $\alpha_n = 1$. Далее, рассмотрим расширение $\EE = \QQ\left( \alpha_1, \alpha_2, \dots, \alpha_{n-1}, \alpha_n \right)$. По Теореме~\ref{thm:IV-5} о примитивном элементе получаем, что $\EE = \QQ(\theta)$ для некоторого $\theta$, причём $\deg{\theta} = m$. Тогда $\alpha_i = r_i(\theta)$, где $r_i(x) \in \QQ[x]$ и $\deg{r_i} < m$. То есть
+    \[
+        f(x) = x^n + r_{n-1}(\theta) x^{n-1} + \dots + r_1(\theta)x + r_0(\theta).
+    \]
+    Пусть $\theta_1, \theta_2, \dots, \theta_m$ --- все сопряжённые элементы к $\theta$. Рассмотрим
+    \begin{align*}
+        F(x) &= \prod_{j=1}^m \left[ x^n + r_{n-1}\left(\theta_j\right)x^{n-1} + \dots + r_1\left(\theta_j\right) + r_0\left(\theta_j\right) \right], \\
+        f(x,y) &= x^n + r_{n-1}(y)x^{n-1} + \dots + r_1(y) + r_0(y) \in \QQ[x,y].
+    \end{align*}
+    По Лемме~\ref{lm:IV-2} $F(x) \in \QQ[x]$, и при этом $f(x) \divides F(x)$ (в $\CC[x]$). То есть $f(x)$ делит первый множитель. Следовательно, все корни $f(x)$ лежат в \AA.
+\end{proof}
+
+
+\subsection{Нормальные расширения}
+\label{subsec:IV-4}
+
+\begin{ndefinition}
+\label{def:IV_embedding}
+    Пусть \EE~--- конечное расширение поля \QQ. Отображение вида $\sigma\colon \EE \to \CC$ называется \emph{вложением}, если это инъективный гомоморфизм полей. То есть, если сохраняются бинарные операции и $\sigma^{-1}(0) = \{ 0 \}$.
+\end{ndefinition}
+
+\begin{ntheorem}
+\label{thm:IV-7}
+    Если $[\EE : \QQ] = n$, то существует ровно $n$ различных вложений \EE~в \CC. При этом, если $\EE = \QQ(\theta)$ и $\theta_1, \theta_2, \dots, \theta_m$ --- все сопряжённые элементы к алгебраическому числу $\theta$, то отображение вида
+    \begin{align*}
+        \sigma\colon E &\to \CC \\ 
+        \alpha \cdot r(\theta) &\mapsto r(\theta_i),
+    \end{align*}
+    где $r(x) \in \QQ[x]$, является вложением \EE~в \CC.
+\end{ntheorem}
+\begin{proof}
+    Разобьём наша доказательство на три основных пункта.
+    \begin{statesp}
+        \item
+        Покажем, что любое $\alpha \in \EE$ при вложении переходит в какой-то из своих сопряжённых элементов.
+            Пусть $\sigma$ --- вложение. Тогда
+            \[
+                0 \ne \sigma(1) = \sigma(1 \cdot 1) = \sigma(1)\sigma(1) \ \Rightarrow \sigma(1) = 1.
+            \]
+            Следовательно,
+            \begin{align*}
+                \sigma(k) &= \sigma(1 + 1 + \dots + 1) = \sigma(1) + \sigma(1) + \dots + \sigma(1) = k, \\
+                \sigma(-1) + \sigma(1) &= \sigma(0)=0 \ \Rightarrow \ \sigma(-1) = -1.
+            \end{align*}
+            Значит, $\forall k \in \ZZ\colon \sigma(k) = k$. Далее,
+            \[
+                \forall k \in \NN\colon \ \sigma(k)\sigma\left(\frac{1}{k}\right) = \sigma(1) = 1,
+            \]
+            откуда в свою очередь следует, что $\forall k \in \QQ\colon \sigma(k) = k$. Стало быть, в случае, если $f \in \QQ[x]$, то
+            \[
+                \forall \alpha \in \EE\colon \sigma(f(\alpha)) = f(\sigma(\alpha)).
+            \]
+            В частности,
+            \[
+                p_{\alpha}(\sigma(\alpha)) = \sigma(p_\alpha(\alpha)) = \sigma(0) = 0.
+            \]
+            Таким образом мы показали, что $\sigma(\alpha)$ --- сопряжённый элемент к $\alpha$.
+        \item
+        Возьмём $\alpha = \theta$.
+            Тогда по предыдущему пункту $\sigma\colon \theta \mapsto \theta_i$, где $i$ зависит от $\sigma$. Выходит, что
+            \[
+                \forall r(x) \in \QQ[x]\colon \sigma(r(\theta)) = r(\sigma(\theta)) = r\left( \theta_i \right).
+            \]
+        \item
+        Пусть $\sigma_i\colon \EE \to \CC$. Почему это вложение?\\
+            Возьмём такие $\alpha, \beta \in \EE$, что $\alpha = r(\theta)$, $\beta = s(\theta)$, причём $r(x), s(x) \in \QQ[x]$, $\deg{r} \le n-1$, $\deg{s} \le n-1$. Заметим, что
+            \begin{align*}
+                \alpha + \beta &= (r+s)(\theta), \\
+                \alpha \cdot \beta &= u(\theta),
+            \end{align*}
+            где $u(x)$ --- остаток от деления $r(x)s(x)$ на минимальный многочлен $p_\theta(x)$. Аналогично, 
+            \[
+                r(\theta_i)s(\theta_i) = u(\theta_i).
+            \]
+            Тогда мы получили, что
+            \begin{align*}
+                \sigma_i(\alpha)+\sigma_i(\beta) &= r(\theta_i)+s(\theta_i) \\
+                &= (r+s)(\theta_i) = \theta_i((r+s)(\theta)) \\
+                &= \sigma_i(\alpha+\beta), \\
+                \sigma_i(\alpha)\sigma_i(\beta) &= r(\theta_i)s(\theta_i) = u(\theta_i) \\
+                &= \sigma_i(u(\theta)) = \sigma_i(r(\theta)s(\theta)) \\
+                &= \sigma_i(\alpha\beta).
+            \end{align*}
+    \end{statesp}
+    Итого, если допустить, что $\sigma_i(\alpha) = 0$ для некоторого $\alpha \ne 0$, то
+    \[
+        1 = \sigma_i(1) =\sigma_i(\alpha)\sigma_i\left( \alpha^{-1} \right) = 0.
+    \]
+    Пришли к противоречию.
+\end{proof}
+
+\begin{ntheorem}
+\label{thm:IV-8}
+    Пусть $[\EE : \QQ] = n$, и $\sigma_1, \sigma_2, \dots, \sigma_n$ --- все вложения \EE~в \CC, причём $\alpha \in \EE$ и $\deg{\alpha} = d$. Тогда $d \divides n$ и множество
+    \[
+        \left\{ \sigma_1(\alpha), \sigma_2(\alpha), \dots, \sigma_n(\alpha) \right\}
+    \]
+    состоит из всех сопряжённых элементов к $\alpha$, каждое из которых повторяется ровно $\frac{n}{d}$ раз.
+\end{ntheorem}
+\begin{proof}
+    Пусть $\alpha = r(\theta)$, $r(x) \in \QQ[x]$, $\deg{r} \le n-1$. Рассмотрим 
+    \[
+        F(x) = \prod_{i=0}^n \left( x-\sigma_i \right)(\alpha).
+    \]
+    Тогда по Лемме~\ref{lm:IV-2} получаем
+    \[
+        F(x) = \prod_{i=1}^n \left( x - r\left(\theta_i\right)\right) \in \QQ[x],
+    \]
+    а значит минимальный многочлен $p_{\alpha}(x)$ делит $F(x)$. 
+    Пусть $k$ максимальное из таких чисел, что $p_{\alpha}^k(x)$ делит $F(x)$. Рассмотрим
+    \[
+        g(x) = \frac{F(x)}{p_{\alpha}^k(x)} \in \QQ[x].
+    \]
+    Если у $g$ есть корни (т.е., если $g \not\equiv const$), то его корни --- какие-то сопряжённые с $\alpha$. Следовательно, $p_\alpha(x) \divides g(x)$ --- противоречие с максимальностью $k$. Значит,
+    \[
+        g(x) = 1, \quad F(x)=p_{\alpha}^k(x), \quad n = kd.
+    \]
+\end{proof}
+
+\begin{corollary}
+    Равенство $\sigma(\alpha) = \alpha$ при всех вложениях \EE~в \CC~справедливо тогда и только тогда, когда $\alpha \in \QQ$.
+\end{corollary}
+\begin{proof}
+\hfill
+    \begin{statesp}
+        \item[$(\Leftarrow)$] Очевидно.
+        \item[$(\Rightarrow)$] Следует из Теоремы~\ref{thm:IV-8}.
+    \end{statesp}
+\end{proof}
