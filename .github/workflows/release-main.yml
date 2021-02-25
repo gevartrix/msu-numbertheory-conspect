@@ -5,7 +5,8 @@ on:
     paths:
       - 'preamble/**'
       - 'sections/**'
-      - 'img/**'  
+      - 'img/**'
+      - 'main.tex'
 jobs:
   latex-build:
     name: Build and upload document
