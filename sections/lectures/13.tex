@@ -1,0 +1,214 @@
+\begin{ndefinition}
+\label{def:IV_normal-extension}
+    Если для любого вложения $\sigma$ расширения \EE~справедливо $\sigma(\EE) = \EE$, то расширение \EE~называется \emph{нормальным}.
+\end{ndefinition}
+
+\begin{nlemma}
+\label{lm:IV-6}
+    Пусть \EE~--- конечное расширение $\QQ$, $\sigma$ --- вложение \EE~в \CC. Пусть $\sigma(\EE) \subset \EE$. Тогда
+    \[
+        \sigma(\EE) = \EE.
+    \]
+\end{nlemma}
+\begin{proof}
+    Мы знаем, что \EE~--- конечномерное линейное пространство над \QQ, и что $\sigma\colon \EE \to \EE$ --- линейное отображение с нулевым ядром. Следовательно, $\dim{\sigma(\EE)} = \dim{\EE}$ и $\sigma(\EE) = \EE$.
+\end{proof}
+
+\begin{example}
+    \[
+        \QQ\left( \sqrt{2} \right) \text{ --- нормально.}
+    \]
+\end{example}
+\begin{proof}
+    Действительно, есть всего два вложения:
+    \begin{align*}
+        \sigma_1\colon& \sqrt{2} \mapsto \sqrt{2}, \\
+        \sigma_2\colon& \sqrt{2} \mapsto -\sqrt{2}.
+    \end{align*}
+    Они оба содержатся в $\QQ\left( \sqrt{2} \right)$.
+\end{proof}
+
+\begin{example}
+    \[
+        \QQ\left( \sqrt[3]{2} \right) \text{ --- не нормально.}
+    \]
+\end{example}
+\begin{proof}
+    У этого расширения три вложения:
+    \begin{align*}
+        \sigma_1\colon& \sqrt[3]{2} \mapsto \sqrt[3]{2}, \\
+        \sigma_2\colon& \sqrt[3]{2} \mapsto \sqrt[3]{2}e^{\sfrac{2\pi i}{3}}, \\
+        \sigma_3\colon& \sqrt[3]{2} \mapsto \sqrt[3]{2}e^{-\sfrac{2\pi i}{3}}.
+    \end{align*}
+    Первое вложение содержится в $\QQ\left( \sqrt[3]{2} \right)$, Но $\sigma_2$ и $\sigma_3$ не лежат в \RR, а следовательно не содержатся в $\QQ\left( \sqrt[3]{2} \right)$.
+\end{proof}
+
+\begin{ntheorem}
+\label{thm:IV-9}
+    Пусть $\EE = \QQ\left( \alpha_1, \alpha_2, \dots, \alpha_m \right)$ и пусть все сопряжённые элементы ко всем $\alpha_i$ лежат в \EE. Тогда \EE~является нормальным расширением.
+\end{ntheorem}
+\begin{proof}
+    Пусть $\alpha \in \EE$. Тогда
+    \[
+        \alpha = \frac{f\left(\alpha_1, \alpha_2, \dots, \alpha_m\right)}{g\left(\alpha_1, \alpha_2, \dots, \alpha_m\right)},
+        \quad
+        f, g \in \QQ\left[x_1, x_2, \dots, x_m\right].
+    \]
+    Теперь если $\sigma$ --- вложение \EE~в \CC, то для $\alpha$ будет справедливо
+    \[
+        \sigma(\alpha) = \frac{f\left(\sigma\left(\alpha_1\right), \sigma\left(\alpha_2\right), \dots, \sigma\left(\alpha_m\right)\right)}{g\left(\sigma\left(\alpha_1\right), \sigma\left(\alpha_2\right), \dots, \sigma\left(\alpha_m\right)\right)} \in \EE.
+    \]
+    Таким образом, $\sigma(\EE) \subset \EE$. Применяя Лемму~\ref{lm:IV-6}, получаем, что $\sigma(\EE) = \EE$. Следовательно, \EE~--- нормально. 
+\end{proof}
+
+\begin{remark}
+    Если \EE~--- нормальное расширения, то все вложения \EE~в \CC~--- автоморфизмы \EE. Можно брать их композиции, а также у них существует обратный элемент. Получается группа автоморфизмов \EE, которая называется \textbf{\emph{группой Галуа}}.
+\end{remark}
+
+\begin{example}
+    Группа Галуа $\QQ\left( \sqrt{2} \right)$ изоморфна $\ZZ_2$.
+\end{example}
+
+До конца параграфа считаем, что \EE~---конечное расширение \QQ, $[\EE : \QQ] = n$, и что $\sigma_1, \sigma_2, \dots, \sigma_n$ --- все вложения \EE~в \CC.
+
+\begin{ndefinition}
+\label{def:IV_extension-norm}
+    Для каждого $\alpha \in \EE$ величина
+    \[
+        N(\alpha) = \prod_{i=1}^{n} \sigma_i(\alpha)
+    \]
+    называется \emph{нормой относительно расширения \EE}.
+\end{ndefinition}
+
+\begin{example}
+    Вычислим норму относительно $\EE = \QQ\left( \sqrt{2} \right)$:
+    \[
+        N\left( \alpha + \beta\sqrt{2} \right)
+        = \left(\alpha + \beta \sqrt{2}\right)\left(\alpha - \beta \sqrt{2}\right)
+        = \alpha^2 - 2\beta^2.
+    \]
+\end{example}
+
+\begin{ntheorem}
+\label{thm:IV-10}
+    Справедливы следующие пункты про норму относительно \EE:
+    \begin{statesp}
+        \item
+        \label{thm:IV-10-1}
+            Если $\alpha \in \EE$ и $p_{\alpha}(x) = x^d + \dots + a_1 x + a_0$, то
+            \[
+                N(\alpha) = (-1)^n \cdot a_0^{\sfrac{n}{d}}.
+            \]
+        \item
+        \label{thm:IV-10-2}
+            Если $\alpha \in \EE$, то $N(\alpha) \in \QQ$. 
+            Если $\alpha \in \ZZ_\EE = \ZZ_\AA \cap \EE$, то $N(\alpha) \in \ZZ$.
+        \item
+        \label{thm:IV-10-3}
+            \[
+                N(\alpha) = 0 \Leftrightarrow \alpha = 0.
+            \]
+        \item
+        \label{thm:IV-10-4}
+            \[
+                N(\alpha\beta) = N(\alpha)N(\beta), \quad N\left( \frac{\alpha}{\beta} \right) = \frac{N(\alpha)}{N(\beta)}.
+            \]
+    \end{statesp}
+\end{ntheorem}
+\begin{proof}
+\hfill
+    \begin{statesp}
+        \item[Пункт~(\ref{thm:IV-10-1})]
+            Следует из Теоремы~\ref{thm:IV-8} и Теоремы Виета.
+        \item[Пункт~(\ref{thm:IV-10-2})]
+            Следует из первого пункта.
+        \item[Пункт~(\ref{thm:IV-10-3})]
+            Следует из Определения~\ref{def:IV_embedding} вложения --- в частности из того, что в ноль переходит только ноль.
+        \item[Пункт~(\ref{thm:IV-10-4})]
+            Следует из того же, что и Пункт~\ref{thm:IV-10-3}.
+    \end{statesp}
+\end{proof}
+
+
+\subsection{\texorpdfstring{Трансцендентность числа $\pi$}{Трансцендентность числа π}}
+\label{subsec:IV-5}
+
+\begin{ntheorem}[Линдемана--Вейерштрасса]
+\label{thm:IV-11}
+    Пусть $\alpha_0, \alpha_1, \dots, \alpha_m$ --- различные алгебраические числа. Тогда
+    \[
+        e^{\alpha_0}, e^{\alpha_1}, \dots, e^{\alpha_m}
+    \]
+    являются линейно независимыми над полем \AA.
+\end{ntheorem}
+
+\begin{ntheorem}[Об экспоненциальной линейной форме]
+\label{thm:IV-12}
+    Пусть ${\alpha_0, \alpha_1, \dots, \alpha_m \in \AA}$, $a_0, a_1, \dots, a_m \in \AA$ и
+    \[
+        A(x) = \sum_{k=0}^{m} a_k e^{\alpha_{k}x} 
+        = \sum_{l=0}^{\infty} \left( \sum_{k=0}^{\infty} a_k \frac{\alpha_k^l}{l!} \right)x^l \in \QQ[[x]] \setminus \left\{ 0 \right\}.
+    \]
+    То есть у $A(x)$ есть ненулевые рациональные коэффициенты. Тогда $A(1) \ne 0$.
+\end{ntheorem}
+
+Прежде чем доказывать эти Теоремы, покажем следующий факт:
+
+\begin{ntheorem}
+\label{thm:IV-13}
+    Из Теоремы~\ref{thm:IV-12} об экспоненциальной линейной форме следует Теорема~\ref{thm:IV-11} Линдемана--Вейерштрасса.
+\end{ntheorem}
+\begin{proof}
+    Нужно показать, что при любом наборе $a_0, a_1, \dots, a_m \in \AA$ выполняется $A(x) \in \QQ[[x]] \setminus \left\{ 0 \right\}$. Тогда мы сможем применить Теорему~\ref{thm:IV-12} об экспоненциальной линейной форме и получить, что для любых $a_0, a_1, \dots, a_m$ справедливо $A(1) \ne 0$. Иными словами, что $e^{\alpha_0}, e^{\alpha_1}, \dots, e^{\alpha_m}$ являются линейно независимыми.~\newline
+    Можно считать, что все $a_0, a_1, \dots, a_m \ne 0$. Тогда $A(x) = \sum_{k=0}^{m} a_ke^{\alpha_k x} \not\equiv 0$, поскольку их вронскиан\footnote{Определитель матрицы размера $n \times n$, состоящей из наборов $(n-1)$--дифференцируемых функций и их производных. Если эти функции линейно зависимы, то такой определитель равен нулю.}
+    \begin{align*}
+        W\left( e^{\alpha_0x}, e^{\alpha_1x}, \dots, e^{\alpha_mx} \right) &= 
+        \begin{vmatrix}
+                       e^{\alpha_0 x} &            e^{\alpha_1 x} & \dots &            e^{\alpha_m x} \\
+              \alpha_0 e^{\alpha_0 x} &   \alpha_1 e^{\alpha_1 x} & \dots &   \alpha_m e^{\alpha_m x} \\
+            \alpha_0^2 e^{\alpha_0 x} & \alpha_1^2 e^{\alpha_1 x} & \dots & \alpha_m^2 e^{\alpha_m x} \\
+                                \dots &                     \dots & \ddots&                     \dots \\
+            \alpha_0^m e^{\alpha_0 x} & \alpha_1^m e^{\alpha_1 x} & \dots & \alpha_m^m e^{\alpha_m x}
+        \end{vmatrix} \\
+        &= \exp{\left(\sum_{k=0}^\infty \alpha_k\right)x} \cdot V\left(\alpha_0, \alpha_1, \dots, \alpha_m\right) \ne 0,
+    \end{align*}
+    где $V\left(\alpha_0, \alpha_1, \dots, \alpha_m\right)$ --- определитель Вандермонда для $\alpha_0, \alpha_1, \dots, \alpha_m$. Таким образом мы проверили, что $A(x)$ не содержит ноль.~\newline
+    Почему $A(x) \in \QQ[[x]]$? Рассмотрим нормальное расширение \EE~поле \QQ, содержащее $a_0, \dots, a_m$ и $\alpha_0, \dots, \alpha_m$. Например, можно взять все сопряжённые к ним и добавить их к \QQ~--- по Теореме~\ref{thm:IV-9} будет нормальное расширение.~\newline
+    Пусть $[\EE : \QQ] = \nu$, а $\sigma_1, \sigma_2, \dots, \sigma_\nu$ --- все автоморфизмы \EE~над \QQ. Тогда
+    \[
+        A(x) \in \EE[[x]].
+    \]
+    Зададим $\sigma_1, \sigma_2, \dots, \sigma_\nu$ на $\EE[[x]]$ следующим образом:
+    \[
+        \sigma_i\colon \sum_{l=0}^{\infty} \gamma_l x^l \mapsto \sum_{l=0}^{\infty} \sigma_i\left(\gamma_l\right)x^l.
+    \]
+    Заметим, что подобное продолжение $\sigma_i$ сохраняет операции сложения и умножения, и мы сможем брать формальную производную ($\sigma_i(\phi') = \sigma_i(\phi)'$). Кроме того,
+    \begin{align*}
+        \sigma_i(A(x))
+          &= \sum_{l=0}^{\infty} \left( \sum_{k=0}^{\infty} \sigma_i(a_k) \frac{\sigma_i(\alpha_k)^l}{l!} \right) x^l \\
+          &= \sum_{k=0}^{m} \sigma_i(a_k) e^{\sigma_i(\alpha_k)x} \\
+          &=: A_i(x).
+    \end{align*}
+    Поскольку $A(x) \not\equiv 0$, то и $A_i(x) \not\equiv 0$. Рассмотрим теперь
+    \[
+        B(x) = \prod_{i=1}^{\nu} A_i(x) \in \EE[[x]], \quad B(x) \not\equiv 0.
+    \]
+    Заметим, что
+    \begin{align*}
+        \sigma_i(B(x)) 
+          &= \sigma_i\left(\prod_{j=1}^{\nu} A_j(x)\right) = \prod_{j=1}^{\nu} \sigma_i\left(A_j(x)\right) \\
+          &= \prod_{j=1}^{\nu} \sigma_i\left(\sigma_j(A(x))\right) = \prod_{j=1}^{\nu} \sigma_j(A(x)) = B(x)
+          \xRightarrow{\text{по Следствию~\ref{crl:IV-1}}} B(x) \in \QQ[[x]].
+    \end{align*}
+    То есть $\sigma_i\sigma_j$ пробегают по всем автоморфизмам, а все коэффициенты $B$ остаются на месте при всех $\sigma_i$. В итоге мы получили, что
+    \[
+        B(x) 
+        = \prod_{i=1}^{\nu}\left(\sum_{k=0}^{n} \sigma_i(a_k) e^{\sigma_i(\alpha_k)x}\right) 
+        = \sum_{l=0}^{L} b_l e^{\beta_{l}x}.
+    \]
+    Наконец, возвращаясь к формулировке, по Теореме~\ref{thm:IV-12} об экспоненциальной линейной форме получаем $B(1) \ne 0$. Тогда
+    \[
+        B(1) = \prod_{j=1}^\nu A_j(1) \ne 0 \ \Rightarrow \ \forall j\, A_j(1) \ne 0.
+    \]
+    Из рассуждений, представленных выше, получаем, что для тождественного $\sigma_j$ справедливо $A_j(x) = A(x)$. Тем самым мы показали, что $A(1) \ne 0$.
+\end{proof}
