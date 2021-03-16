@@ -201,6 +201,14 @@
     {0cm}%
     {0.4cm}%
     {0.2cm}
+% Starts each section (except the first one) on a new page
+% N.B.: Depends on the definition of `\thesection` above
+\newcommand{\sectionbreak}{
+    \ifthenelse{%
+        \equal{\thesection}{I}}%  If section's number is "I"
+        {}%                       Skip
+        {\clearpage}%             Else start the section on a new page
+}
 
 
 %% [hyperref, ragged2e] Defines an environment that sets up the lectures' header and footer. Takes one mandatory argument -- the lecture's date -- and one optional argument -- the lecture's number. If the optional argument is passed, it updates a counter
