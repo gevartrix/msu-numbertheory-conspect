@@ -39,13 +39,17 @@
         &\le \sum_{k=0}^m \abs{b_k} e^r \cdot (2r)^{(m+1)(n+1)} \\
         &\le c^{n+1}.
     \end{align*}
-    В указанных переходах подразумеваем, что $r = \max_{0 \le k \le m}\left( \abs{\beta_k} \right)$ и $c = (2r)^{m+1}e^r \cdot\max\left( 1,\, \sum_{k=0}^m \abs{b_k} \right)$.
+    В указанных переходах подразумеваем, что
+    \[
+        r = \max_{0 \le k \le m}\left( \abs{\beta_k} \right), 
+        \quad 
+        c = (2r)^{m+1}e^r \cdot\max\left( 1,\, \sum_{k=0}^m \abs{b_k} \right).
+    \]
 \end{proof}
 
-\begin{proof}[Доказательство Теоремы~\ref{thm:IV-12} об экспоненциальной линейной форме]
-\vfill
-    Пусть \EE~является нормальным расширением поля \QQ, содержащее $a_0, \dots, a_m, \alpha_0, \dots, \alpha_m$, $[E : \QQ] = \nu$, $\sigma_1, \sigma_2, \dots, \sigma_\nu$ --- все автоморфизмы \EE~над \QQ~(по аналогии с доказательству Теоремы~\ref{thm:IV-13}).~\newline
-    Можно считать, что $a_0, a_1, \dots, a_m \in \ZZ_\AA$ $(\in \ZZ_\EE)$, так как существует такое $\tilde{d} \in \ZZ \setminus \{ 0 \}$, что все $\tilde{d}a_0, \tilde{d}a_1, \dots, \tilde{d}a_m \in \ZZ_\AA$. При подобной замене доказуемое утверждение кардинально не поменяется, поэтому можем ею воспользоваться. Далее, введём такое $d \in \NN$, что $d\alpha_0, d\alpha_1, \dots, d\alpha_m \in \ZZ_\EE$.~\newline
+\begin{proof}[Доказательство Теоремы~\ref{thm:IV-12} об экспоненциальной линейной форме]~\newline
+    Пускай \EE~--- нормальное расширение поля~\QQ, содержащее $a_0, \dots, a_m$, $\alpha_0, \dots, \alpha_m$, при этом $[E : \QQ] = \nu$, $\sigma_1, \sigma_2, \dots, \sigma_\nu$ --- все автоморфизмы \EE~над \QQ~(по аналогии с доказательству Теоремы~\ref{thm:IV-13}).~\newline
+    Можно считать, что $a_0, a_1, \dots, a_m \in \ZZ_\AA$ $(\in \ZZ_\EE)$, так как существует такое $\tilde{d} \in \ZZ \setminus \{ 0 \}$, что все $\tilde{d}a_0, \tilde{d}a_1, \dots, \tilde{d}a_m \in \ZZ_\AA$. Далее, введём $d \in \NN$, что $d\alpha_0, d\alpha_1, \dots, d\alpha_m \in \ZZ_\EE$.~\newline
     Предположим противное: пусть $A(1) = 0$. Тогда продлеваем наши автоморфизмы $\sigma_1, \sigma_2, \dots, \sigma_\nu$ на $\EE[[x]]$ (снова как в доказательстве Теоремы~\ref{thm:IV-13}). То есть можно рассматривать $\left( \sigma_iA \right)(x)$.~\newline
     Так как $A(x) \in \QQ[[x]]$, то $\left( \sigma_iA \right)(x) = A(x) \ \forall i = 1, 2, \dots, \nu$. Следовательно, 
     \[
@@ -97,7 +101,7 @@
         N(I) &= \prod_{i=1}^{\nu} \sigma_i(I) \to 0 \text{ при } n \to \infty, \\
         N(I) &\ne 0 \text{ при ``хороших'' } n.
     \end{align*}
-    Но $N(I) \in \ZZ$! Получили противоречие с предположением, что $A(1) = 0$.
+    Но $N(I) \in \ZZ$ --- получили противоречие с предположением, что $A(1) = 0$.
 \end{proof}
 
 Таким образом мы доказали Теорему~\ref{thm:IV-12} об экспоненциальной линейной форме и по Теореме~\ref{thm:IV-13} готовы вывести несколько следствий из Теоремы~\ref{thm:IV-11} Линдемана--Вейерштрасса.
