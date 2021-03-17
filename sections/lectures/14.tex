@@ -1,0 +1,154 @@
+Итак, на предыдущей лекции мы показали, что если мы докажем Теорему~\ref{thm:IV-12} об экспоненциальной линейной форме, то мы автоматом получим и Теорему~\ref{thm:IV-11} Линдемана--Вейерштрасса. А уже из Теоремы Линдемана--Вейерштрасса мы получим ряд следствий --- в частности, утверждение о трансцендентности числа $\pi$.
+
+Прежде чем приступить к доказательству Теоремы~\ref{thm:IV-12}, сформулируем и докажем сперва следующую вспомогательную Лемму: 
+
+\begin{nlemma}
+\label{lm:IV-7}
+    Пусть $b_0, b_1, \dots, b_m, \beta_0, \beta_1, \dots, \beta_m \in \CC$, и пусть
+    \[
+        \sum_{k=0}^m b_k e^{\beta_k} = 0.
+    \] 
+    Рассмотрим многочлены
+    \begin{align*}
+        f(x) = f_n(x) &= \left( x - \beta_0 \right)^n \left( x - \beta_1 \right)^{n+1} \dots \left( x - \beta_m \right)^{n+1}, \\
+        g(x) = g_n(x) &= \frac{1}{n!}\sum\limits_{l \ge n} f^{(l)}(x).
+    \end{align*}
+    Заметим, что с некоторого $l$ слагаемые $g(x)$ станут равны нулю. Тогда
+    \[
+        \abs{\sum_{k=0}^m b_k g\left(\beta_k\right)} \le \frac{c^{n+1}}{n!},
+    \]
+    где $c = c\left(b_0, \dots, b_m, \beta_0, \dots, \beta_m\right)$ --- не зависит от $n$.
+\end{nlemma}
+\begin{proof}
+    Положим
+    \[
+        F(x) = \sum_{l \ge 0} f^{(l)}(x).
+    \]
+    Нам требуется доказать, что
+    \[
+        \abs{\sum_{k=0}^m b_k F\left(\beta_k\right)} \le c^{n+1}.
+    \] 
+    Заметим, что
+    \[
+        F(0)e^{\beta_k} - F\left(\beta_k\right) = e^{\beta_k} \int_{0}^{\beta_k} e^{-z}f(z)dz,
+    \]
+    Осталось домножить вышеуказанное выражение на $b_k$ и просуммировать по $k$ от $0$ до $m$:
+    \begin{align*}
+        F(0) \sum_{k=0}^m b_ke^{\beta_k} - \sum_{k=0}^m b_k F\left(\beta_k\right) &= -\sum_{k=0}^m b_k F\left(\beta_k\right) \\
+        &= \sum_{k=0}^m \left[ b_k\int_0^{\beta_k} e^{\beta_k-z}f(z)dz \right] \text{ --- хотим оценить модуль} \\
+        &\le \sum_{k=0}^m \abs{b_k} e^r \cdot (2r)^{(m+1)(n+1)} \\
+        &\le c^{n+1}.
+    \end{align*}
+    В указанных переходах подразумеваем, что $r = \max_{0 \le k \le m}\left( \abs{\beta_k} \right)$ и $c = (2r)^{m+1}e^r \cdot\max\left( 1,\, \sum_{k=0}^m \abs{b_k} \right)$.
+\end{proof}
+
+\begin{proof}[Доказательство Теоремы~\ref{thm:IV-12} об экспоненциальной линейной форме]
+\vfill
+    Пусть \EE~является нормальным расширением поля \QQ, содержащее $a_0, \dots, a_m, \alpha_0, \dots, \alpha_m$, $[E : \QQ] = \nu$, $\sigma_1, \sigma_2, \dots, \sigma_\nu$ --- все автоморфизмы \EE~над \QQ~(по аналогии с доказательству Теоремы~\ref{thm:IV-13}).~\newline
+    Можно считать, что $a_0, a_1, \dots, a_m \in \ZZ_\AA$ $(\in \ZZ_\EE)$, так как существует такое $\tilde{d} \in \ZZ \setminus \{ 0 \}$, что все $\tilde{d}a_0, \tilde{d}a_1, \dots, \tilde{d}a_m \in \ZZ_\AA$. При подобной замене доказуемое утверждение кардинально не поменяется, поэтому можем ею воспользоваться. Далее, введём такое $d \in \NN$, что $d\alpha_0, d\alpha_1, \dots, d\alpha_m \in \ZZ_\EE$.~\newline
+    Предположим противное: пусть $A(1) = 0$. Тогда продлеваем наши автоморфизмы $\sigma_1, \sigma_2, \dots, \sigma_\nu$ на $\EE[[x]]$ (снова как в доказательстве Теоремы~\ref{thm:IV-13}). То есть можно рассматривать $\left( \sigma_iA \right)(x)$.~\newline
+    Так как $A(x) \in \QQ[[x]]$, то $\left( \sigma_iA \right)(x) = A(x) \ \forall i = 1, 2, \dots, \nu$. Следовательно, 
+    \[
+        \sum_{k=0}^m \sigma_i \left(a_k\right) e^{\sigma_i(\alpha_k)x} = (\sigma_iA)(x) = A(x).
+    \]
+    Таким образом, имеем:
+    \[
+        \sum_{k=0}^m \sigma_i\left(a_k\right)e^{\sigma_i\left(\alpha_k\right)} = A(1) = 0, \quad i = 1, 2, \dots, \nu.
+    \]
+    Делая теперь отсылку к Лемме~\ref{lm:IV-7}, пусть
+    \begin{align*}
+        f(x) = f_n(x) &= \left(x-\alpha_0\right)^n \left(x-\alpha_1\right)^{n+1} \dots \left(x-\alpha_m\right)^{n+1}, \\
+        g(x) = g_n(x) &= \frac{1}{n!} \sum_{l \ge n} f^{(l)}(x).
+    \end{align*} 
+    Далее, положим
+    \[
+        I = I_n = d^{m(n+1)} \sum_{k=0}^m a_k g\left(\alpha_k\right).
+    \]
+    Продемонстрируем, что $I \in \ZZ_\EE$ (очевидно, что $I \in \EE$):
+    \begin{align*}
+        I &= \sum_{k=0}^m a_k \sum_{l \ge n} d^{m(n+1)}\frac{1}{n!}f^{(l)}\left(\alpha_k\right) \\
+        &= \sum_{k=0}^m a_k \cdot (\text{целое алгебраическое число}) \\
+        &= (\text{целое алгебраическое число}) \\
+        &= d^{m(n+1)}a_0\frac{1}{n!}f^{(n)}\left(\alpha_0\right) + (n+1)\sum_{k=0}^m \sum_{l \ge n+1} a_k \frac{l!}{(n+1)!}d^{m(n+1)} \frac{1}{l!} f^{(l)}\left(\alpha_k\right) \\
+        &= a_0 \prod_{k=1}^m \left(d\alpha_0 - d\alpha_k\right)^{n+1} + (n+1)J,\ J \in \ZZ_\EE.
+    \end{align*}
+    Отметим, что при втором переходе мы использовали, что
+    \[
+        d^{m(n+1)}f(x) = d^{-n}h(dx), \text{ где } h(t) = \left(t-d\alpha_0\right)^n\left(t-d\alpha_1\right)^{n+1} \dots \left(t-d\alpha_m\right)^{n+1}.
+    \]
+    Иными словами, что $h(t) \in \ZZ_\EE$. Более того, при четвёртом переходе мы заметили, что лишь одно слагаемое в $f^{(n)}\left(\alpha_i\right)$ (и только для $\alpha_0$) не равно нулю.~\newline
+    Следовательно, $I \in \ZZ_\EE$, причём $I \ne 0$, если
+    \[
+        \gcd{n + 1,\, N\left( a_0\prod_{k=1}^m \left(d\alpha_0 - d\alpha_k\right) \right)} = 1, \text{ где } N \text{ --- норма из Определения~\ref{def:IV_extension-norm}}.
+    \]
+    Таких $n$ бесконечно много: например, $n + 1$ --- простое, и далее к бесконечности. Но тогда и $\sigma_i(I) \in \ZZ_\EE$, и $\sigma_i(I) \ne 0$ при ``хороших'' $n$. Но
+    \begin{align*}
+        \sigma_i(I) &= d^{m(n+1)} \sum_{k=0}^m \sigma_i\left(a_k\right) g_i\left(\sigma_i\left(\alpha_k\right)\right), \\
+        \text{где }& f_i(x) = \left(\sigma_if\right)(x) = \left(x-\sigma_i(\alpha_0)\right)^n\left(x-\sigma_i(\alpha_1)\right)^{n+1} \dots \left(x-\sigma_i(\alpha_m)\right)^{n+1}, \\
+        & g_i(x) = \left(\sigma_ig\right)(x) = \frac{1}{n!} \sum\limits_{l \ge n} f_i^{(l)}(x).
+    \end{align*}
+    Применяя Лемму~\ref{lm:IV-7} для $b_k = \sigma_i\left(a_k\right)$, $\beta_i = \sigma_i\left(\alpha_k\right)$, $i = 1, 2, \dots, \nu$, получаем
+    \[
+        \abs{\sigma_i(I)} \le d^{m(n+1)}\frac{c_i^{n+1}}{n!} \le \frac{c^{n+1}}{n!},
+    \]
+    где $c = d^m \max_i\left(c_i\right)$.~\newline
+    Итак, все $\sigma_i(I) \in \ZZ_\EE$, $\sigma_i(I) \ne 0$ при ``хороших'' $n$ и $\sigma_i(I) \to 0,\, n \to \infty$. Следовательно,
+    \begin{align*}
+        N(I) &= \prod_{i=1}^{\nu} \sigma_i(I) \to 0 \text{ при } n \to \infty, \\
+        N(I) &\ne 0 \text{ при ``хороших'' } n.
+    \end{align*}
+    Но $N(I) \in \ZZ$! Получили противоречие с предположением, что $A(1) = 0$.
+\end{proof}
+
+Таким образом мы доказали Теорему~\ref{thm:IV-12} об экспоненциальной линейной форме и по Теореме~\ref{thm:IV-13} готовы вывести несколько следствий из Теоремы~\ref{thm:IV-11} Линдемана--Вейерштрасса.
+
+\begin{ncorollary}
+\label{crl:IV-2}
+    Если $\alpha \in \AA \setminus \{ 0 \}$, то $e^\alpha \not\in \AA$.
+\end{ncorollary}
+\begin{proof}
+    Пусть $\alpha_0 = 0$ и $\alpha_1 = \alpha$. Тогда по Теореме~\ref{thm:IV-11} $e^{\alpha_0} = 1$ и $e^{\alpha_1} = e^\alpha$ линейно независимы над \AA.
+\end{proof}
+
+\begin{ncorollary}
+\label{crl:IV-3}
+    Число $\pi$ является трансцендентным.
+\end{ncorollary}
+\begin{proof}
+    Предположим противное: пусть $\pi \in \AA$. Тогда $\alpha_0 = 0$, $\alpha_1 = i\pi$. По Теореме~\ref{thm:IV-11} получаем, что $e^{\alpha_0} = 1$ и $e^{\alpha_1} = -1$ линейно независимы над \AA, но они, очевидно, линейно зависимы. Противоречие.
+\end{proof}
+
+\begin{ncorollary}
+\label{crl:IV-4}
+    Если $\alpha \in \AA \setminus \{ 1 \}$, то $\ln{\alpha} \not\in \AA$.
+\end{ncorollary}
+
+\begin{ncorollary}
+\label{crl:IV-5}
+    Если $\alpha \in \AA \setminus \{ 0 \}$, то $\sin{\alpha},\, \cos{\alpha},\, \tan{\alpha} \not\in \AA$.
+\end{ncorollary}
+\begin{proof}
+    Докажем это Следствие только для синуса --- для остальных функций рассуждение аналогично.
+    \[
+        \sin{\alpha} = \frac{1}{2i}e^{i\alpha} - \frac{1}{2i}e^{-i\alpha}.
+    \]
+    Пусть $\sin{\alpha} \in \AA$. Тогда $i\alpha \ne -i\alpha$ и для $0, i\alpha, -i\alpha$ по Теореме~\ref{thm:IV-11} $1, e^{i\alpha}, e^{-i\alpha}$ линейно зависимы. Но они, очевидно, линейно независимы. Противоречие.
+\end{proof}
+
+\begin{ncorollary}
+\label{crl:IV-6}
+    Если $\beta_1, \beta_2, \dots, \beta_k \in \AA$ линейно независимы над полем \QQ, то $e^{\beta_1}, e^{\beta_2}, \dots, e^{\beta_k}$ --- алгебраически независимы над полем \AA.
+\end{ncorollary}
+\begin{proof}
+    Пусть $f\left(x_1, x_2, \dots, x_k\right) \in \AA\left[x_1, x_2, \dots, x_k\right]$. Тогда
+    \[
+        f\left(e^{\beta_1}, e^{\beta_2}, \dots, e^{\beta_k}\right)
+        = \sum_{\left(n_1, n_2, \dots, n_k\right)} a_{n_1 \dots n_k}\exp{n_1\beta_1 + \ldots + n_k\beta_k}.
+    \]
+    Во-первых, заметим, что $a_{n_1 \dots n_k} \in \AA$, а во-вторых, $n_1\beta_1 + \ldots + n_k\beta_k =: \alpha_{n_1 \dots n_k}$ --- все попарно различны, так как $\beta_1, \beta_2, \dots, \beta_k$ линейно независимы над полем \QQ.~\newline
+    По Теореме~\ref{thm:IV-11} $\exp{n_1\beta_1 + \ldots +n_k\beta_k}$ линейно независимо над \AA, и, следовательно,
+    \[
+        f\left(e^{\beta_1}, e^{\beta_2}, \dots, e^{\beta_k}\right)
+        = \sum_{\left(n_1, n_2, \dots, n_k\right)} a_{n_1 \dots n_k}\exp{n_1\beta_1 + \ldots + n_k\beta_k} \ne 0.
+    \]
+\end{proof}
