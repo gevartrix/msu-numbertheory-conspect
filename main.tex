@@ -28,6 +28,11 @@
     % Toggles the fancyhdr configuration for the proceeding pages
     \pagestyle{fancy}
 
+    % Redefines the `thebibliography` environment's header text
+    % N.B.: Refuses to work from the preamble
+    \renewcommand{\refname}{Дополнительные материалы}
+
+
     \begin{lecture}{5 сентября 2017 г.}
         \input{./sections/lectures/01}
     \end{lecture}

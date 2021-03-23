@@ -47,7 +47,7 @@
 ]{ulem}
 
 
-% Sets up general indentation
+%% Sets up general indentation
 \setlength{\parindent}{2.3em}%         Paragraph indentation
 %\setlength{\parskip}{0.2cm}%           Spacing between paragraphs
 %\renewcommand{\baselinestretch}{1.4}%  Line spacing
@@ -147,6 +147,12 @@
 \renewcommand{\headrulewidth}{0.1pt}
 % Adjusts the topmargin for fancyhdr
 \setlength{\headheight}{14pt}
+% Defines an alternative page style for the sections' supplementary material
+\fancypagestyle{supplementary}{%
+    \lhead{
+        \scshape\small\bfseries\nouppercase{\leftmark}
+    }
+}
 
 
 %% Sets up the linking style and the PDF-specific options
