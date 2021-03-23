@@ -168,13 +168,15 @@
 \def\myurl@#1#2{\hyper@linkurl{\myurl@@{#2}}{#1}}
 \DeclareRobustCommand*\myurl{\myurl@}
 \hypersetup{%
-    linktocpage=true,%        Makes the page numbers from the Table Of Contents interactive
-    colorlinks=true,%         Colours the (cross-referencing) links
-    urlcolor=blue,%           Sets the colour of URLs
-    bookmarksopen=true,%      Makes the bookmark bar open by default in a PDF reader
-    pdfpagemode=FullScreen,%  Makes a PDF reader open the document in full screen
-    pdfauthor={\@author},%    Sets the document's author(s) based upon the `\author`
-    pdftitle={\@title}%       Sets the document's title based upon the `\title`
+    linktocpage=true,%                   Makes the page numbers from the Table Of Contents interactive
+    colorlinks=true,%                    Colours the (cross-referencing) links
+    linkcolor=[rgb]{0.84, 0.18, 0.14},%  Sets the colour of the cross-referencing links (sections, Theorems, Lemmas, etc.)
+    citecolor=[rgb]{0.1, 0.54, 0.24},%   Sets the colour of citations to the supplemantary mmaterial (and bibliography)
+    urlcolor=[rgb]{0.1, 0.34, 0.68},%    Sets the colour of the web addresses
+    bookmarksopen=true,%                 Makes the bookmark bar open by default in a PDF reader
+    pdfpagemode=FullScreen,%             Makes a PDF reader open the document in full screen
+    pdfauthor={\@author},%               Sets the document's author(s) based upon the `\author`
+    pdftitle={\@title}%                  Sets the document's title based upon the `\title`
 }
 \makeatother%  Changes the `@` symbol's category from `letter` (catcode: 11) to `other` (catcode: 12), so it could be safely used in macros
 
