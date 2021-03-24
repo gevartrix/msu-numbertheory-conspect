@@ -232,23 +232,22 @@
         \def\lecnum{#1}
         \def\lecdate{#2}
 
-        \raggedleft{
+        % Sets the environment's header
+        \begin{FlushRight}
             \scriptsize
             \textit{Лекция \textnumero\lecnum~от \lecdate}
             \label{lec:no#1}
-        }
-        \hrule
-        \vspace{0.3cm}
-        \justify
+            \hrule
+        \end{FlushRight}
     }%
     {%
         % Updates the counter, so the next lecture's number agrees.
         \setcounter{mylecture}{\lecnum}
-        \vspace{0.3cm}
-        \hrule
-        \raggedright{
+
+        % Sets the environment's footer
+        \begin{FlushLeft}
+            \hrule
             \scriptsize
             \textit{\hyperref[lec:no\lecnum]{Вернуться} к началу Лекции \textnumero\lecnum.}
-        }
-        \justify
+        \end{FlushLeft}
     }
