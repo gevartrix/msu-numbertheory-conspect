@@ -41,11 +41,6 @@
     center%   Aligns to the center of a page
 ]{titlesec}
 
-% Provides an underline command which breaks over line ends. Imported for underling URLs (see the `\myurl` command)
-\usepackage[%
-    normalem% Disables redefining of `\em` and `\emph`
-]{ulem}
-
 
 %% Sets up general indentation
 \setlength{\parindent}{2.3em}%         Paragraph indentation
@@ -160,12 +155,6 @@
 \pdfstringdefDisableCommands{\def\and{и}}
 % [hyperref] Sets up links' style and metadata information
 \makeatletter%  Changes the `@` symbol's category from `other` (catcode: 12) to `letter` (catcode: 11), so it's treated as a normal letter
-\DeclareUrlCommand\myurl@@{%
-    \def\UrlFont{\color{blue}}%
-    \def\UrlLeft{\uline\bgroup}%
-    \def\UrlRight{\egroup}
-}
-\def\myurl@#1#2{\hyper@linkurl{\myurl@@{#2}}{#1}}
 \DeclareRobustCommand*\myurl{\myurl@}
 \hypersetup{%
     linktocpage=true,%                   Makes the page numbers from the Table Of Contents interactive
