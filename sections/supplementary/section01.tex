@@ -1,25 +1,31 @@
 \thispagestyle{supplementary}
 
-\begin{thebibliography}{4}
-    \bibitem{GNSh1984}
-        Галочкин А.И., Нестеренко Ю.В., Шидловский А.Б. 
-        \textit{Введение в теорию чисел, 1.\S4--2.\S3}. 
-        Издательство МГУ, 1984.
+% Encapsulates in a group, so it becomes possible to temporary redefine `thebibliography`'s header macros
+% (\section -> \subsection)
+\begingroup
+    \renewcommand{\section}[2]{\subsection#1{#2}}%
 
-    \bibitem{Newman1980}
-        D.J. Newman. 
-        \href{https://www.math.stonybrook.edu/~moira/mat331-spr10/papers/1980%20NewmanSimple%20Analytic%20Proof%20of%20the.pdf}{\textit{Simple Analytic Proof of the Prime Number Theorem}}. 
-        The American Mathematical Monthly, 87(9):693--696, 1980.~\newline
-        DOI: \href{https://doi.org/10.2307/2321853}{[10.2307/2321853]}.
+    \begin{thebibliography}{4}
+        \bibitem[ГНШ1984]{GNSh1984}
+            Галочкин А.И., Нестеренко Ю.В., Шидловский А.Б. 
+            \textit{Введение в теорию чисел, 1.\S4--2.\S3}. 
+            Издательство МГУ, 1984.
 
-    \bibitem{Balazard2013}
-        Балазар М. 
-        \href{https://www.mccme.ru/free-books/dubna/balazard.pdf}{\textit{Асимптотический закон распределения простых чисел}}. 
-        Издательство МЦНМО, 2013.~\newline
-        ISBN: 978-5-4439-0062-9.
+        \bibitem[Newman1980]{Newman1980}
+            D.J. Newman. 
+            \href{https://www.math.stonybrook.edu/~moira/mat331-spr10/papers/1980%20NewmanSimple%20Analytic%20Proof%20of%20the.pdf}{\textit{Simple Analytic Proof of the Prime Number Theorem}}. 
+            The American Mathematical Monthly, 87(9):693--696, 1980.~\newline
+            DOI: \href{https://doi.org/10.2307/2321853}{[10.2307/2321853]}.
 
-    \bibitem{Tao2021}
-        Terence Tao. 
-        \href{https://terrytao.wordpress.com/2021/02/12/246b-notes-4-the-riemann-zeta-function-and-the-prime-number-theorem/}{\textit{The Riemann zeta function and the prime number theorem}}. 
-        2021.
-\end{thebibliography}
+        \bibitem[Balazard2013]{Balazard2013}
+            Балазар М. 
+            \href{https://www.mccme.ru/free-books/dubna/balazard.pdf}{\textit{Асимптотический закон распределения простых чисел}}. 
+            Издательство МЦНМО, 2013.~\newline
+            ISBN: 978-5-4439-0062-9.
+
+        \bibitem[Tao2021]{Tao2021}
+            Terence Tao. 
+            \href{https://terrytao.wordpress.com/2021/02/12/246b-notes-4-the-riemann-zeta-function-and-the-prime-number-theorem/}{\textit{The Riemann zeta function and the prime number theorem}}. 
+            2021.
+    \end{thebibliography}
+\endgroup

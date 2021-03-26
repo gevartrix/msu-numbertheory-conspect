@@ -1,18 +1,24 @@
 \thispagestyle{supplementary}
 
-\begin{thebibliography}{3}
-    \bibitem{GNSh1984}
-        Галочкин А.И., Нестеренко Ю.В., Шидловский А.Б. 
-        \textit{Введение в теорию чисел, 4.\S1--4.\S5}. 
-        Издательство МГУ, 1984.
+% Encapsulates in a group, so it becomes possible to temporary redefine `thebibliography`'s header macros
+% (\section -> \subsection)
+\begingroup
+    \renewcommand{\section}[2]{\subsection#1{#2}}%
 
-    \bibitem{Shidlovsky1987}
-        Шидловский А.Б. 
-        \textit{Трансцендентные числа}. 
-        Издательство ``Наука'', 1987.
+    \begin{thebibliography}{3}
+        \bibitem[ГНШ1984]{GNSh1984}
+            Галочкин А.И., Нестеренко Ю.В., Шидловский А.Б. 
+            \textit{Введение в теорию чисел, 4.\S1--4.\S5}. 
+            Издательство МГУ, 1984.
 
-    \bibitem{Gelfond1952}
-        Гельфонд А.О.  
-        \href{https://ikfia.ysn.ru/wp-content/uploads/2018/01/Gelfond1952ru.pdf}{\textit{Трансцендентные и алгебраические числа}}. 
-        Государственное издательство технико--теоретической литературы, 1952.
-\end{thebibliography}
+        \bibitem[Шидловский1987]{Shidlovsky1987}
+            Шидловский А.Б. 
+            \textit{Трансцендентные числа}. 
+            Издательство ``Наука'', 1987.
+
+        \bibitem[Гельфонд1952]{Gelfond1952}
+            Гельфонд А.О.  
+            \href{https://ikfia.ysn.ru/wp-content/uploads/2018/01/Gelfond1952ru.pdf}{\textit{Трансцендентные и алгебраические числа}}. 
+            Государственное издательство технико--теоретической литературы, 1952.
+    \end{thebibliography}
+\endgroup
