@@ -222,6 +222,9 @@
 %% [hyperref, ragged2e] Defines an environment that sets up the lectures' header and footer. Takes one mandatory argument -- the lecture's date -- and one optional argument -- the lecture's number. If the optional argument is passed, it updates a counter
 % Initializes a counter for lecture numbers
 \newcounter{mylecture}
+% Gets rid of the 'Underfull \hbox' warning
+% (since ragged2e sets the RaggedLeftLeftskip to '0pt plus 2em', when LaTeX uses '0pt plus 1fil')
+\setlength{\RaggedLeftLeftskip}{0pt plus 1fil}
 \newenvironment{lecture}[2][\themylecture]%
     {%
         % If the optional argument isn't passed, increment the default counter
