@@ -84,7 +84,8 @@
     │   │   ├── section03.tex
     │   │   └── section04.tex
     │   ├── 00titlepage.tex
-    │   └── 01intro.tex
+    │   ├── 01intro.tex
+    │   └── 02questions.tex
     ├── main.tex
     └── Makefile
 

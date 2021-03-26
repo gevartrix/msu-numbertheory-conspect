@@ -17,8 +17,10 @@
 
 
 \begin{document}
+    %%% TITLE & INTRODUCTION
     \input{./sections/00titlepage}
     \input{./sections/01intro}
+
     % Resets the page numbering style, so the main content starts from page 1
     \pagenumbering{arabic}
     \tableofcontents
@@ -32,7 +34,7 @@
     % N.B.: Refuses to work from the preamble
     \renewcommand{\refname}{Дополнительные материалы}
 
-
+    %%% LECTURES
     \begin{lecture}{5 сентября 2017 г.}
         \input{./sections/lectures/01}
     \end{lecture}
@@ -88,5 +90,8 @@
     \begin{lecture}{5 декабря 2017 г.}
         \input{./sections/lectures/14}
     \end{lecture}
+
+    %%% EXAM QUESTIONS    
+    \input{./sections/02questions}
 
 \end{document}
